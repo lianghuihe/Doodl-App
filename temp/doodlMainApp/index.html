@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Doodl</title>
+    </head>
+    <body>
+        <style>
+        .header {
+            font-size: 50;
+            font-family: Trebuchet MS, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300;
+        }
+        .button {
+            background-color: #1565c0;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 12 28;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20;
+            margin: 4 2;
+            cursor: pointer;
+            font-family: Trebuchet MS, sans-serif
+        }
+        .header img{
+            padding-top: 200;
+            width: 100%;
+            height: 100%;
+        }
+        .divider{
+            width:5;
+            height:5;
+            display:inline-block;
+        }
+        .buttonPos{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 250;
+        }
+        </style>
+        <div class="header">
+            <img src = "https://i.imgur.com/wPnHfNq.jpeg", alt "Doodl", style="width:360px;height:360px">
+        </div>
+        <div class="buttonPos">
+            <button id="signin" class="button" onclick="document.location='login.html'">Sign In</button>
+                <div class="divider"></div>
+            <button id="register" class="button" onclick="document.location='register.html'">Register</button>
+                <div class="divider"></div>
+            <button id="guest" class="button" onclick="document.location='doodlPage.html'">Continue As Guest</button>
+        </div>
+    </body>
+    <body style="background-color: #f67570;"></body>
+</html>
