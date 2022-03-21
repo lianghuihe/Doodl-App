@@ -11,7 +11,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+//app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -27,6 +27,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+/*
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -37,5 +38,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+*/
 
 module.exports = app;
