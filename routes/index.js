@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 
-
+/*
 // import { LoremIpsum } from 'lorem-ipsum';
 const LoremIpsum = require('lorem-ipsum').LoremIpsum;
 
@@ -590,6 +590,8 @@ function generateSeed(path) {
   return seed;
 }
 
+
+
 function randomPage(req, res) {
   var seed = generateSeed(req.hostname + req.path);
 
@@ -614,5 +616,5 @@ router.all('*', randomPage);
 // router.all('*', (req, res) => res.render('random', {title: title, paragraphs: paragraphs} ) )
 
 // router.get('/', (req, res) => res.send(lorem.generateParagraphs(7)))
-
+*/
 module.exports = router;
