@@ -1,8 +1,52 @@
 body {
-    padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  }
-  
-  a {
-    color: #00B7FF;
-  }
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  color: white;
+  background-color: #f67570;
+}
+
+canvas{
+  position: absolute;
+  border: 10px solid #f67570;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+}
+
+#toolbar {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 70px;
+  background-color: #f67570;
+}
+
+#toolbar * {
+  margin-bottom: 6px;
+}
+
+#toolbar label {
+  font-size: 12px;
+}
+
+#toolbar DevLabel {
+  font-size: 10px;
+  background-color: #f67570;
+  color:white;
+}
+
+#toolbar input {
+  width: 100%;
+}
+
+#toolbar button {
+  background-color: #1565c0;
+  border: none;
+  border-radius: 4px;
+  color:white;
+  padding: 2px;
+}
