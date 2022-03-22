@@ -3,15 +3,19 @@ var user;
 
 userInput.addEventListener('click', e => {
     if (e.target.id === 'register') {
-        let passwd = (document.getElementById('Password')).value;
-        let confirmPasswd = (document.getElementById('ConfirmPassword')).value;
-        if (passwd === confirmPasswd){
-            user = {
-                userName: (document.getElementById('UserName')).value,
-                email: (document.getElementById('Email')).value,
-                password: (document.getElementById('Password')).value,
+        if ((document.getElementById('privacy')).checked == true) {
+            let passwd = (document.getElementById('Password')).value;
+            let confirmPasswd = (document.getElementById('ConfirmPassword')).value;
+            if (passwd === confirmPasswd){
+                user = {
+                    userName: (document.getElementById('UserName')).value,
+                    email: (document.getElementById('Email')).value,
+                    password: (document.getElementById('Password')).value,
+                }
+                document.location='doodlPage';
             }
-            document.location='doodlPage';
+        }else{
+            alert("Please accept the privacy policy before creating an account!");
         }
     }  
 });
