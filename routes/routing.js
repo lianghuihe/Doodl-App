@@ -32,8 +32,8 @@ router.get('/report', function(req, res, next) {
   res.render('report.ejs');
 });
 
-router.post('/signup',
-  passport.authenticate('signup', { session: false }),
+router.post('/register',
+  passport.authenticate('register', { session: false }),
   async (req, res, next) => {
     res.json({
       message: 'Signup successful',
