@@ -9,46 +9,53 @@
     </head>
     <body>
         <style>
-        .header {
-            font-size: 50;
-            font-family: Trebuchet MS, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 300;
-        }
-        .button {
-            background-color: #1565c0;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            padding: 12 28;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 20;
-            margin: 4 2;
-            cursor: pointer;
-            font-family: Trebuchet MS, sans-serif
-        }
-        .header img{
-            padding-top: 200;
-            width: 100%;
-            height: 100%;
-        }
-        .divider{
-            width:5;
-            height:5;
-            display:inline-block;
-        }
-        .buttonPos{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 250;
-        }
-        </style>
-        <div class="buttonPos" id="userInput">
+            .header {
+                font-size: 50;
+                font-family: Trebuchet MS, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 300;
+            }
+            .button {
+                background-color: #1565c0;
+                border: none;
+                border-radius: 8px;
+                color: white;
+                padding: 12 28;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 20;
+                margin: 4 2;
+                cursor: pointer;
+                font-family: Trebuchet MS, sans-serif
+            }
+            .header img{
+                padding-top: 200;
+                width: 100%;
+                height: 100%;
+            }
+            .divider{
+                width:5;
+                height:5;
+                display:inline-block;
+            }
+            .buttonPos{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 250;
+            }
+            div{
+                margin-top: 7px;
+                margin-bottom: 7px;
+            }
+            </style>
+               <div class="header">
+                <img src = "/images/doodlLogo.png" alt="Doodl" style="width:360px;height:360px"></img>
+            </div>
+        <div class="buttonPos" id="userInput" style="display: grid; text-align: right;">
             <form> User Name : <input type="text" name="UserName"> </form>
                 <div class="divider"></div>
             <form> Password : <input type="text" name="Password"> </form>
