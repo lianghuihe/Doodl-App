@@ -25,6 +25,11 @@
             width: 50%;
             height: 50%;
         }
+        .body img{
+            padding-top: 20px;
+            width: 50%;
+            height: 50%;
+        }
         .divider{
             width:5px;
             height:5px;
