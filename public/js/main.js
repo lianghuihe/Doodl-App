@@ -218,121 +218,6 @@ function hexColourToRGB(colour) {
         return {r:r, g:g, b:b} ;
 }
 
-//---------------------------------
-
-    /* Temp Fill Function (most efficient)
-    while(pixelStack.length){
-        
-        var currentPixel = pixelStack.pop();
-        var pixelPosition, l, r;
-
-        pixelPosition = (currentPixel.y * canvas.width + currentPixel.x) * 4;
-
-        while(y-- >= canvas.height && matchStartColor(pixelPos))
-        {
-            pixelPosition -= canvas.width * 4;
-        }
-
-        pixelPosition += canvas.width * 4;
-        ++y;
-        l = false;
-        r = false;
-
-        while(y++ < canvas.height-1 && matchStartColor(pixelPosition)){
-           colorPixel(pixelPosition);
-
-            if(x > 0){
-                if(matchStartColor(pixelPosition - 4)){
-                    if(!l){
-                        pixelStack.push(new point(x - 1, y));
-                        l = true;
-                    }
-                }
-                else if(l){
-                    l = false;
-                }
-            }
-	
-            if(x < canvas.width-1){
-                if(matchStartColor(pixelPosition + 4)){
-                    if(!r){
-                        pixelStack.push(new point(x + 1, y));
-                        r = true;
-                    }
-                }
-                else if(r){
-                    r = false;
-                }
-            }
-			
-            pixelPosition += canvas.width * 4;
-        }
-
-
-    }
-    */
-
-/*  Basic Iterative fill function
-
-    let tolerance = 10;
-    x -= canvasOffsetX;
-
-    let tempCol = "#000000";
-    
-    let filled = [];
-    let pixelStack = [];
-    pixelStack.push(new point(x,y));
-        //gets the surrounding points
-        let u = new point(currentPixel.x, currentPixel.y + 1);
-        let d = new point(currentPixel.x, currentPixel.y - 1);
-        let l = new point(currentPixel.x - 1, currentPixel.y);
-        let r = new point(currentPixel.x + 1, currentPixel.y);
-        let points = [u,d,l,r];
-
-        
-        for(i = 0; i < 4; i++){
-            let temp = points[i];
-            //check pixel is in canvas
-            if(temp.x < canvas.width && temp.x > 0 && temp.y < canvas.height && temp.y > 0){
-                if(!filled.includes(new point(points[i].x, points[i].y)) && !pixelStack.includes(new point(points[i].x, points[i].y))){
-
-                    tempCol = ctx.getImageData(temp.x, temp.y, 1, 1);
-                    
-                    let pixels1 = tempCol.data;
-                    let r1 = pixels1[0];
-                    let g1 = pixels1[1];
-                    let b1 = pixels1[2];
-
-                    let orgCol = ctx.getImageData(x,y,1,1);
-                    let pixels = orgCol.data;
-                    let r = pixels[0];
-                    let g = pixels[1];
-                    let b = pixels[2];
-
-                    if(r1 < r + tolerance && r1 > r - tolerance && g1 < g + tolerance && g1 > g - tolerance && b1 < b + tolerance && b1 > b - tolerance){
-                        pixelStack.push(new point(points[i].x, points[i].y));
-                        filled.push(new point(points[i].x, points[i].y));
-                        //let toFill = points[i];
-                        //ctx.fillRect(toFill.x, toFill.y, 1, 1);
-                    }
-                }
-            }
-        }
-        
-    }
-    
-    ctx.fillStyle = col; //insert colour of colour picker here
-    
-    for(i = 0; i < filled.length; i++){
-        let toFill = filled.pop();
-        //ctx.fillRect(toFill.x, toFill.y, 1, 1);
-        ctx.fillRect(toFill.x - canvasOffsetX, toFill.y, 1, 1);
-    }
-
-}
-    */
-
-
 function blocked(){
     return (isFill | isPainting | isRectangle | isCircle | isLine);
 }
@@ -345,16 +230,6 @@ canvas.addEventListener('click', (e) => {
         let y = e.clientY - canvasOffsetY;
         floodFill(x, y, hexColourToRGB(col), null, null, null);
     }
-    /* Liang's code
-    if(isRectangle == true){
-        ctx.strokeRect(e.clientX - 150, e.clientY - 50, 150, 100);
-    }
-    if(isCircle == true){
-        ctx.arc(e.clientX - 70, e.clientY , 70, 0, 2 * Math.PI, false);
-        ctx.stroke();
-        ctx.beginPath();
-    }
-    */
     
     /*
     if(isLine == true){
@@ -409,7 +284,6 @@ canvas.addEventListener('mousedown', (e) => {
         tempPoint.x = e.clientX - canvasOffsetX;
         tempPoint.y = e.clientY - canvasOffsetY;
     }
-    //Jake's version
     if(isRectangle){
         tempPoint.x = e.clientX - canvasOffsetX;
         tempPoint.y = e.clientY - canvasOffsetY;
@@ -418,8 +292,6 @@ canvas.addEventListener('mousedown', (e) => {
         tempPoint.x = e.clientX - canvasOffsetX;
         tempPoint.y = e.clientY - canvasOffsetY;
     }
-    //--------------
-    
 });
 
 canvas.addEventListener('mouseup', e => {
@@ -435,7 +307,6 @@ canvas.addEventListener('mouseup', e => {
         ctx.stroke();
         ctx.beginPath();
     }
-    //Jake's version
     if(isRectangle){
         let width  = ((e.clientX - canvasOffsetX) - tempPoint.x);
         let height = ((e.clientY - canvasOffsetY) - tempPoint.y);
@@ -454,7 +325,6 @@ canvas.addEventListener('mouseup', e => {
         ctx.stroke();
         ctx.beginPath();
     }
-    //--------------
 });
 
 canvas.addEventListener('touchstart', (e) => {
