@@ -26,7 +26,31 @@
             <div class="myDoodl">
                 <canvas id="myDoodl"></canvas>
             </div>
+            <button id="settingsButton" onclick="openSettings()">
+                Settings
+            </button>
+            <div id="settingsBG">
+                <div id="settingsMain">
+                    <p id="settingsTitle">
+                        Settings
+                    </p>
+                    <div id="closeSettings" title="Close Settings" onclick="closeSettings()">
+                        <p>
+                            X
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
+        <script type="text/javascript">
+            var settingsDiv = document.getElementById("settingsBG");
+            function openSettings(){
+                settingsDiv.style.display = "block";
+            }
+            function closeSettings(){
+                settingsDiv.style.display = "none";
+            }
+        </script>
         <script src="/js/main.js"></script>
     </body>
 </html>
