@@ -5,14 +5,18 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/routing');
 var app = express();
-const flash = require('express-flash')
-const session = require('express-session')
+
+//MUST BE DONE FIRST
+app.use(methodOverride('_method'));
+
+const flash = require('express-flash');
+const session = require('express-session');
 const mongoose = require('mongoose');
 const uri = "mongodb+srv://doadmin:58QvrM41C390iFz6@db-mongodb-lon1-64588-a6408448.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=db-mongodb-lon1-64588&tls=true&tlsCAFile=" +  path.join(__dirname,'ca-certificate.crt');
-const bcrypt = require('bcrypt')
-const passport = require('passport')
+const bcrypt = require('bcrypt');
+const passport = require('passport');
 
-const initializePassport = require('./passport-config')
+const initializePassport = require('./passport-config');
 initializePassport(
   passport,
   email => users.find(user => user.email === email),
@@ -43,7 +47,6 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(methodOverride('_method'))
 
 //test connection to mongoDB
 db.on("error", console.error.bind(console, "connection error: "));
