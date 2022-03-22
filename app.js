@@ -22,10 +22,7 @@ initializePassport(
 const users = []
 
 //Connect to database
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(uri);
 mongoose.set("useCreateIndex", true);
 const db = mongoose.connection;
 mongoose.Promise = global.Promise;
