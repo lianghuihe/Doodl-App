@@ -83,3 +83,34 @@ describe('GET /', function() {
  });
 });
 
+describe('GET /login', function() {
+  it('respond with hello world', function(done) {
+  //navigate to root and check the the response is "hello world"
+  request(app).get('/').expect(file('../views/login.ejs'));
+  done();
+  });
+});
+
+describe('GET /register', function() {
+  it('respond with hello world', function(done) {
+  //navigate to root and check the the response is "hello world"
+  request(app).get('/').expect(file('../views/register.ejs'));
+  done();
+  });
+});
+
+describe('GET /doodlPage', function() {
+  it('respond with hello world', function(done) {
+  //navigate to root and check the the response is "hello world"
+  request(app).get('/').expect(file('../views/doodlPage.ejs'));
+  done();
+  });
+});
+
+describe('GET /gallery', function() {
+  it('respond with hello world', function(done) {
+  //navigate to root and check the the response is "hello world"
+  request(app).get('/').expect(file('../views/gallery.ejs'));
+  done();
+  });
+});
