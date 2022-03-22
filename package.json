@@ -19,6 +19,7 @@
         "lorem-ipsum": "^2.0.3",
         "md5": "^2.2.1",
         "mersenne-twister": "^1.1.0",
+        "method-override": "^3.0.0",
         "mongoose": "^6.2.7",
         "morgan": "~1.9.1",
         "passport": "^0.5.2",
