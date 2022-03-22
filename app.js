@@ -5,10 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/routing');
 var app = express();
-
-//MUST BE DONE FIRST
-app.use(methodOverride('_method'));
-
+const methodOverride = require('method-override');
 const flash = require('express-flash');
 const session = require('express-session');
 const mongoose = require('mongoose');
@@ -47,6 +44,7 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(methodOverride('_method'));
 
 //test connection to mongoDB
 db.on("error", console.error.bind(console, "connection error: "));
