@@ -28,6 +28,10 @@ router.get('/gdprPage', function(req, res, next) {
   res.render('gdprPage.ejs');
 });
 
+router.get('/report', function(req, res, next) {
+  res.render('report.ejs');
+});
+
 router.post('/signup',
   passport.authenticate('signup', { session: false }),
   async (req, res, next) => {
