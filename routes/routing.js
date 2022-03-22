@@ -32,6 +32,10 @@ router.get('/report', function(req, res, next) {
   res.render('report.ejs');
 });
 
+router.get('/voting', function(req, res, next) {
+  res.render('voting.ejs');
+});
+
 router.post('/register',
   passport.authenticate('register', { session: false }),
   async (req, res, next) => {
