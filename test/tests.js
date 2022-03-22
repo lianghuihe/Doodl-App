@@ -2,7 +2,6 @@ var assert = require('assert');
 var chai = require('chai');
 var chaiFiles = require('chai-files');
 
-
 chai.use(chaiFiles);
 var expect = require('chai').expect;
 var file = chaiFiles.file;
@@ -76,7 +75,7 @@ describe('Array', function () {
 var request = require('supertest');
 var app = require('../routes/routing.js');
 describe('GET /', function() {
- it('respond with hello world', function(done) {
+ it('index found', function(done) {
  //navigate to root and check the the response is "hello world"
  request(app).get('/').expect(file('../views/index.ejs'));
  done();
@@ -84,7 +83,7 @@ describe('GET /', function() {
 });
 
 describe('GET /login', function() {
-  it('respond with hello world', function(done) {
+  it('login found', function(done) {
   //navigate to root and check the the response is "hello world"
   request(app).get('/').expect(file('../views/login.ejs'));
   done();
@@ -92,7 +91,7 @@ describe('GET /login', function() {
 });
 
 describe('GET /register', function() {
-  it('respond with hello world', function(done) {
+  it('register found', function(done) {
   //navigate to root and check the the response is "hello world"
   request(app).get('/').expect(file('../views/register.ejs'));
   done();
@@ -100,7 +99,7 @@ describe('GET /register', function() {
 });
 
 describe('GET /doodlPage', function() {
-  it('respond with hello world', function(done) {
+  it('doodlPage found', function(done) {
   //navigate to root and check the the response is "hello world"
   request(app).get('/').expect(file('../views/doodlPage.ejs'));
   done();
@@ -108,7 +107,7 @@ describe('GET /doodlPage', function() {
 });
 
 describe('GET /gallery', function() {
-  it('respond with hello world', function(done) {
+  it('gallery found', function(done) {
   //navigate to root and check the the response is "hello world"
   request(app).get('/').expect(file('../views/gallery.ejs'));
   done();
