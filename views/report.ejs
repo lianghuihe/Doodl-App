@@ -54,12 +54,14 @@
         }
         </style>
          <div class="header">
-            <img src = "doodlLogo.png" alt="Doodl" style="width:120px;height:120px"></img>
+            <img src = "/images/doodlLogo.png" alt="Doodl" style="width:120px;height:120px"></img>
         </div>
         <div class="buttonPos" id="userInput" style="display: grid;">
             <h3>Reason for report:</h3>
-            <form><input type="textbox" name="report" style="height:200px; width:400px;"> </form>
-                
+            <form>
+                <textarea id="report" name="report" rows="10" cols="50">
+                </textarea>
+            </form>
             <button id="submit" class="button" >Submit Report</button>
         </div>
     </body>
