@@ -50,3 +50,62 @@ canvas{
   color:white;
   padding: 2px;
 }
+
+#settingsBG{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+#settingsMain{
+  position: fixed;
+  width: 600px;
+  height: 360px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: white;
+  left: 50%;
+  margin-left: -100px;
+  top: 50%;
+  margin-top: -60px;
+}
+
+#closeSettings{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  border: 2px solid black;
+  text-align: center;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+}
+
+#closeSettings p{
+  margin-top: 5px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+#settingsTitle{
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  background-color: lightsteelblue;
+  padding-top: 10px;
+  padding-top: 10px;
+  margin-top: 0;
+  border-bottom: 2px solid black;
+}
+
+#settingsButton{
+  position: absolute;
+  top: 20px;
+  left: 1500px;
+}

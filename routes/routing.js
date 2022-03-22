@@ -24,6 +24,10 @@ router.get('/gallery', function(req, res, next) {
   res.render('gallery.ejs');
 });
 
+router.get('/gdprPage', function(req, res, next) {
+  res.render('gdprPage.ejs');
+});
+
 router.post('/signup',
   passport.authenticate('signup', { session: false }),
   async (req, res, next) => {
