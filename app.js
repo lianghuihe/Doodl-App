@@ -26,6 +26,7 @@ mongoose.connect(uri);
 const db = mongoose.connection;
 mongoose.Promise = global.Promise;
 
+
 app.set('views', path.join(__dirname, 'views')); // view engine setup
 app.set('view engine', 'ejs');
 
