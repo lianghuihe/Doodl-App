@@ -4,14 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/routing');
+const secureRouter = require('./routes/secure-routes');
 var app = express();
-const methodOverride = require('method-override');
-const flash = require('express-flash');
-const session = require('express-session');
 const mongoose = require('mongoose');
 const uri = "mongodb+srv://doadmin:58QvrM41C390iFz6@db-mongodb-lon1-64588-a6408448.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=db-mongodb-lon1-64588&tls=true&tlsCAFile=" +  path.join(__dirname,'ca-certificate.crt');
-const bcrypt = require('bcrypt');
 const passport = require('passport');
+require('./auth/auth');
 
 const initializePassport = require('./passport-config');
 initializePassport(
@@ -24,8 +22,9 @@ initializePassport(
 const users = []
 
 //Connect to database
-mongoose.connect(uri);
+mongoose.connect(uri, { useMongoClient: true });
 const db = mongoose.connection;
+mongoose.Promise = global.Promise;
 
 app.set('views', path.join(__dirname, 'views')); // view engine setup
 app.set('view engine', 'ejs');
@@ -36,15 +35,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(flash())
-app.use(session({
-  secret: path.join(__dirname, 'public/env'),
-  resave: false,
-  saveUninitialized: false
-}))
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(methodOverride('_method'));
 
 //test connection to mongoDB
 db.on("error", console.error.bind(console, "connection error: "));
@@ -53,8 +43,18 @@ db.once("open", function () {
 });
 
 //Using routes file ------------------------- reintegrate later
-//app.use('/', indexRouter);
+app.use('/', indexRouter);
 
+// Plug in the JWT strategy as a middleware so only verified users can access this route.
+app.use('/user', passport.authenticate('jwt', { session: false }), secureRoute);
+
+// Handle errors.
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.json({ error: err });
+});
+
+/*
 app.get('/', function(req, res, next) {
   res.render('index.ejs');
 });
@@ -74,6 +74,7 @@ app.get('/doodlPage', function(req, res, next) {
 app.get('/gallery', function(req, res, next) {
   res.render('gallery.ejs');
 });
+*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -16,6 +16,7 @@
         "express-flash": "^0.0.2",
         "express-session": "^1.17.2",
         "http-errors": "~1.6.3",
+        "jsonwebtoken": "^8.5.1",
         "lorem-ipsum": "^2.0.3",
         "md5": "^2.2.1",
         "mersenne-twister": "^1.1.0",
@@ -23,6 +24,7 @@
         "mongoose": "^6.2.7",
         "morgan": "~1.9.1",
         "passport": "^0.5.2",
+        "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",
         "pug": "^3.0.2",
         "uglify-js": "^2.6.0"
