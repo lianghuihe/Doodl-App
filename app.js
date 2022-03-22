@@ -42,7 +42,6 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
-//Using routes file ------------------------- reintegrate later
 app.use('/', indexRouter);
 
 // Plug in the JWT strategy as a middleware so only verified users can access this route.
@@ -53,28 +52,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.json({ error: err });
 });
-
-/*
-app.get('/', function(req, res, next) {
-  res.render('index.ejs');
-});
-
-app.get('/login', function(req, res, next) {
-  res.render('login.ejs');
-});
-
-app.get('/register', function(req, res, next) {
-  res.render('register.ejs');
-});
-
-app.get('/doodlPage', function(req, res, next) {
-  res.render('doodlPage.ejs');
-});
-
-app.get('/gallery', function(req, res, next) {
-  res.render('gallery.ejs');
-});
-*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
