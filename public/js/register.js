@@ -8,6 +8,7 @@ userInput.addEventListener('click', e => {
         if (passwd === confirmPasswd){
             user = {
                 userName: (document.getElementById('UserName')).value,
+                email: (document.getElementById('Email')).value,
                 password: (document.getElementById('Password')).value,
             }
             document.location='doodlPage';
