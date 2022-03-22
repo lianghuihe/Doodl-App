@@ -44,3 +44,20 @@
             margin-top: 7px;
             margin-bottom: 7px;
         }
+        .btn{
+            cursor: pointer;
+            outline: 0;
+            color: #AAA;
+            display:inline-block;
+            text-align:center;
+            margin:90px;
+        }
+        .btn:focus {
+            outline: none;
+        }
+        .green{
+            color: green;
+        }
+        .red{
+            color: red;
+        }
