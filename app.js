@@ -46,7 +46,7 @@ db.once("open", function () {
 app.use('/', indexRouter);
 
 // Plug in the JWT strategy as a middleware so only verified users can access this route.
-app.use('/user', passport.authenticate('jwt', { session: false }), secureRoute);
+app.use('/user', passport.authenticate('jwt', { session: false }), secureRouter);
 
 // Handle errors.
 app.use(function(err, req, res, next) {
