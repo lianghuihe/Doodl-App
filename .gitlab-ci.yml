@@ -24,6 +24,8 @@ cache:
 
 test_async:
   before_script: 
+    - npm uninstall bcrypt
+    - npm install bcrypt
     - chmod 0777 ./node_modules/.bin/mocha
   script:
     - echo "starting async testing..."
