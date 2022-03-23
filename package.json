@@ -8,6 +8,7 @@
     },
     "dependencies": {
         "bcrypt": "^5.0.1",
+        "chokidar": "^3.5.3",
         "clean-css": "^4.1.11",
         "constantinople": "^3.1.1",
         "cookie-parser": "~1.4.4",
@@ -29,6 +30,7 @@
         "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",
         "pug": "^3.0.2",
+        "readdirp": "^3.6.0",
         "uglify-js": "^2.6.0"
     },
     "devDependencies": {
