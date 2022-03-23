@@ -16,9 +16,6 @@ services:
   - redis:latest
   - postgres:latest
 
-stages:
-  - test_async
-
 # This folder is cached between builds
 # https://docs.gitlab.com/ee/ci/yaml/index.html#cache
 cache:
