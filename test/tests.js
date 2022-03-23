@@ -1,7 +1,6 @@
 var assert = require('assert');
 var chai = require('chai');
 var chaiFiles = require('chai-files');
-
 chai.use(chaiFiles);
 var expect = require('chai').expect;
 var file = chaiFiles.file;
@@ -13,6 +12,57 @@ var dir = chaiFiles.dir;
 //var router = require('../routes/routing.js');
 
 let t_testWord = "asdasd";
+
+describe('Array', function () {
+  describe('#indexOf()', function () {
+    it('should return -1 when the value is not present', function () {
+      assert.equal([1, 2, 3].indexOf(4), -1);
+    });
+  });
+});
+
+var request = require('supertest');
+var app = require('../routes/routing.js');
+describe('GET /', function() {
+ it('index found', function(done) {
+ //navigate to root and check the the response is "hello world"
+ request(app).get('/').expect(file('../views/index.ejs'));
+ done();
+ });
+});
+
+describe('GET /login', function() {
+  it('login found', function(done) {
+  //navigate to root and check the the response is "hello world"
+  request(app).get('/').expect(file('../views/login.ejs'));
+  done();
+  });
+});
+
+describe('GET /register', function() {
+  it('register found', function(done) {
+  //navigate to root and check the the response is "hello world"
+  request(app).get('/').expect(file('../views/register.ejs'));
+  done();
+  });
+});
+
+describe('GET /doodlPage', function() {
+  it('doodlPage found', function(done) {
+  //navigate to root and check the the response is "hello world"
+  request(app).get('/').expect(file('../views/doodlPage.ejs'));
+  done();
+  });
+});
+
+describe('GET /gallery', function() {
+  it('gallery found', function(done) {
+  //navigate to root and check the the response is "hello world"
+  request(app).get('/').expect(file('../views/gallery.ejs'));
+  done();
+  });
+});
+
 /*
 let ejsload = function() {
     ejs.renderFile('index.ejs');
@@ -63,53 +113,3 @@ describe('main.js functions', function() {
     })
 })
 */
-
-describe('Array', function () {
-  describe('#dailyWordSetup()', function () {
-    it('should return -1 when the value is not present', function () {
-      assert.equal([1, 2, 3].indexOf(4), -1);
-    });
-  });
-});
-
-var request = require('supertest');
-var app = require('../routes/routing.js');
-describe('GET /', function() {
- it('index found', function(done) {
- //navigate to root and check the the response is "hello world"
- request(app).get('/').expect(file('../views/index.ejs'));
- done();
- });
-});
-
-describe('GET /login', function() {
-  it('login found', function(done) {
-  //navigate to root and check the the response is "hello world"
-  request(app).get('/').expect(file('../views/login.ejs'));
-  done();
-  });
-});
-
-describe('GET /register', function() {
-  it('register found', function(done) {
-  //navigate to root and check the the response is "hello world"
-  request(app).get('/').expect(file('../views/register.ejs'));
-  done();
-  });
-});
-
-describe('GET /doodlPage', function() {
-  it('doodlPage found', function(done) {
-  //navigate to root and check the the response is "hello world"
-  request(app).get('/').expect(file('../views/doodlPage.ejs'));
-  done();
-  });
-});
-
-describe('GET /gallery', function() {
-  it('gallery found', function(done) {
-  //navigate to root and check the the response is "hello world"
-  request(app).get('/').expect(file('../views/gallery.ejs'));
-  done();
-  });
-});

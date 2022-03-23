@@ -25,6 +25,9 @@
             width: 50%;
             height: 50%;
         }
+        .body {
+            background-color: #70aff6;
+        }
         .body img{
             padding-top: 20px;
             width: 50%;
