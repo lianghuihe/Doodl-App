@@ -7,6 +7,6 @@ userInput.addEventListener('click', e => {
             userName: (document.getElementsByName('UserName')).value,
             password: (document.getElementsByName('Password')).value,
         }
-        document.location='doodlPage.html';
+        document.location='doodlPage';
     }  
 });

@@ -1,0 +1,63 @@
+        .header {
+            font-size: 50px;
+            font-family: Trebuchet MS, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+        }
+        .button {
+            background-color: #1565c0;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 12px 28px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            margin: 40px 20px;
+            cursor: pointer;
+            font-family: Trebuchet MS, sans-serif
+        }
+        .header img{
+            padding-top: 20px;
+            width: 50%;
+            height: 50%;
+        }
+        .body img{
+            padding-top: 20px;
+            width: 50%;
+            height: 50%;
+        }
+        .divider{
+            width:5px;
+            height:5px;
+            display:inline-block;
+        }
+        .buttonPos{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div{
+            margin-top: 7px;
+            margin-bottom: 7px;
+        }
+        .btn{
+            cursor: pointer;
+            outline: 0;
+            color: #AAA;
+            display:inline-block;
+            text-align:center;
+            margin:90px;
+        }
+        .btn:focus {
+            outline: none;
+        }
+        .green{
+            color: green;
+        }
+        .red{
+            color: red;
+        }
