@@ -29,9 +29,3 @@ test_async:
     - echo "starting async testing..."
     - npm install
     - npm test
-    - node ./specs/start.js ./specs/async.spec.js
-
-test_db:
-  script:
-    - npm install
-    - node ./specs/start.js ./specs/db-postgres.spec.js
