@@ -16,6 +16,9 @@ services:
   - redis:latest
   - postgres:latest
 
+stages:
+  - test_async
+
 # This folder is cached between builds
 # https://docs.gitlab.com/ee/ci/yaml/index.html#cache
 cache:
@@ -24,6 +27,7 @@ cache:
 
 test_async:
   script:
+    - echo "starting async testing..."
     - npm install
     - npm test
     - node ./specs/start.js ./specs/async.spec.js
