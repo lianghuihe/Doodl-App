@@ -106,6 +106,6 @@ canvas{
 
 #settingsButton{
   position: absolute;
-  top: 20px;
-  left: 1800px;
+  top: 10px;
+  right: 0px;
 }
