@@ -68,10 +68,8 @@ canvas{
   border: 2px solid black;
   border-radius: 5px;
   background-color: white;
-  left: 50%;
-  margin-left: -650px;
+  left: calc(100%/3);
   top: 50%;
-  margin-top: -60px;
 }
 
 #closeSettings{
