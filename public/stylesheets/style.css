@@ -69,7 +69,7 @@ canvas{
   border-radius: 5px;
   background-color: white;
   left: calc(100%/3);
-  top: 50%;
+  top: 25%;
 }
 
 #closeSettings{
