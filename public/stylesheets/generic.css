@@ -64,3 +64,8 @@
         .red{
             color: red;
         }
+        .doodlLogoButton{
+            width: 120px;
+            height: 120px;
+            background-color: rgba(0,0,0,0);
+        }
