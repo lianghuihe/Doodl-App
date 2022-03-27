@@ -11,6 +11,7 @@ btn1.addEventListener('click', function() {
 });
 
 
+
 btn2.addEventListener('click', function() {
   
     if (btn1.classList.contains('green')) {
