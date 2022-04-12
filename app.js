@@ -1,3 +1,4 @@
+var csv = require('jquery-csv');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -25,6 +26,15 @@ const users = []
 mongoose.connect(uri);
 const db = mongoose.connection;
 mongoose.Promise = global.Promise;
+
+var currentPrompt = "";
+var count = 0;
+const wordArray = csv.toArray("./public/wordList.csv");
+
+setTimeout(function(){
+  count += 1;
+  currentPrompt = wordArray[count];
+}, 86400000);
 
 
 app.set('views', path.join(__dirname, 'views')); // view engine setup
