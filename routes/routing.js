@@ -18,8 +18,10 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/doodlPage', function(req, res, next) {
-  var testString = req.app.locals.testString;
-  res.render('doodlPage.ejs', {testString : testString} );
+  //var testString = req.app.locals.testString;
+ // res.render('doodlPage.ejs', {testString : testString} );
+  var currentPrompt = req.app.locals.currentPrompt;
+  res.render('doodlPage.ejs', {currentPrompt : currentPrompt} );
 });
 
 router.get('/gallery', function(req, res, next) {

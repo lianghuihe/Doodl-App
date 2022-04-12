@@ -30,13 +30,13 @@ mongoose.Promise = global.Promise;
 var currentPrompt = "";
 var count = 0;
 const wordArray = csv.toArray("./public/wordList.csv");
-currentPrompt = wordArray[count];
-app.locals.testString = "Popcorn";
+app.locals.currentPrompt = wordArray[count];
+//app.locals.testString = "Popcorn";
 
 (function loop(){
   setTimeout(function(){
     count += 1;
-    currentPrompt = wordArray[count];
+    app.locals.currentPrompt = wordArray[count];
   }, 86400000);
 }());
 
