@@ -6,8 +6,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var testString = "Cake";
-  res.render('index.ejs', {testString : testString});
+  res.render('index.ejs');
 });
 
 router.get('/login', function(req, res, next) {
@@ -19,7 +18,8 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/doodlPage', function(req, res, next) {
-  res.render('doodlPage.ejs' );
+  var testString = "Cake";
+  res.render('doodlPage.ejs', {testString : testString} );
 });
 
 router.get('/gallery', function(req, res, next) {
