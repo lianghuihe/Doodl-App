@@ -1425,6 +1425,11 @@
     "filelist" "^1.0.1"
     "minimatch" "^3.0.4"
 
+"jquery-csv@^1.0.21":
+  "integrity" "sha512-uDIFsJcC4xZEofK9pk3hwFQlyqf3FFwkQq6JIa882lf0pu/S0H4LqjCAEaULGM0uOcdCbGbMBh3b3LmPtF1a9A=="
+  "resolved" "https://registry.npmjs.org/jquery-csv/-/jquery-csv-1.0.21.tgz"
+  "version" "1.0.21"
+
 "js-stringify@^1.0.2":
   "integrity" "sha1-Fzb939lyTyijaCrcYjCufk6Weds="
   "resolved" "https://registry.npmjs.org/js-stringify/-/js-stringify-1.0.2.tgz"

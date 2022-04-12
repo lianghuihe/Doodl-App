@@ -20,6 +20,7 @@
         "express-session": "^1.17.2",
         "fill-range": "^7.0.1",
         "http-errors": "~1.6.3",
+        "jquery-csv": "^1.0.21",
         "jsdom": "^19.0.0",
         "jsonwebtoken": "^8.5.1",
         "lorem-ipsum": "^2.0.3",
