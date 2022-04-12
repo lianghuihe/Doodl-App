@@ -29,7 +29,7 @@ mongoose.Promise = global.Promise;
 
 var currentPrompt = "";
 var count = 0;
-const wordArray = $.csv.toArray("./public/wordList.csv");
+const wordArray = csv.toArray("./public/wordList.csv");
 app.locals.currentPrompt = wordArray[count];
 //app.locals.testString = "Popcorn";
 
