@@ -6,8 +6,8 @@ const tempPoint = new point(0,0);
 const canvasOffsetX = canvas.offsetLeft;
 const canvasOffsetY = canvas.offsetTop;
 
-canvas.width = window.innerWidth - canvasOffsetX;
-canvas.height = window.innerHeight - canvasOffsetY;
+canvas.width = 0.7*window.innerWidth - canvasOffsetX;
+canvas.height = 0.9*window.innerHeight - canvasOffsetY;
 
 let col = "#000000";
 let isFill = false;

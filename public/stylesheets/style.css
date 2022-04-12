@@ -8,8 +8,10 @@ body {
 }
 
 canvas{
-  position: absolute;
-  border: 10px solid #f67570;
+  border: 5px solid #000000;
+  position:relative; 
+  top:100px; 
+  left:100px;
 }
 
 .container {
