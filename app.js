@@ -30,12 +30,14 @@ mongoose.Promise = global.Promise;
 var currentPrompt = "";
 var count = 0;
 const wordArray = csv.toArray("./public/wordList.csv");
+currentPrompt = wordArray[count];
 
-setTimeout(function(){
-  count += 1;
-  currentPrompt = wordArray[count];
-}, 86400000);
-
+(function loop(){
+  setTimeout(function(){
+    count += 1;
+    currentPrompt = wordArray[count];
+  }, 86400000);
+}());
 
 app.set('views', path.join(__dirname, 'views')); // view engine setup
 app.set('view engine', 'ejs');
