@@ -31,6 +31,7 @@ var currentPrompt = "";
 var count = 0;
 const wordArray = csv.toArray("./public/wordList.csv");
 currentPrompt = wordArray[count];
+app.locals.testString = "Popcorn";
 
 (function loop(){
   setTimeout(function(){

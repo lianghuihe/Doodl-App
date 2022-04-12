@@ -18,7 +18,7 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/doodlPage', function(req, res, next) {
-  var testString = "Cake";
+  var testString = req.app.locals.testString;
   res.render('doodlPage.ejs', {testString : testString} );
 });
 
