@@ -44,7 +44,7 @@ fs.createReadStream('./public/wordList.csv')
 (function loop(){
   setTimeout(function(){
     count += 1;
-    app.locals.currentPrompt = wordArray[count];
+    app.locals.currentPrompt = wordArray[count].word;
   }, 86400000);
 }());
 
