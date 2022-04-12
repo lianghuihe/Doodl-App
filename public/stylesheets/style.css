@@ -170,3 +170,11 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+#dailyWord{
+  color:black; 
+  font: 30px Comic Sans MS; 
+  position:absolute; 
+  left:30%; 
+  top:5%;
+}
