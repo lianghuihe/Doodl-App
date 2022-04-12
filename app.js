@@ -1,4 +1,5 @@
-var csv = require('jquery-csv');
+const csv = require('csv-parser')
+const fs = require('fs')
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -29,8 +30,15 @@ mongoose.Promise = global.Promise;
 
 var currentPrompt = "";
 var count = 0;
-const wordArray = csv.toArray("./public/wordList.csv");
-app.locals.currentPrompt = wordArray[count];
+const wordArray = [];
+
+fs.createReadStream('./public/wordList.csv')
+  .pipe(csv())
+  .on('data', (data) => wordArray.push(data))
+  .on('end', () => {
+    app.locals.currentPrompt = wordArray[count].word;
+  });
+
 //app.locals.testString = "Popcorn";
 
 (function loop(){
