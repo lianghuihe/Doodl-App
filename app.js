@@ -39,8 +39,6 @@ fs.createReadStream('./public/wordList.csv')
     app.locals.currentPrompt = wordArray[count].word;
   });
 
-//app.locals.testString = "Popcorn";
-
 (function loop(){
   setTimeout(function(){
     count += 1;
