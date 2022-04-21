@@ -1,4 +1,4 @@
-const canvas = document.getElementById('myDoodl');
+const canvas = document.getElementById('myDoodlCanvas');
 const toolbar = document.getElementById('toolbar');
 const ctx = canvas.getContext('2d');
 const tempPoint = new point(0,0);
