@@ -278,7 +278,7 @@ canvas.addEventListener('click', (e) => {
 
 function submitDoodl()
 {
-    var cData = ctx.getImageData(0, 0, ctx.width, ctx.height);
+    var cData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
     console.log(cData);
 }
