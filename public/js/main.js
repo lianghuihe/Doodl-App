@@ -92,6 +92,9 @@ toolbar.addEventListener('click', e => {
         }
         
     }
+    if (e.target.id === 'submit'){
+        submitDoodl();
+    }
 });
 /*
 document.querySelector('#submit').addEventListener('click', ()=> {
@@ -272,6 +275,12 @@ canvas.addEventListener('click', (e) => {
     }
     */
 });
+
+function submitDoodl()
+{
+    var cData = canvas.toDataUrl();
+    console.log(cData);
+}
 
 canvas.addEventListener('mousedown', (e) => {
     if (!blocked()) {
