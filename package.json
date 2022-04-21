@@ -37,7 +37,8 @@
         "passport-local": "^1.0.0",
         "pug": "^3.0.2",
         "readdirp": "^3.6.0",
-        "uglify-js": "^2.6.0"
+        "uglify-js": "^2.6.0",
+        "uuid": "^8.3.2"
     },
     "devDependencies": {
         "chai": "^4.3.6",

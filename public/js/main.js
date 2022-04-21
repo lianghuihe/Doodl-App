@@ -1,6 +1,7 @@
 const canvas = document.getElementById('myDoodlCanvas');
 const toolbar = document.getElementById('toolbar');
 const ctx = canvas.getContext('2d');
+const uuidv4 = require("uuid/v4");
 const tempPoint = new point(0,0);
 
 const canvasOffsetX = canvas.offsetLeft;
@@ -280,7 +281,15 @@ function submitDoodl()
 {
     //var cData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var cData = canvas.toDataURL();
+    var imageID = uuidv4();
+    var dateTime = Date();
+    var userName = "anonymous";
+
     console.log(cData);
+    console.log(dateTime);
+    console.log(userName);
+    console.log(imageID);
+    //TODO: send this image to the database, alongside the name of the user and the date created.
 }
 
 canvas.addEventListener('mousedown', (e) => {
