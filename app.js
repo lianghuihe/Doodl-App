@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("./env/dotenv").config();
 const csv = require('csv-parser')
 const fs = require('fs')
 var createError = require('http-errors');
