@@ -15,29 +15,3 @@ userInput.addEventListener('click', e => {
         }
     }  
 });
-
-async function registerUser(event) {
-    event.preventDefault()
-    const username = document.getElementById('UserName').value
-    const email = document.getElementById('Email').value
-    const password = document.getElementById('Password').value
-
-    const result = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            username,
-            email,
-            password
-        })
-    }).then((res) => res.json())
-
-    if (result.status === 'ok') {
-        // everythign went fine
-        alert('Account Created')
-    } else {
-        alert(result.error)
-    }
-}

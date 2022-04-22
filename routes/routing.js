@@ -1,19 +1,19 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const User = require('../model/model.js');
+const User = require('../model/User.js');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', checkAuthenticated, function(req, res, next) {
   res.render('index.ejs');
 });
 
-router.get('/login', function(req, res, next) {
+router.get('/login', checkNotAuthenticated, function(req, res, next) {
   res.render('login.ejs');
 });
 
-router.get('/register', function(req, res, next) {
+router.get('/register', checkNotAuthenticated, function(req, res, next) {
   res.render('register.ejs');
 });
 
@@ -38,76 +38,43 @@ router.get('/voting', function(req, res, next) {
   res.render('voting.ejs');
 });
 
-router.post('/api/register', async (req, res, next) => {
-  const { username, email, password: plainTextPassword } = req.body
+router.post("/register", checkNotAuthenticated, async (req, res) => {
+  const userFound = await User.findOne({ email: req.body.email });
 
-  if (!username || typeof username !== 'string') {
-    return res.json({ status: 'error', error: 'Invalid username' })
-  }
+  if (userFound) {
+    req.flash("error", "User with that email already exists");
+    res.redirect("/register");
+  } else {
+    try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: hashedPassword,
+      });
 
-  if (!plainTextPassword || typeof plainTextPassword !== 'string') {
-    return res.json({ status: 'error', error: 'Invalid password' })
-  }
-
-  if (plainTextPassword.length < 5) {
-    return res.json({
-      status: 'error',
-      error: 'Password too small. Should be atleast 6 characters'
-    })
-  }
-
-  const password = await bcrypt.hash(plainTextPassword, 10)
-
-  try {
-    const response = await User.create({
-      email,
-      username,
-      password
-    })
-    console.log('User created successfully: ', response)
-  } catch (error) {
-    if (error.code === 11000) {
-      // duplicate key
-      return res.json({ status: 'error', error: 'Username already in use' })
+      await user.save();
+      res.redirect("/login");
+    } catch (error) {
+      console.log(error);
+      res.redirect("/register");
     }
-    throw error
   }
+});
 
-  res.json({ status: 'ok' })
+app.delete("/logout", (req, res) => {
+  req.logOut();
+  res.redirect("/login");
+});
 
-  }
-);
-
-router.post('/login',
-  async (req, res, next) => {
-    passport.authenticate(
-      'login',
-      async (err, user, info) => {
-        try {
-          if (err || !user) {
-            const error = new Error('An error occurred.');
-
-            return next(error);
-          }
-
-          req.login(
-            user,
-            { session: false },
-            async (error) => {
-              if (error) return next(error);
-
-              const body = { _id: user._id, email: user.email };
-              const token = jwt.sign({ user: body }, 'TOP_SECRET');
-
-              return res.json({ token });
-            }
-          );
-        } catch (error) {
-          return next(error);
-        }
-      }
-    )(req, res, next);
-  }
+app.post(
+  "/login",
+  checkNotAuthenticated,
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+  })
 );
 
 module.exports = router;
