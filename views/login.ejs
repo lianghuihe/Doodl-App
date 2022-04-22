@@ -8,17 +8,25 @@
         <title>Doodl</title>
     </head>
     <body>
-            <div class="header">
-                <a href="/">
-                    <img src = "/images/doodlLogo.png" alt="Doodl" style="width:120px;height:120px">
-                </a> 
-            </div>
+        <div class="header">
+            <% if (messages) { %>
+            <p><%= messages.error %></p>
+            <% } %>
+            <a href="/">
+                <img src = "/images/doodlLogo.png" alt="Doodl" style="width:120px;height:120px">
+            </a>
+        </div>
         <div class="buttonPos" id="userInput" style="display: grid; text-align: right;">
-            <form> User Name : <input type="text" name="UserName"> </form>
+            <!--<form> User Name : <input type="text" name="UserName"> </form>
                 <div class="divider"></div>
             <form> Password : <input type="text" name="Password"> </form>
-                <div class="divider"></div>
-            <button id="login" class="button">Login</button>
+                <div class="divider"></div>-->
+            <form action="/login" method="POST">
+                <input type="email" name="email" placeholder="johndoe@gmail.com"/>
+                <input type="password" name="password" placeholder="* * * * * *" />
+                <button id="login" class="button">Login</button>
+            </form>
+            
         </div>
         <script src="/js/login.js"></script>
     </body>

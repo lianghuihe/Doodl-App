@@ -9,12 +9,15 @@
     </head>
     <body>
     <div class="header">
+        <% if (messages) { %>
+        <p><%= messages.error %></p>
+        <% } %>
         <a href="/">
         <img src = "/images/doodlLogo.png" alt="Doodl" style="width:120px;height:120px">
         </a> 
     </div>
     <div class="buttonPos" id="userInput" style="display: grid; text-align: right;">
-        <form> User Name : <input type="text" id="UserName"> </form>
+        <!-- <form> User Name : <input type="text" id="UserName"> </form>
             <div class="divider"></div>
         <form> Email : <input type="text" id="Email"> </form>
             <div class="divider"></div>
@@ -26,8 +29,18 @@
                 <input type="checkbox" id="privacy" name="privacy">
                 <label for="privacy">I have read and accept the </label>
                 <a target="_blank" href = "/gdprPage" >Privacy policy</a>
-              </div>
-        <button id="register" class="button">Register</button>
+              </div> -->
+       
+        <form action="/register" method="POST">
+            <input type="name" name="name" placeholder="Username" />
+            <input
+              type="email"
+              name="email"
+              placeholder="johnnythedesigner@gmail.com"
+            />
+            <input type="password" name="password" placeholder="* * * * * *" />
+            <button id="register" class="button">Register</button>
+        </form>
     </div>
         <script src="/js/register.js"></script>
     </body>
