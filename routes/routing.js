@@ -1,8 +1,12 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const User = require('../model/User.js');
+const User = require('./model/User.js');
 var router = express.Router();
+const {
+  checkAuthenticated,
+  checkNotAuthenticated,
+} = require("./auth/auth");
 
 /* GET home page. */
 router.get('/', checkAuthenticated, function(req, res, next) {
