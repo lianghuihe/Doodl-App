@@ -297,10 +297,10 @@ function submitDoodl()
     var lDoodlName = "my drawing"; //possible: dialogue box when you click submit which allows you to name your drawing. (not neccessary & can be discussed)
     var lUserID = 0; //currently unaware of how to retrieve the userID when the database connection isnt fully running.
     
-    console.log(lcData);
-    console.log(ldateTime);
-    console.log(luserName);
-    console.log(limageID);
+    console.log(cData);
+    console.log(lDateTime);
+    console.log(lUserName);
+    console.log(lImageID);
 
     //3
     //putting data into a JSON:
