@@ -280,17 +280,43 @@ canvas.addEventListener('click', (e) => {
 
 function submitDoodl()
 {
-    //var cData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    var cData = canvas.toDataURL();
-    var imageID = uuidv4();
-    var dateTime = Date();
-    var userName = "anonymous";
+    //       submitDoodl should do 4 things:
+    //  1: transform current canvas state into a text URL               - DONE
+    //  2: retrieve all remaining relevant user data from local machine - NOT FINISHED, unsure where the user data is being stored locally or how to get it.
+    //  3: put them all into a JSON string                              - DONE
+    //  4: send that string off to the database.                        - WAITING ON DATABASE CONNECTIVITY
 
-    console.log(cData);
-    console.log(dateTime);
-    console.log(userName);
-    console.log(imageID);
-    //TODO: send this image to the database, alongside the name of the user and the date created.
+    //1
+    var cData = canvas.toDataURL(); //can be put back onto canvas by  image.src = [[[url here]]]
+
+    //2
+    //I put an "l" infront to say "local" - just so that the JSON names dont conflict.
+    var limageID = uuidv4(); //still unsure if this works since we cant deploy atm.
+    var ldateTime = Date();  //TODO: convert time & date to a consistent timezone.
+    var luserName = "anonymous"; //TODO: get username from local cookies.
+    var lDoodlName = "my drawing"; //possible: dialogue box when you click submit which allows you to name your drawing. (not neccessary & can be discussed)
+
+    console.log(lcData);
+    console.log(ldateTime);
+    console.log(luserName);
+    console.log(limageID);
+
+    //3
+    //putting data into a JSON:
+    let doodlData = {
+        _id: imageID, //needs to be changed, unsure what ObjectId('') is or how your are getting this. 
+        imageID: limageID,
+        userID: 0, //currently unaware of how to retrieve the userID when the database connection isnt fully running.
+        image: cData,
+        dateTime: ldateTime,
+        doodlName: lDoodlName
+    };
+
+    let dData = JSON.stringify(doodlData);
+    //TODO: write dData to the database. It should be a JSON object of those above types.
+
+    //4
+    
 }
 
 canvas.addEventListener('mousedown', (e) => {
