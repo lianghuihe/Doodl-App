@@ -1,11 +1,12 @@
 const canvas = document.getElementById('myDoodlCanvas');
 const toolbar = document.getElementById('toolbar');
 const ctx = canvas.getContext('2d');
-const uuidv4 = require('uuid');
 const tempPoint = new point(0,0);
 
 const canvasOffsetX = canvas.offsetLeft;
 const canvasOffsetY = canvas.offsetTop;
+
+import { v4 as uuidv4 } from 'uuid';
 
 canvas.width = 0.7*window.innerWidth - canvasOffsetX;
 canvas.height = 0.9*window.innerHeight - canvasOffsetY;
