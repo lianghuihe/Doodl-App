@@ -6,7 +6,7 @@ var router = express.Router();
 const {
   checkAuthenticated,
   checkNotAuthenticated,
-} = require("./auth/auth");
+} = require("../auth/auth");
 
 /* GET home page. */
 router.get('/', checkAuthenticated, function(req, res, next) {
