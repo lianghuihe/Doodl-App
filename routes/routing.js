@@ -66,12 +66,12 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
   }
 });
 
-app.delete("/logout", (req, res) => {
+router.delete("/logout", (req, res) => {
   req.logOut();
   res.redirect("/login");
 });
 
-app.post(
+router.post(
   "/login",
   checkNotAuthenticated,
   passport.authenticate("local", {
