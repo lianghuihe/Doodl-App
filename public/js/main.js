@@ -291,11 +291,12 @@ function submitDoodl()
 
     //2
     //I put an "l" infront to say "local" - just so that the JSON names dont conflict.
-    var limageID = uuidv4(); //still unsure if this works since we cant deploy atm.
-    var ldateTime = Date();  //TODO: convert time & date to a consistent timezone.
-    var luserName = "anonymous"; //TODO: get username from local cookies.
+    var lImageID = 0; //will be done with a uuidv4() call if uuid imports correctly (line 9)
+    var lDateTime = Date();  //TODO: convert time & date to a consistent timezone.
+    var lUserName = "anonymous"; //TODO: get username from local cookies. -- maybe not necessary if we already have userID stored??
     var lDoodlName = "my drawing"; //possible: dialogue box when you click submit which allows you to name your drawing. (not neccessary & can be discussed)
-
+    var lUserID = 0; //currently unaware of how to retrieve the userID when the database connection isnt fully running.
+    
     console.log(lcData);
     console.log(ldateTime);
     console.log(luserName);
@@ -304,11 +305,11 @@ function submitDoodl()
     //3
     //putting data into a JSON:
     let doodlData = {
-        _id: imageID, //needs to be changed, unsure what ObjectId('') is or how your are getting this. 
-        imageID: limageID,
-        userID: 0, //currently unaware of how to retrieve the userID when the database connection isnt fully running.
+        _id: 0, //needs to be changed, unsure what ObjectId('') is or how your are getting this. 
+        imageID: lImageID,
+        userID: lUserID, 
         image: cData,
-        dateTime: ldateTime,
+        dateTime: lDateTime,
         doodlName: lDoodlName
     };
 
@@ -316,7 +317,7 @@ function submitDoodl()
     //TODO: write dData to the database. It should be a JSON object of those above types.
 
     //4
-    
+
 }
 
 canvas.addEventListener('mousedown', (e) => {
