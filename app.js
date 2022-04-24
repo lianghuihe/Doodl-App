@@ -1,4 +1,4 @@
-require('dotenv').config({path: path.join(__dirname, '/env/.env')});
+require('dotenv').config({path: 'env/.env'});
 const csv = require('csv-parser')
 const fs = require('fs')
 var createError = require('http-errors');
