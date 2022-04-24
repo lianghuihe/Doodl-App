@@ -9,15 +9,15 @@ const {
 } = require("../auth/auth");
 
 /* GET home page. */
-router.get('/', checkAuthenticated, function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index.ejs');
 });
 
-router.get('/login', checkNotAuthenticated, function(req, res, next) {
+router.get('/login', function(req, res, next) {
   res.render('login.ejs');
 });
 
-router.get('/register', checkNotAuthenticated, function(req, res, next) {
+router.get('/register', function(req, res, next) {
   res.render('register.ejs');
 });
 
