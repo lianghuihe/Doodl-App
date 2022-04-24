@@ -8,6 +8,8 @@ const {
   checkNotAuthenticated,
 } = require("../auth/auth");
 
+router.use(express.static(path.join(__dirname, '../public')));
+
 /* GET home page. */
 router.get('/', checkAuthenticated, function(req, res, next) {
   res.render('/views/index.ejs');
@@ -75,7 +77,7 @@ router.post(
   "/login",
   checkNotAuthenticated,
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/doodlPage",
     failureRedirect: "/login",
     failureFlash: true,
   })
