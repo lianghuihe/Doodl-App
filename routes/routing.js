@@ -4,7 +4,7 @@ const passport = require('passport');
 const User = require("../model/User");
 var router = express.Router();
 var path = require('path');
-app.use(express.static(path.join(__dirname, '../public')));
+router.use(express.static(path.join(__dirname, '../public')));
 const {
   checkAuthenticated,
   checkNotAuthenticated,
