@@ -1,3 +1,4 @@
+require('dotenv').config({path: path.join(__dirname, '/env/.env')});
 const csv = require('csv-parser')
 const fs = require('fs')
 var createError = require('http-errors');
@@ -15,7 +16,7 @@ const mongoose = require('mongoose');
 const User = require("./model/User");
 const uri = "mongodb+srv://doadmin:58QvrM41C390iFz6@db-mongodb-lon1-64588-a6408448.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=db-mongodb-lon1-64588&tls=true&tlsCAFile=" +  path.join(__dirname,'ca-certificate.crt');
 const passport = require('passport');
-const dotenv = require('dotenv').config({path: path.join(__dirname, '/env/.env')});
+
 
 const initializePassport = require("./passport-config");
 initializePassport(
