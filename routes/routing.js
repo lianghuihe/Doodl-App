@@ -10,7 +10,7 @@ const {
 
 /* GET home page. */
 router.get('/', checkAuthenticated, function(req, res, next) {
-  res.render('index.ejs');
+  res.render('../views/index.ejs');
 });
 
 router.get('/login', checkNotAuthenticated, function(req, res, next) {
