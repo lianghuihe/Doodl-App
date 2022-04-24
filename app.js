@@ -102,45 +102,45 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.get('views/index.ejs', checkAuthenticated, function(req, res, next) {
+app.get('/', checkAuthenticated, function(req, res, next) {
   res.render('index.ejs');
 });
 
-app.get('views/login.ejs', checkNotAuthenticated, function(req, res, next) {
+app.get('/login', checkNotAuthenticated, function(req, res, next) {
   res.render('login.ejs');
 });
 
-app.get('views/register.ejs', checkNotAuthenticated, function(req, res, next) {
+app.get('/register', checkNotAuthenticated, function(req, res, next) {
   res.render('register.ejs');
 });
 
-app.get('views/doodlPage.ejs', checkNotAuthenticated, function(req, res, next) {
+app.get('/doodlPage', checkNotAuthenticated, function(req, res, next) {
   var currentPrompt = req.app.locals.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt} );
 });
 
-app.get('views/gallery.ejs', checkNotAuthenticated, function(req, res, next) {
+app.get('/gallery', checkNotAuthenticated, function(req, res, next) {
   res.render('gallery.ejs');
 });
 
-app.get('views/gdprPage.ejs', checkNotAuthenticated, function(req, res, next) {
+app.get('/gdprPage', checkNotAuthenticated, function(req, res, next) {
   res.render('gdprPage.ejs');
 });
 
-app.get('views/report.ejs', checkNotAuthenticated, function(req, res, next) {
+app.get('/report', checkNotAuthenticated, function(req, res, next) {
   res.render('report.ejs');
 });
 
-app.get('views/voting.ejs', checkNotAuthenticated, function(req, res, next) {
+app.get('/voting', checkNotAuthenticated, function(req, res, next) {
   res.render('voting.ejs');
 });
 
-app.post("views/register.ejs", checkNotAuthenticated, async (req, res) => {
+app.post("/register", checkNotAuthenticated, async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email });
 
   if (userFound) {
     req.flash("error", "User with that email already exists");
-    res.redirect("views/register.ejs");
+    res.redirect("/register");
   } else {
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -151,25 +151,25 @@ app.post("views/register.ejs", checkNotAuthenticated, async (req, res) => {
       });
 
       await user.save();
-      res.redirect("views/login.ejs");
+      res.redirect("/login");
     } catch (error) {
       console.log(error);
-      res.redirect("views/register.ejs");
+      res.redirect("/register");
     }
   }
 });
 
 app.delete("/logout", (req, res) => {
   req.logOut();
-  res.redirect("views/login.ejs");
+  res.redirect("/login");
 });
 
 app.post(
-  "views/login.ejs",
+  "/login",
   checkNotAuthenticated,
   passport.authenticate("local", {
-    successRedirect: "views/doodlPage.ejs",
-    failureRedirect: "views/login.ejs",
+    successRedirect: "/doodlPage",
+    failureRedirect: "/login",
     failureFlash: true,
   })
 );
