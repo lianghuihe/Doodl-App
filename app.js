@@ -2,12 +2,12 @@ require('dotenv').config({path: 'env/.env'});
 const csv = require('csv-parser')
 const fs = require('fs')
 var createError = require('http-errors');
-var express = require('express');
+const express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 //var indexRouter = require(path.join(__dirname, '/routes/routing.js'));
-var app = express();
+const app = express();
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
