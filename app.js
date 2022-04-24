@@ -102,7 +102,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.get('/', checkAuthenticated, function(req, res, next) {
+app.get('views/index.ejs', checkAuthenticated, function(req, res, next) {
   res.render('index.ejs');
 });
 
