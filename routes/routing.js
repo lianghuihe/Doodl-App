@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const User = require("../model/User");
-var router = express.Router();
+const router = express();
 const {
   checkAuthenticated,
   checkNotAuthenticated,
@@ -13,32 +13,32 @@ router.get('/', checkAuthenticated, function(req, res, next) {
   res.render('index.ejs');
 });
 
-router.get('/login', checkNotAuthenticated, function(req, res, next) {
+router.get('views/login.ejs', checkNotAuthenticated, function(req, res, next) {
   res.render('login.ejs');
 });
 
-router.get('/register', checkNotAuthenticated, function(req, res, next) {
+router.get('views/register.ejs', checkNotAuthenticated, function(req, res, next) {
   res.render('register.ejs');
 });
 
-router.get('/doodlPage', checkNotAuthenticated, function(req, res, next) {
+router.get('views/doodlPage.ejs', checkNotAuthenticated, function(req, res, next) {
   var currentPrompt = req.app.locals.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt} );
 });
 
-router.get('/gallery', checkNotAuthenticated, function(req, res, next) {
+router.get('views/gallery.ejs', checkNotAuthenticated, function(req, res, next) {
   res.render('gallery.ejs');
 });
 
-router.get('/gdprPage', checkNotAuthenticated, function(req, res, next) {
+router.get('views/gdprPage.ejs', checkNotAuthenticated, function(req, res, next) {
   res.render('gdprPage.ejs');
 });
 
-router.get('/report', checkNotAuthenticated, function(req, res, next) {
+router.get('views/report.ejs', checkNotAuthenticated, function(req, res, next) {
   res.render('report.ejs');
 });
 
-router.get('/voting', checkNotAuthenticated, function(req, res, next) {
+router.get('views/voting.ejs', checkNotAuthenticated, function(req, res, next) {
   res.render('voting.ejs');
 });
 
