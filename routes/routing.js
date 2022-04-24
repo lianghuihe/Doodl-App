@@ -9,45 +9,45 @@ const {
 } = require("../auth/auth");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', checkAuthenticated, function(req, res, next) {
   res.render('index.ejs');
 });
 
-router.get('/login', function(req, res, next) {
+router.get('/login', checkNotAuthenticated, function(req, res, next) {
   res.render('login.ejs');
 });
 
-router.get('/register', function(req, res, next) {
+router.get('/register', checkNotAuthenticated, function(req, res, next) {
   res.render('register.ejs');
 });
 
-router.get('/doodlPage', function(req, res, next) {
+router.get('/doodlPage', checkNotAuthenticated, function(req, res, next) {
   var currentPrompt = req.app.locals.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt} );
 });
 
-router.get('/gallery', function(req, res, next) {
+router.get('/gallery', checkNotAuthenticated, function(req, res, next) {
   res.render('gallery.ejs');
 });
 
-router.get('/gdprPage', function(req, res, next) {
+router.get('/gdprPage', checkNotAuthenticated, function(req, res, next) {
   res.render('gdprPage.ejs');
 });
 
-router.get('/report', function(req, res, next) {
+router.get('/report', checkNotAuthenticated, function(req, res, next) {
   res.render('report.ejs');
 });
 
-router.get('/voting', function(req, res, next) {
+router.get('/voting', checkNotAuthenticated, function(req, res, next) {
   res.render('voting.ejs');
 });
 
-router.post("/register", checkNotAuthenticated, async (req, res) => {
+router.post("views/register.ejs", checkNotAuthenticated, async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email });
 
   if (userFound) {
     req.flash("error", "User with that email already exists");
-    res.redirect("/register");
+    res.redirect("views/register.ejs");
   } else {
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -58,25 +58,25 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
       });
 
       await user.save();
-      res.redirect("/login");
+      res.redirect("views/login.ejs");
     } catch (error) {
       console.log(error);
-      res.redirect("/register");
+      res.redirect("views/register.ejs");
     }
   }
 });
 
 router.delete("/logout", (req, res) => {
   req.logOut();
-  res.redirect("/login");
+  res.redirect("views/login.ejs");
 });
 
 router.post(
-  "/login",
+  "views/login.ejs",
   checkNotAuthenticated,
   passport.authenticate("local", {
-    successRedirect: "/doodlPage",
-    failureRedirect: "/login",
+    successRedirect: "views/doodlPage.ejs",
+    failureRedirect: "views/login.ejs",
     failureFlash: true,
   })
 );
