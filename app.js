@@ -17,13 +17,6 @@ const uri = "mongodb+srv://doadmin:58QvrM41C390iFz6@db-mongodb-lon1-64588-a64084
 const passport = require('passport');
 const dotenv = require('dotenv').config({path: path.join(__dirname, '/env/.env')});
 
-/*const initializePassport = require('./passport-config');
-initializePassport(
-  passport,
-  email => users.find(user => user.email === email),
-  id => users.find(user => user.id === id)
-)*/
-
 const initializePassport = require("./passport-config");
 initializePassport(
   passport,
