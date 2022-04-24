@@ -2,6 +2,8 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const User = require("../model/User");
+var path = require('path');
+require('dotenv').config();
 var router = express.Router();
 const {
   checkAuthenticated,
