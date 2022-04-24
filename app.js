@@ -67,7 +67,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 app.use(flash());
 app.use(
   session({
@@ -82,7 +82,7 @@ db.once("open", function () {
   console.log("Connected successfully to database");
 });
 
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 
 app.use(passport.initialize());
 app.use(passport.session());
