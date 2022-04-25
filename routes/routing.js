@@ -3,7 +3,7 @@ const express = require('express');
 var path = require('path');
 const bcrypt = require("bcryptjs");
 const User = require("../model/User");
-const Doodl = require("../model/Doodl");
+const Doodl = require("../model/doodl");
 const passport = require('passport');
 const router = express();
 const {
