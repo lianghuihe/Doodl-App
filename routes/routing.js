@@ -7,6 +7,8 @@ const User = require("../model/User");
 const uri = "mongodb+srv://doadmin:58QvrM41C390iFz6@db-mongodb-lon1-64588-a6408448.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=db-mongodb-lon1-64588&tls=true&tlsCAFile=" +  path.join(__dirname,'ca-certificate.crt');
 const passport = require('passport');
 const router = express();
+
+/*
 const {
   checkAuthenticated,
   checkNotAuthenticated,
@@ -38,7 +40,7 @@ db.once("open", function () {
   console.log("Connected successfully to database");
 });
 
-/* GET home page. */
+ GET home page. 
 router.get('/', checkNotAuthenticated, function(req, res, next) {
   res.render('index.ejs');
 });
@@ -115,5 +117,7 @@ router.post(
     failureFlash: true,
   })
 );
+
+*/
 
 module.exports = router;

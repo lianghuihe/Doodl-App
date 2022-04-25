@@ -6,7 +6,7 @@ const express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var indexRouter = require('./routes/routing.js');
+//var indexRouter = require('./routes/routing.js');
 const app = express();
 const flash = require("express-flash");
 const session = require("express-session");
@@ -70,7 +70,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static('public'));
 app.use(flash());
 app.use(
   session({
@@ -79,6 +78,12 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(methodOverride("_method"));
+app.use(express.static('public'));
+
 //test connection to mongoDB
 /*
 db.on("error", console.error.bind(console, "connection error: "));
@@ -86,9 +91,6 @@ db.once("open", function () {
   console.log("Connected successfully to database");
 });
 */
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(methodOverride("_method"));
 
 // Handle errors.
 app.use(function(err, req, res, next) {
@@ -103,8 +105,7 @@ app.use(function(req, res, next) {
 });
 */
 
-/*
-app.get('/', checkAuthenticated, function(req, res, next) {
+app.get('/', checkNotAuthenticated, function(req, res, next) {
   res.render('index.ejs');
 });
 
@@ -116,28 +117,33 @@ app.get('/register', checkNotAuthenticated, function(req, res, next) {
   res.render('register.ejs');
 });
 
-app.get('/doodlPage', checkNotAuthenticated, function(req, res, next) {
+app.get('/doodlPage', checkAuthenticated, function(req, res, next) {
   var currentPrompt = req.app.locals.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt} );
 });
 
-app.get('/gallery', checkNotAuthenticated, function(req, res, next) {
+app.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
+  var currentPrompt = req.app.locals.currentPrompt;
+  res.render('doodlPageGuest.ejs', {currentPrompt : currentPrompt} );
+});
+
+app.get('/gallery', checkAuthenticated, function(req, res, next) {
   res.render('gallery.ejs');
 });
 
-app.get('/gdprPage', checkNotAuthenticated, function(req, res, next) {
+app.get('/gdprPage', checkAuthenticated, function(req, res, next) {
   res.render('gdprPage.ejs');
 });
 
-app.get('/report', checkNotAuthenticated, function(req, res, next) {
+app.get('/report', checkAuthenticated, function(req, res, next) {
   res.render('report.ejs');
 });
 
-app.get('/voting', checkNotAuthenticated, function(req, res, next) {
+app.get('/voting', checkAuthenticated, function(req, res, next) {
   res.render('voting.ejs');
 });
 
-app.post("/register", checkNotAuthenticated, async (req, res) => {
+app.post("/register", checkAuthenticated, async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email });
 
   if (userFound) {
@@ -176,8 +182,23 @@ app.post(
   })
 );
 
-*/
-//module.exports = router;
+//app.use('/', indexRouter);
 
-app.use('/', indexRouter);
+mongoose
+  .connect(uri, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    app.listen(3000, () => {
+      console.log("Server is running on Port 3000");
+    });
+  });
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function(){
+    console.log("Connected to database successfully");
+});
+
+
 module.exports = app;
