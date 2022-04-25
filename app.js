@@ -158,7 +158,11 @@ app.post("/register", checkAuthenticated, async (req, res) => {
         password: hashedPassword,
       });
 
+      console.log("Saving new user");
       await user.save();
+      console.log("New user saved, user:");
+      console.log(user);
+
       res.redirect("/login");
     } catch (error) {
       console.log(error);
@@ -184,21 +188,15 @@ app.post(
 
 //app.use('/', indexRouter);
 
-mongoose
-  .connect(uri, {
+mongoose.connect(uri, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-  })
-  .then(() => {
-    app.listen(3000, () => {
-      console.log("Server is running on Port 3000");
-    });
-  });
+})
+
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function(){
     console.log("Connected to database successfully");
 });
-
 
 module.exports = app;
