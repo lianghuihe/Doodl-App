@@ -55,10 +55,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(methodOverride("_method"));
-app.use(express.static('public'));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -66,6 +62,10 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(methodOverride("_method"));
+app.use(express.static('public'));
 
 // Handle errors.
 app.use(function(err, req, res, next) {
