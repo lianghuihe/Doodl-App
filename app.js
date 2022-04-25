@@ -143,7 +143,7 @@ app.get('/voting', checkAuthenticated, function(req, res, next) {
   res.render('voting.ejs');
 });
 
-app.post("/register", checkAuthenticated, async (req, res) => {
+app.post("/register", checkNotAuthenticated, async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email });
 
   if (userFound) {
