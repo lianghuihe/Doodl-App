@@ -1,12 +1,29 @@
+require('dotenv').config({path: 'env/.env'});
 const express = require('express');
-const jwt = require('jsonwebtoken');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var indexRouter = require('./routes/routing.js');
+const flash = require("express-flash");
+const session = require("express-session");
+const methodOverride = require("method-override");
+const bcrypt = require("bcryptjs");
+const mongoose = require('mongoose');
+const User = require("./model/User");
+const uri = "mongodb+srv://doadmin:58QvrM41C390iFz6@db-mongodb-lon1-64588-a6408448.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=db-mongodb-lon1-64588&tls=true&tlsCAFile=" +  path.join(__dirname,'ca-certificate.crt');
 const passport = require('passport');
-const User = require("../model/User");
 const router = express();
 const {
   checkAuthenticated,
   checkNotAuthenticated,
 } = require("../auth/auth");
+
+mongoose.connect(uri, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
+const db = mongoose.connection;
+mongoose.Promise = global.Promise;
 
 /* GET home page. */
 router.get('/', checkNotAuthenticated, function(req, res, next) {
