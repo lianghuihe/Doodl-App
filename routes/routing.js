@@ -94,7 +94,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   console.log("called router POST doodlPage");
   try {
     console.log("1");
-    const image = JSON.stringify(req.body.myDoodlCanvas);#
+    const image = JSON.stringify(req.body.myDoodlCanvas);
     console.log(image);
     console.log("2");
 
