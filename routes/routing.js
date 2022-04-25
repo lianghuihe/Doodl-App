@@ -2,7 +2,8 @@ require('dotenv').config({path: 'env/.env'});
 const express = require('express');
 var path = require('path');
 const bcrypt = require("bcryptjs");
-const User = require("../model/User");
+const User = require("../model/user");
+const Doodl = require("../model/doodl");
 const passport = require('passport');
 const router = express();
 const {
@@ -88,5 +89,21 @@ router.post(
     failureFlash: true,
   })
 );
+
+router.post("/doodlPage", checkAuthenticated, async (req, res) => {
+  try {
+    const doodl = new Doodl({
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPassword,
+    });
+
+    await user.save();
+    res.redirect("/login");
+  } catch (error) {
+    console.log(error);
+     res.redirect("/register");
+  }
+});
 
 module.exports = router;

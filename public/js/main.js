@@ -278,48 +278,6 @@ canvas.addEventListener('click', (e) => {
     */
 });
 
-function submitDoodl()
-{
-    //       submitDoodl should do 4 things:
-    //  1: transform current canvas state into a text URL               - DONE
-    //  2: retrieve all remaining relevant user data from local machine - NOT FINISHED, unsure where the user data is being stored locally or how to get it.
-    //  3: put them all into a JSON string                              - DONE
-    //  4: send that string off to the database.                        - WAITING ON DATABASE CONNECTIVITY
-
-    //1
-    var cData = canvas.toDataURL(); //can be put back onto canvas by  image.src = [[[url here]]]
-
-    //2
-    //I put an "l" infront to say "local" - just so that the JSON names dont conflict.
-    var lImageID = 0; //will be done with a uuidv4() call if uuid imports correctly (line 9)
-    var lDateTime = Date();  //TODO: convert time & date to a consistent timezone.
-    var lUserName = "anonymous"; //TODO: get username from local cookies. -- maybe not necessary if we already have userID stored??
-    var lDoodlName = "my drawing"; //possible: dialogue box when you click submit which allows you to name your drawing. (not neccessary & can be discussed)
-    var lUserID = 0; //currently unaware of how to retrieve the userID when the database connection isnt fully running.
-    
-    console.log(cData);
-    console.log(lDateTime);
-    console.log(lUserName);
-    console.log(lImageID);
-
-    //3
-    //putting data into a JSON:
-    let doodlData = {
-        _id: 0, //needs to be changed, unsure what ObjectId('') is or how your are getting this. 
-        imageID: lImageID,
-        userID: lUserID, 
-        image: cData,
-        dateTime: lDateTime,
-        doodlName: lDoodlName
-    };
-
-    let dData = JSON.stringify(doodlData);
-    //TODO: write dData to the database. It should be a JSON object of those above types.
-
-    //4
-
-}
-
 canvas.addEventListener('mousedown', (e) => {
     if (!blocked()) {
         isPainting = true;
