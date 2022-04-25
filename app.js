@@ -36,7 +36,7 @@ initializePassport(
 
 //Temporary users array ----------------- replace with DB calls
 //const users = []
-
+/*
 //Connect to database
 mongoose.connect(uri, {
   useUnifiedTopology: true,
@@ -44,7 +44,7 @@ mongoose.connect(uri, {
 });
 const db = mongoose.connection;
 mongoose.Promise = global.Promise;
-
+*/
 var currentPrompt = "";
 var count = 0;
 const wordArray = [];
