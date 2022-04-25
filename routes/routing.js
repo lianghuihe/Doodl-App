@@ -2,8 +2,8 @@ require('dotenv').config({path: 'env/.env'});
 const express = require('express');
 var path = require('path');
 const bcrypt = require("bcryptjs");
-const User = require("../model/user");
-const Doodl = require("../model/doodl");
+const User = require("../model/user.js");
+const Doodl = require("../model/doodl.js");
 const passport = require('passport');
 const router = express();
 const {
