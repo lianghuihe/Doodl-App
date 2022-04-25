@@ -11,7 +11,7 @@ const {
   checkNotAuthenticated,
 } = require("../auth/auth");
 
-// GET home page. 
+// GET home page //
 
 router.get('/', checkNotAuthenticated, function(req, res, next) {
   res.render('index.ejs');
