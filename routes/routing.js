@@ -58,7 +58,7 @@ router.post("/register", checkAuthenticated, async (req, res) => {
 
   if (userFound) {
     req.flash("error", "User with that email already exists");
-    res.redirect("views/register.ejs");
+    res.redirect("/register");
   } else {
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -69,25 +69,25 @@ router.post("/register", checkAuthenticated, async (req, res) => {
       });
 
       await user.save();
-      res.redirect("views/login.ejs");
+      res.redirect("/login");
     } catch (error) {
       console.log(error);
-      res.redirect("views/register.ejs");
+      res.redirect("/register");
     }
   }
 });
 
 router.delete("/logout", (req, res) => {
   req.logOut();
-  res.redirect("views/login.ejs");
+  res.redirect("/login");
 });
 
 router.post(
   "/login",
   checkNotAuthenticated,
   passport.authenticate("local", {
-    successRedirect: "views/doodlPage.ejs",
-    failureRedirect: "views/login.ejs",
+    successRedirect: "/doodlPage",
+    failureRedirect: "/login",
     failureFlash: true,
   })
 );
