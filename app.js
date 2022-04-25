@@ -14,13 +14,14 @@ const methodOverride = require("method-override");
 const bcrypt = require("bcryptjs");
 const mongoose = require('mongoose');
 const User = require("./model/User");
-const uri = "mongodb+srv://doadmin:58QvrM41C390iFz6@db-mongodb-lon1-64588-a6408448.mongo.ondigitalocean.com/admin?retryWrites=true&authSource=admin&replicaSet=db-mongodb-lon1-64588&tls=true&tlsCAFile=" +  path.join(__dirname,'ca-certificate.crt');
+const uri = "mongodb+srv://doadmin:58QvrM41C390iFz6@db-mongodb-lon1-64588-a6408448.mongo.ondigitalocean.com/DoodlData?retryWrites=true&authSource=admin&replicaSet=db-mongodb-lon1-64588&tls=true&tlsCAFile=" +  path.join(__dirname,'ca-certificate.crt');
 const passport = require('passport');
+/*
 const {
   checkAuthenticated,
   checkNotAuthenticated,
 } = require("./auth/auth");
-
+*/
 const initializePassport = require("./passport-config");
 initializePassport(
   passport,
@@ -104,7 +105,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 */
-
+/*
 app.get('/', checkNotAuthenticated, function(req, res, next) {
   res.render('index.ejs');
 });
@@ -182,8 +183,8 @@ app.post(
     failureFlash: true,
   })
 );
+*/
 
-//app.use('/', indexRouter);
 mongoose.Promise = global.Promise;
 mongoose.connect(uri, {
     useUnifiedTopology: true,
@@ -196,4 +197,5 @@ db.once("open", function(){
     console.log("Connected to database successfully");
 });
 
+app.use('/', indexRouter);
 module.exports = app;
