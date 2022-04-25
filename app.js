@@ -158,12 +158,9 @@ app.post("/register", checkAuthenticated, async (req, res) => {
         password: hashedPassword,
       });
 
-      console.log("Saving new user");
-      await user.save();
-      console.log("New user saved, user:");
-      console.log(user);
-
+      user.save();
       res.redirect("/login");
+      
     } catch (error) {
       console.log(error);
       res.redirect("/register");
@@ -187,7 +184,7 @@ app.post(
 );
 
 //app.use('/', indexRouter);
-
+mongoose.Promise = global.Promise;
 mongoose.connect(uri, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
