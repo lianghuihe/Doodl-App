@@ -91,6 +91,7 @@ router.post(
 );
 
 router.post("/doodlPage", checkAuthenticated, async (req, res) => {
+  /*
   try {
     const doodl = new Doodl({
       name: req.body.name,
@@ -104,6 +105,8 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     console.log(error);
      res.redirect("/register");
   }
+  */
+  console.log("called router POST doodlPage");
 });
 
 module.exports = router;
