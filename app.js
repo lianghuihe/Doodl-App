@@ -6,7 +6,7 @@ const express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-//var indexRouter = require(path.join(__dirname, '/routes/routing.js'));
+var indexRouter = require(path.join(__dirname, '/routes/routing.js'));
 const app = express();
 const flash = require("express-flash");
 const session = require("express-session");
@@ -85,8 +85,6 @@ db.once("open", function () {
   console.log("Connected successfully to database");
 });
 
-//app.use('/', indexRouter);
-
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
@@ -103,6 +101,8 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 */
+
+/*
 app.get('/', checkAuthenticated, function(req, res, next) {
   res.render('index.ejs');
 });
@@ -175,5 +175,8 @@ app.post(
   })
 );
 
+*/
 //module.exports = router;
+
+app.use('/', indexRouter);
 module.exports = app;
