@@ -1,12 +1,6 @@
 require('dotenv').config({path: 'env/.env'});
 const express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var indexRouter = require('./routes/routing.js');
-const flash = require("express-flash");
-const session = require("express-session");
-const methodOverride = require("method-override");
 const bcrypt = require("bcryptjs");
 const mongoose = require('mongoose');
 const User = require("./model/User");
