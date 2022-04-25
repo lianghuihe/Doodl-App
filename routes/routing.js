@@ -42,6 +42,11 @@ router.get('/doodlPage', checkAuthenticated, function(req, res, next) {
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt} );
 });
 
+router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
+  var currentPrompt = req.app.locals.currentPrompt;
+  res.render('doodlPageGuest.ejs', {currentPrompt : currentPrompt} );
+});
+
 router.get('/gallery', checkAuthenticated, function(req, res, next) {
   res.render('gallery.ejs');
 });
