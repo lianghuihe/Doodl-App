@@ -80,11 +80,12 @@ app.use(
   })
 );
 //test connection to mongoDB
+/*
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
   console.log("Connected successfully to database");
 });
-
+*/
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
