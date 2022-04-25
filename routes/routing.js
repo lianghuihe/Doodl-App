@@ -12,6 +12,20 @@ const {
   checkNotAuthenticated,
 } = require("../auth/auth");
 
+const initializePassport = require("./passport-config");
+initializePassport(
+  passport,
+  async (email) => {
+    const userFound = await User.findOne({ email });
+    return userFound;
+  },
+  async (id) => {
+    const userFound = await User.findOne({ _id: id });
+    return userFound;
+  }
+);
+
+
 mongoose.connect(uri, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
