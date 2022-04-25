@@ -9,7 +9,7 @@ const {
 } = require("../auth/auth");
 
 /* GET home page. */
-router.get('/', checkAuthenticated, function(req, res, next) {
+router.get('/', checkNotAuthenticated, function(req, res, next) {
   res.render('index.ejs');
 });
 
@@ -21,28 +21,28 @@ router.get('views/register.ejs', checkNotAuthenticated, function(req, res, next)
   res.render('register.ejs');
 });
 
-router.get('views/doodlPage.ejs', checkNotAuthenticated, function(req, res, next) {
+router.get('views/doodlPage.ejs', checkAuthenticated, function(req, res, next) {
   var currentPrompt = req.app.locals.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt} );
 });
 
-router.get('views/gallery.ejs', checkNotAuthenticated, function(req, res, next) {
+router.get('views/gallery.ejs', checkAuthenticated, function(req, res, next) {
   res.render('gallery.ejs');
 });
 
-router.get('views/gdprPage.ejs', checkNotAuthenticated, function(req, res, next) {
+router.get('views/gdprPage.ejs', checkAuthenticated, function(req, res, next) {
   res.render('gdprPage.ejs');
 });
 
-router.get('views/report.ejs', checkNotAuthenticated, function(req, res, next) {
+router.get('views/report.ejs', checkAuthenticated, function(req, res, next) {
   res.render('report.ejs');
 });
 
-router.get('views/voting.ejs', checkNotAuthenticated, function(req, res, next) {
+router.get('views/voting.ejs', checkAuthenticated, function(req, res, next) {
   res.render('voting.ejs');
 });
 
-router.post("views/register.ejs", checkNotAuthenticated, async (req, res) => {
+router.post("views/register.ejs", checkAuthenticated, async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email });
 
   if (userFound) {
