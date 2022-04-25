@@ -13,7 +13,7 @@ const doodlSchema = new mongoose.Schema({
     required: true,
   },
   doodl: {
-    type: String,
+    type: JSON,
     required: true,
   },
   prompt: {

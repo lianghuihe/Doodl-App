@@ -91,22 +91,24 @@ router.post(
 );
 
 router.post("/doodlPage", checkAuthenticated, async (req, res) => {
-  /*
+  console.log("called router POST doodlPage");
   try {
+    const image = JSON.stringify(req.body.myDoodlCanvas);
     const doodl = new Doodl({
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword,
+      email: req.user.email,
+      doodl: image,
+      prompt: req.app.locals.currentPrompt,
     });
 
-    await user.save();
-    res.redirect("/login");
+    console.log(doodl);
+
+    await doodl.save();
+    res.redirect("/gallery");
+
   } catch (error) {
     console.log(error);
-     res.redirect("/register");
   }
-  */
-  console.log("called router POST doodlPage");
+  
 });
 
 module.exports = router;
