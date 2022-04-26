@@ -40,6 +40,7 @@ fs.createReadStream('./public/wordList.csv')
   .on('data', (data) => wordArray.push(data))
   .on('end', () => {
     app.locals.currentPrompt = wordArray[count].word;
+    console.log("Daily prompt changed to: " + app.locals.currentPrompt);
   });
 
 (function loop(){
@@ -55,7 +56,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
-app.use(bodyParser());
+app.use(bodyParser.json());
 app.use(flash());
 app.use(
   session({
