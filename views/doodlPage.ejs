@@ -26,6 +26,20 @@
                 <DevLabel id="RGBVal">RGBVal</DevLabel>
             </div>
             <div class="myDoodl">
+                    <canvas id="myDoodlCanvas"></canvas>
+            </div>
+            <div id="dailyWord"> Today's topic: <%= currentPrompt %></div>
+            <button id="settingsButton" onclick="openSettings()">
+               <img src="/images/settings.png" height="50px" width="50px">
+            </button>
+            <div id="settingsBG">
+                <div id="settingsMain">
+                    <p id="settingsTitle">
+                        Settings
+                    </p>
+                    <div id="closeSettings" title="Close Settings" onclick="closeSettings()">
+                        <p>
+                            X
                         </p>
                     </div>
                     <div>
