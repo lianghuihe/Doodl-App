@@ -101,8 +101,12 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     console.log("4");
     console.log(req.user);
     console.log("5");
-    console.log(local.User);
+    console.log(req.user.name);
     console.log("6");
+    console.log(req.user.email);
+    console.log("7")
+    console.log(local.User);
+    console.log("8");
 
     
     const image = JSON.stringify(req.body.myDoodlCanvas);
