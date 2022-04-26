@@ -5,6 +5,7 @@ var createError = require('http-errors');
 const express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/routing.js');
 const app = express();
@@ -55,6 +56,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
+app.use(bodyParser());
 app.use(flash());
 app.use(
   session({
