@@ -8,6 +8,7 @@
         <title>Doodl</title>
     </head>
     <body>
+        <form action="/doodlPage" method="POST">
         <section class="container">
             <div id="toolbar">
                 <img src = "/images/doodlLogo.png" alt="Doodl" style="width:70px;height:70px"></img>
@@ -20,9 +21,7 @@
                 <button id="rectangle">Rectangle</button>
                 <button id="circle">Circle</button>
                 <button id="clear">Clear</button>
-                <form action="/doodlPage" method="POST">
-                    <button id="submit" >Submit</button> <!--onclick="document.location='gallery'"-->
-                </form>
+                <input type="submit" id="submit" >Submit</button> <!--onclick="document.location='gallery'"-->
                 <DevLabel id="RGBVal">RGBVal</DevLabel>
             </div>
             <div class="myDoodl">
@@ -64,5 +63,6 @@
             }
         </script>
         <script src="/js/main.js"></script>
+    </form>
     </body>
 </html>
