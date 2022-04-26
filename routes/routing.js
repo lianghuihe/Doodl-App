@@ -94,7 +94,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   try {
     const image = JSON.stringify(req.body.myDoodlCanvas);
     const doodl = new Doodl({
-      email: req.user.email,
+      email: passport.email,
       doodl: image,
       prompt: req.app.locals.currentPrompt,
     });
