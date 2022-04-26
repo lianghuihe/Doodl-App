@@ -4,6 +4,8 @@ const fs = require('fs')
 var createError = require('http-errors');
 const express = require('express');
 var path = require('path');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/routing.js');
 const app = express();
@@ -48,13 +50,12 @@ fs.createReadStream('./public/wordList.csv')
 }());
 
 //app.set('views', path.join(__dirname, 'views')); // view engine setup
-app.set('view engine', 'ejs');
-
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.cookieParser());
-app.use(express.bodyParser());
+app.use(cookieParser());
+app.use(bodyParser());
 app.use(flash());
 app.use(
   session({
@@ -66,7 +67,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
-app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
 // Handle errors.
 app.use(function(err, req, res, next) {
