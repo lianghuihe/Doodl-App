@@ -27,7 +27,7 @@ router.get('/register', checkNotAuthenticated, function(req, res, next) {
 
 router.get('/doodlPage', checkAuthenticated, function(req, res, next) {
   var currentPrompt = req.app.locals.currentPrompt;
-  res.render('doodlPage.ejs', {currentPrompt : currentPrompt, user : req.user} );
+  res.render('doodlPage.ejs', {currentPrompt : currentPrompt, name: req.user.name, email: req.user.email} );
 });
 
 router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
