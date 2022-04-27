@@ -26,17 +26,34 @@ router.get('/register', checkNotAuthenticated, function(req, res, next) {
 });
 
 router.get('/doodlPage', checkAuthenticated, function(req, res, next) {
-  var currentPrompt = req.app.locals.currentPrompt;
-  res.render('doodlPage.ejs', {currentPrompt : currentPrompt, name: req.user.name, email: req.user.email} );
+  var currentPrompt = global.currentPrompt;
+  res.render('doodlPage.ejs', {currentPrompt : currentPrompt} );
 });
 
 router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
-  var currentPrompt = req.app.locals.currentPrompt;
+  var currentPrompt = global.currentPrompt;
   res.render('doodlPageGuest.ejs', {currentPrompt : currentPrompt} );
 });
 
-router.get('/gallery', checkAuthenticated, function(req, res, next) {
-  res.render('gallery.ejs');
+router.get('/gallery', checkAuthenticated, async function(req, res, next) {
+  const todaysDate = new Date().toISOString().slice(0, 10)
+  var doodls = await Doodl.find({date : todaysDate})
+  var doodlsData = [];
+
+  //console.log("1");
+  //console.log(doodls);
+  //console.log("2");
+  //console.log(doodls[0]);
+  //console.log("3");
+  
+  for(var i = 0; i < doodls.length; i++){
+      doodlsData.push([doodls[i].username, doodls[i].doodl])
+  };
+
+  console.log(doodlsData);
+
+  var currentPrompt = global.currentPrompt;
+  res.render('gallery.ejs', {currentPrompt : currentPrompt, doodlData : doodlsData});
 });
 
 router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
@@ -80,40 +97,23 @@ router.delete("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-router.post(
-  "/login",
-  checkNotAuthenticated,
-  passport.authenticate("local", {
-    successRedirect: "/doodlPage",
-    failureRedirect: "/login",
-    failureFlash: true,
-  })
+router.post("/login", checkNotAuthenticated,
+  passport.authenticate("local", {failureRedirect: "/login", failureFlash: true, }),
+  function(req, res) {
+    res.redirect("/doodlPage");
+  }
 );
 
 router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   try {
-    console.log("1");
-    console.log(req.body);
-    console.log("2");
-    console.log(req.body.myDoodlCanvas);
-    console.log("3");
-    console.log(req.app.locals.currentPrompt);
-    console.log("4");
-    console.log(req.user);
-    console.log("5");
-    console.log(req.user.name);
-    console.log("6");
-    console.log(req.user.email);
-    console.log("7")
-    console.log(local.User);
-    console.log("8");
+    var todayDate = new Date().toISOString().slice(0, 10);
 
-    
-    const image = JSON.stringify(req.body.myDoodlCanvas);
     const doodl = new Doodl({
-      email: passport.email,
-      doodl: image,
-      prompt: req.app.locals.currentPrompt,
+      id: (await Doodl.find().count()) + 1,
+      username: req.user.name,
+      doodl: req.body.hiddenCanvasValue,
+      prompt: global.currentPrompt,
+      date: todayDate,
     });
 
     await doodl.save();

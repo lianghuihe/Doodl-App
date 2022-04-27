@@ -21,15 +21,21 @@
                     <button type="button" id="rectangle">Rectangle</button>
                     <button type="button" id="circle">Circle</button>
                     <button type="button" id="clear">Clear</button>
-                    <button type="submit" id="submit" >Submit</button> <!--onclick="document.location='gallery'"-->
+                    <button type="submit" id="submit" >Submit</button>
+                    <input id="hiddenCanvasValue" name="hiddenCanvasValue" type="hidden" value=""></input>
                     <DevLabel id="RGBVal">RGBVal</DevLabel>
                 </div>
                 <div class="myDoodl">
                         <canvas type="input" id="myDoodlCanvas"></canvas>
                 </div>
                 <div id="dailyWord"> Today's topic: <%= currentPrompt %></div>
+            </form>
+            <form action="/gallery" method="GET">
                 <button type="button" id="settingsButton" onclick="openSettings()">
-                    <img src="/images/settings.png" height="50px" width="50px">
+                <img src="/images/settings.png" height="50px" width="50px">
+                </button>
+                <button type="submit" id="exitButton" >
+                    <img src="/images/exit.png" height="50px" width="50px">
                 </button>
                 <div id="settingsBG">
                     <div id="settingsMain">

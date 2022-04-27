@@ -9,38 +9,10 @@
     <body>
         <div style="text-align: center">
             <h1>Today's Top Drawings</h1>
+            <div id="dailyWord"> Today's topic: <%= currentPrompt %></div>
         </div>
-        <table>
-            <tr>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-            </tr>
-            <tr>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-            </tr>
-            <tr>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-            </tr>
-            <tr>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-              <th><canvas></canvas></th>
-            </tr>
-          </table>
-        <script src="main.js"></script>
+        <input type="text" id="doodlData" > <%= doodlData %> </input>
+        <script src="/js/gallery.js"></script>
     </body>
     <body style="background-color: #f67570;"></body>
 </html>
