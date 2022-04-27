@@ -105,7 +105,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     console.log("6");
     console.log(req.user.email);
     console.log("7")
-    console.log(local.User);
+    console.log(req.body.hiddenCanvasValue);
     console.log("8");
 
     
