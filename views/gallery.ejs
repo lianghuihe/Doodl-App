@@ -11,7 +11,11 @@
             <h1>Today's Top Drawings</h1>
             <div id="dailyWord"> Today's topic: <%= currentPrompt %></div>
         </div>
-        <input type="text" id="doodlData"> <% doodlData %></input>
+        <input type="text" id="doodlData"></input>
+        <script> 
+          var data = document.getElementById("doodlData");
+          data.value = '<%- doodlData %>'
+        </script>
         <script src="/js/gallery.js"></script>
     </body>
     <body style="background-color: #f67570;"></body>
