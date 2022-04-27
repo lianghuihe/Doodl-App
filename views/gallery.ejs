@@ -12,9 +12,8 @@
             <div id="dailyWord"> Today's topic: <%= currentPrompt %></div>
         </div>
         <input type="text" id="doodlData"></input>
-        <script> 
-          var data = document.getElementById("doodlData");
-          data.value = '<%- doodlData %>'
+        <script type="text/javascript"> 
+          document.getElementById("doodlData").value = '<%- doodlData %>';
         </script>
         <script src="/js/gallery.js"></script>
     </body>
