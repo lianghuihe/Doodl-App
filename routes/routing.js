@@ -88,7 +88,8 @@ router.delete("/logout", (req, res) => {
 router.post("/login", checkNotAuthenticated,
   passport.authenticate("local", {successRedirect: "/doodlPage", failureRedirect: "/login", failureFlash: true, }),
   function(req, res) {
-    res.locals.user = req.user;
+    res.locals.user = passport.locals;
+    console.log(passport);
   }
 );
 
