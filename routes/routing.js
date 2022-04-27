@@ -94,10 +94,6 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   try {
     var todayDate = new Date().toISOString().slice(0, 10);
 
-    console.log("1");
-    console.log(todayDate);
-    console.log("2");
-    console.log(global.currentPrompt);
     console.log("4");
     console.log(req.user);
     console.log("5");
@@ -107,7 +103,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     console.log("7")
 
     const doodl = new Doodl({
-      email: passport.email,
+      email: req.user.email,
       doodl: req.body.hiddenCanvasValue,
       prompt: global.currentPrompt,
       date: todayDate,

@@ -7,11 +7,15 @@ const doodlSchema = new mongoose.Schema({
     required: true,
   },
   doodl: {
-    type: JSON,
+    type: String,
     required: true,
   },
   prompt: {
     type: String,
+  },
+  date: {
+    type: String,
+    required: true,
   }
 });
 
