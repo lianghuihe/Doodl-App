@@ -40,18 +40,19 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   var doodls = await Doodl.find({date : todaysDate})
   var doodlsData;
 
-  console.log("1");
-  console.log(doodls);
-  console.log("2");
-  console.log(doodls[0]);
- 
-  console.log("3");
-  /*
-  for(var i = 0; i < doodls.size(); i++){
-      doodlsData[i][0] = doodls(i).username
-      doodlsData[i][1] = doodls(i).doodl
+  //console.log("1");
+  //console.log(doodls);
+  //console.log("2");
+  //console.log(doodls[0]);
+  //console.log("3");
+  
+  for(var i = 0; i < doodls.length; i++){
+      doodlsData[i][0] = doodls[i].username
+      doodlsData[i][1] = doodls[i].doodl
   };
-*/
+
+  console.log(doodlsData);
+
   var currentPrompt = global.currentPrompt;
   res.render('gallery.ejs', {currentPrompt : currentPrompt, doodlData : doodlsData});
 });
