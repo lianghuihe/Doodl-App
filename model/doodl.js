@@ -4,7 +4,7 @@ const { stringify } = require("uuid");
 
 const doodlSchema = new mongoose.Schema({
   id: {
-    type: Int32,
+    type: Number,
     required: true,
     unique: true,
   },
