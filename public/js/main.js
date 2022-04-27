@@ -278,6 +278,12 @@ canvas.addEventListener('click', (e) => {
     */
 });
 
+function sendStringToVariable()
+{
+    var imageString = canvas.toDataURL();
+    document.getElementById('doodlString').value = imageString;
+}
+
 canvas.addEventListener('mousedown', (e) => {
     if (!blocked()) {
         isPainting = true;
