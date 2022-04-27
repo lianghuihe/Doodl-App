@@ -43,7 +43,8 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   console.log("1");
   console.log(doodls);
   console.log("2");
-  console.log(doodls.toArray());
+  console.log(doodls[0]);
+ 
   console.log("3");
   /*
   for(var i = 0; i < doodls.size(); i++){
