@@ -96,7 +96,7 @@ router.post("/login", checkNotAuthenticated,
     console.log(req.body);
     console.log("ALERT TWO");
     console.log(req.user);
-    //res.body.username.value = locals.name;
+    res.body.username.value = req.user.name;
   }
 );
 
