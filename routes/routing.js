@@ -38,6 +38,9 @@ router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
 
 router.get('/gallery', checkAuthenticated, function(req, res, next) {
   res.render('gallery.ejs');
+  const todaysDate = new Date().toISOString().slice(0, 10)
+  var doodls = await Doodl.find({date : todaysDate})
+  console.log(doodls);
   res.locals.user = req.user;
 });
 
