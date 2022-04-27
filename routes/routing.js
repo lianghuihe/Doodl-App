@@ -26,12 +26,12 @@ router.get('/register', checkNotAuthenticated, function(req, res, next) {
 });
 
 router.get('/doodlPage', checkAuthenticated, function(req, res, next) {
-  var currentPrompt = req.app.locals.currentPrompt;
+  var currentPrompt = app.locals.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt, name: req.user.name, email: req.user.email} );
 });
 
 router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
-  var currentPrompt = req.app.locals.currentPrompt;
+  var currentPrompt = app.locals.currentPrompt;
   res.render('doodlPageGuest.ejs', {currentPrompt : currentPrompt} );
 });
 
@@ -95,8 +95,6 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     console.log("1");
     console.log(req.body);
     console.log("2");
-    console.log(req.body.myDoodlCanvas);
-    console.log("3");
     console.log(req.app.locals.currentPrompt);
     console.log("4");
     console.log(req.user);
@@ -105,15 +103,11 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     console.log("6");
     console.log(req.user.email);
     console.log("7")
-    console.log(req.body.hiddenCanvasValue);
-    console.log("8");
 
-    
-    const image = JSON.stringify(req.body.myDoodlCanvas);
     const doodl = new Doodl({
       email: passport.email,
-      doodl: image,
-      prompt: req.app.locals.currentPrompt,
+      doodl: req.body.hiddenCanvasValue,
+      prompt: app.locals.currentPrompt,
     });
 
     await doodl.save();
