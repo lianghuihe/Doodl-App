@@ -26,10 +26,8 @@ router.get('/register', checkNotAuthenticated, function(req, res, next) {
 });
 
 router.get('/doodlPage', checkAuthenticated, function(req, res, next) {
-  console.log("2: " + req.user);
   var currentPrompt = global.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt} );
-  res.user = req.user;
 });
 
 router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
@@ -42,22 +40,18 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   const todaysDate = new Date().toISOString().slice(0, 10)
   var doodls = await Doodl.find({date : todaysDate})
   console.log(doodls);
-  res.locals.user = req.user;
 });
 
 router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
   res.render('gdprPage.ejs');
-  res.locals.user = req.user;
 });
 
 router.get('/report', checkAuthenticated, function(req, res, next) {
   res.render('report.ejs');
-  res.locals.user = req.user;
 });
 
 router.get('/voting', checkAuthenticated, function(req, res, next) {
   res.render('voting.ejs');
-  res.locals.user = req.user;
 });
 
 router.post("/register", checkNotAuthenticated, async (req, res) => {
@@ -93,7 +87,6 @@ router.post("/login", checkNotAuthenticated,
   passport.authenticate("local", {failureRedirect: "/login", failureFlash: true, }),
   function(req, res) {
     res.redirect("/doodlPage");
-    console.log("1: " + req.user);
   }
 );
 
@@ -102,7 +95,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     var todayDate = new Date().toISOString().slice(0, 10);
     console.log(req.body);
     const doodl = new Doodl({
-      username: req.body.username,
+      username: req.user.name,
       doodl: req.body.hiddenCanvasValue,
       prompt: global.currentPrompt,
       date: todayDate,
