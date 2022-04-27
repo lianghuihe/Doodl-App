@@ -95,7 +95,7 @@ toolbar.addEventListener('click', e => {
         
     }
     if (e.target.id === 'submit'){
-        submitDoodl();
+        document.getElementById('hiddenCanvasValue').value = canvas.toDataURL('image/png');
     }
 });
 /*
