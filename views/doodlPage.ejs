@@ -23,6 +23,7 @@
                     <button type="button" id="clear">Clear</button>
                     <button type="submit" id="submit" >Submit</button> <!--onclick="document.location='gallery'"-->
                     <input id="hiddenCanvasValue" name="hiddenCanvasValue" type="hidden" value=""></input>
+                    <input type="hidden" name="username" id="username" value=""></input>
                     <DevLabel id="RGBVal">RGBVal</DevLabel>
                 </div>
                 <div class="myDoodl">
@@ -30,7 +31,7 @@
                 </div>
                 <div id="dailyWord"> Today's topic: <%= currentPrompt %></div>
                 <button type="button" id="settingsButton" onclick="openSettings()">
-                    <img src="/images/settings.png" height="50px" width="50px">
+                <img src="/images/settings.png" height="50px" width="50px">
                 </button>
                 <div id="settingsBG">
                     <div id="settingsMain">

@@ -36,7 +36,7 @@ router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
   res.render('doodlPageGuest.ejs', {currentPrompt : currentPrompt} );
 });
 
-router.get('/gallery', checkAuthenticated, function(req, res, next) {
+router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   res.render('gallery.ejs');
   const todaysDate = new Date().toISOString().slice(0, 10)
   var doodls = await Doodl.find({date : todaysDate})
@@ -91,9 +91,11 @@ router.delete("/logout", (req, res) => {
 router.post("/login", checkNotAuthenticated,
   passport.authenticate("local", {successRedirect: "/doodlPage", failureRedirect: "/login", failureFlash: true, }),
   function(req, res) {
-    req.session.user = req.user;
-    res.locals.user = passport.locals;
-    console.log(passport);
+    console.log("ALERT ONE");
+    console.log(locals.name);
+    console.log(req.body);
+    console.log("ALERT TWO");
+    res.body.username.value = locals.name;
   }
 );
 
@@ -102,6 +104,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     var todayDate = new Date().toISOString().slice(0, 10);
 
     const doodl = new Doodl({
+      username: req.body.username,
       doodl: req.body.hiddenCanvasValue,
       prompt: global.currentPrompt,
       date: todayDate,
