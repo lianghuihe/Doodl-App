@@ -38,9 +38,9 @@ router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
 router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   const todaysDate = new Date().toISOString().slice(0, 10)
   var doodls = await Doodl.find({date : todaysDate})
-  res.send(doodls)
-  console.log(doodls);
+  var currentPrompt = global.currentPrompt;
   res.render('gallery.ejs', {currentPrompt : currentPrompt} );
+  res.body.doodlData = doodls;
 });
 
 router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
