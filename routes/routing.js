@@ -93,7 +93,7 @@ router.post("/login", checkNotAuthenticated,
 router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   try {
     var todayDate = new Date().toISOString().slice(0, 10);
-    console.log(req.body);
+
     const doodl = new Doodl({
       username: req.user.name,
       doodl: req.body.hiddenCanvasValue,
