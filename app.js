@@ -66,7 +66,6 @@ app.use(
     cookie : {
       expires: false,
       },
-      store: redisSessionStore
   })
 );
 app.use(passport.initialize());
