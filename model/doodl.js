@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const { stringify } = require("uuid");
 
 const doodlSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
-  },
   doodl: {
     type: String,
     required: true,
