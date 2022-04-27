@@ -28,6 +28,7 @@ router.get('/register', checkNotAuthenticated, function(req, res, next) {
 router.get('/doodlPage', checkAuthenticated, function(req, res, next) {
   var currentPrompt = global.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt, name: req.user.name, email: req.user.email} );
+  res.locals.user = req.user;
 });
 
 router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
@@ -37,18 +38,22 @@ router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
 
 router.get('/gallery', checkAuthenticated, function(req, res, next) {
   res.render('gallery.ejs');
+  res.locals.user = req.user;
 });
 
 router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
   res.render('gdprPage.ejs');
+  res.locals.user = req.user;
 });
 
 router.get('/report', checkAuthenticated, function(req, res, next) {
   res.render('report.ejs');
+  res.locals.user = req.user;
 });
 
 router.get('/voting', checkAuthenticated, function(req, res, next) {
   res.render('voting.ejs');
+  res.locals.user = req.user;
 });
 
 router.post("/register", checkNotAuthenticated, async (req, res) => {
@@ -80,14 +85,11 @@ router.delete("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-router.post(
-  "/login",
-  checkNotAuthenticated,
-  passport.authenticate("local", {
-    successRedirect: "/doodlPage",
-    failureRedirect: "/login",
-    failureFlash: true,
-  })
+router.post("/login", checkNotAuthenticated,
+  passport.authenticate("local", {successRedirect: "/doodlPage", failureRedirect: "/login", failureFlash: true, }),
+  function(req, res) {
+    res.locals.user = req.user;
+  }
 );
 
 router.post("/doodlPage", checkAuthenticated, async (req, res) => {
