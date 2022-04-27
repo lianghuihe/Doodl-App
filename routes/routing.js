@@ -89,8 +89,9 @@ router.delete("/logout", (req, res) => {
 });
 
 router.post("/login", checkNotAuthenticated,
-  passport.authenticate("local", {successRedirect: "/doodlPage", failureRedirect: "/login", failureFlash: true, }),
+  passport.authenticate("local", {failureRedirect: "/login", failureFlash: true, }),
   function(req, res) {
+    res.redirect("/doodlPage");
     console.log("ALERT ONE");
     console.log(locals.name);
     console.log(req.body);
@@ -102,7 +103,7 @@ router.post("/login", checkNotAuthenticated,
 router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   try {
     var todayDate = new Date().toISOString().slice(0, 10);
-
+    console.log(req.body);
     const doodl = new Doodl({
       username: req.body.username,
       doodl: req.body.hiddenCanvasValue,
