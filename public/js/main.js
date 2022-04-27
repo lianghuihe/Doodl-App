@@ -291,7 +291,7 @@ settingsSlider.oninput = function()
 {
     sliderValue = this.value;
     toolbar.style.width = 70 * (sliderValue + 50 / 100);
-    document.getElementsByClassName("toolbarIcon").width = 50 (sliderValue + 50 / 100);
+    document.getElementsByClassName("toolbarIcon").width = 50 * (sliderValue + 50 / 100);
 }
 
 canvas.addEventListener('mousedown', (e) => {
