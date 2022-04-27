@@ -1,7 +1,13 @@
+const { Int32 } = require("mongodb");
 const mongoose = require("mongoose");
 const { stringify } = require("uuid");
 
 const doodlSchema = new mongoose.Schema({
+  id: {
+    type: Int32,
+    required: true,
+    unique: true,
+  },
   username: {
     type: String,
     required: true,

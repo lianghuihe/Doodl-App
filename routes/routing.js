@@ -95,6 +95,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     var todayDate = new Date().toISOString().slice(0, 10);
 
     const doodl = new Doodl({
+      id: (await Doodl.find().count()) + 1,
       username: req.user.name,
       doodl: req.body.hiddenCanvasValue,
       prompt: global.currentPrompt,
