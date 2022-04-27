@@ -137,7 +137,7 @@ canvas{
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   top: 200px;
-  width: 100%; /* Full-width */
+  width: 50%; /* Full-width */
   height: 10px; /* Specified height */
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
