@@ -65,6 +65,7 @@ canvas{
 
 #settingsMain{
   position: fixed;
+  padding: 5px;
   width: 600px;
   height: 360px;
   border: 2px solid black;
