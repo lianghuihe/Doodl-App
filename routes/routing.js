@@ -93,8 +93,7 @@ router.post("/login", checkNotAuthenticated,
   function(req, res) {
     res.redirect("/doodlPage");
     console.log("ALERT ONE");
-    console.log(req.locals.name);
-    console.log(req.body);
+    console.log(req.user.username);
     console.log("ALERT TWO");
     //res.body.username.value = locals.name;
   }
