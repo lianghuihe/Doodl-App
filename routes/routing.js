@@ -26,12 +26,12 @@ router.get('/register', checkNotAuthenticated, function(req, res, next) {
 });
 
 router.get('/doodlPage', checkAuthenticated, function(req, res, next) {
-  var currentPrompt = app.locals.currentPrompt;
+  var currentPrompt = router.locals.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt, name: req.user.name, email: req.user.email} );
 });
 
 router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
-  var currentPrompt = app.locals.currentPrompt;
+  var currentPrompt = router.locals.currentPrompt;
   res.render('doodlPageGuest.ejs', {currentPrompt : currentPrompt} );
 });
 
@@ -95,7 +95,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     console.log("1");
     console.log(req.body);
     console.log("2");
-    console.log(req.app.locals.currentPrompt);
+    console.log(router.locals.currentPrompt);
     console.log("4");
     console.log(req.user);
     console.log("5");
@@ -107,7 +107,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     const doodl = new Doodl({
       email: passport.email,
       doodl: req.body.hiddenCanvasValue,
-      prompt: app.locals.currentPrompt,
+      prompt: router.locals.currentPrompt,
     });
 
     await doodl.save();
