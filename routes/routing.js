@@ -26,9 +26,9 @@ router.get('/register', checkNotAuthenticated, function(req, res, next) {
 });
 
 router.get('/doodlPage', checkAuthenticated, function(req, res, next) {
+  console.log("2: " + req.user);
   var currentPrompt = global.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt} );
-  console.log("2: " + req.user);
   res.user = req.user;
 });
 
@@ -92,7 +92,7 @@ router.delete("/logout", (req, res) => {
 router.post("/login", checkNotAuthenticated,
   passport.authenticate("local", {failureRedirect: "/login", failureFlash: true, }),
   function(req, res) {
-    res.redirect("/doodlPage" + req.user);
+    res.redirect("/doodlPage");
     console.log("1: " + req.user);
   }
 );
