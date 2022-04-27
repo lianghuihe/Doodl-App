@@ -29,9 +29,14 @@
                         <canvas type="input" id="myDoodlCanvas"></canvas>
                 </div>
                 <div id="dailyWord"> Today's topic: <%= currentPrompt %></div>
+            </form>
+            <form action="/gallery" method="GET">
                 <button type="button" id="settingsButton" onclick="openSettings()">
                 <img src="/images/settings.png" height="50px" width="50px">
                 </button>
+                <input type="submit" id="exitButton" >
+                    <img src="/images/exit.png" height="50px" width="50px">
+                </input>
                 <div id="settingsBG">
                     <div id="settingsMain">
                         <p id="settingsTitle">
