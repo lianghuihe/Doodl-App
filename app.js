@@ -55,7 +55,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'));
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(bodyParser.json());
 app.use(flash());
 app.use(
@@ -63,6 +63,11 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie : {
+      expires: false,
+      domain: config.cookie.domain
+      },
+      store: redisSessionStore
   })
 );
 app.use(passport.initialize());
