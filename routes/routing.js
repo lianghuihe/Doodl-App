@@ -36,10 +36,11 @@ router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
 });
 
 router.get('/gallery', checkAuthenticated, async function(req, res, next) {
-  res.render('gallery.ejs');
   const todaysDate = new Date().toISOString().slice(0, 10)
   var doodls = await Doodl.find({date : todaysDate})
+  res.send(doodls)
   console.log(doodls);
+  res.render('gallery.ejs', {currentPrompt : currentPrompt} );
 });
 
 router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
