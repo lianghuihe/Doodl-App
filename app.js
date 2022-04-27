@@ -39,14 +39,14 @@ fs.createReadStream('./public/wordList.csv')
   .pipe(csv())
   .on('data', (data) => wordArray.push(data))
   .on('end', () => {
-    app.locals.currentPrompt = wordArray[count].word;
-    console.log("Daily prompt changed to: " + app.locals.currentPrompt);
+    global.currentPrompt = wordArray[count].word;
+    console.log("Daily prompt changed to: " + global.currentPrompt);
   });
 
 (function loop(){
   setTimeout(function(){
     count += 1;
-    app.locals.currentPrompt = wordArray[count].word;
+    global.currentPrompt = wordArray[count].word;
   }, 86400000);
 }());
 
