@@ -38,7 +38,7 @@ router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
 router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   const todaysDate = new Date().toISOString().slice(0, 10)
   var doodls = await Doodl.find({date : todaysDate})
-  var doodlsData;
+  var doodlsData = [];
 
   //console.log("1");
   //console.log(doodls);
@@ -47,8 +47,7 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   //console.log("3");
   
   for(var i = 0; i < doodls.length; i++){
-      doodlsData[i][0] = doodls[i].username
-      doodlsData[i][1] = doodls[i].doodl
+      doodlsData.push([doodls[i].username, doodls[i].doodl])
   };
 
   console.log(doodlsData);
