@@ -12,6 +12,7 @@ const app = express();
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
+const FileStore = require('session-file-store')(session);
 const bcrypt = require("bcryptjs");
 const mongoose = require('mongoose');
 const User = require("./model/User");
@@ -60,6 +61,7 @@ app.use(bodyParser.json());
 app.use(flash());
 app.use(
   session({
+    store: new FileStore,
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
