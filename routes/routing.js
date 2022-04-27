@@ -38,8 +38,14 @@ router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
 router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   const todaysDate = new Date().toISOString().slice(0, 10)
   var doodls = await Doodl.find({date : todaysDate})
+  var doodlsData;
+  for(var i = 0; i < doodls.size(); i++){
+      doodlsData[i][0] = doodls(i).username
+      doodlsData[i][1] = doodls(i).doodl
+  };
+
   var currentPrompt = global.currentPrompt;
-  res.render('gallery.ejs', {currentPrompt : currentPrompt, doodlData : doodls});
+  res.render('gallery.ejs', {currentPrompt : currentPrompt, doodlData : doodlsData});
 });
 
 router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
