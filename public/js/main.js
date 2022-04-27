@@ -290,8 +290,8 @@ function sendStringToVariable()
 settingsSlider.oninput = function()
 {
     sliderValue = this.value;
-    toolbar.style.width = 70 * (sliderValue + 50 / 100);
-    document.getElementsByClassName("toolbarIcon").width = 50 * (sliderValue + 50 / 100);
+    toolbar.width = (70 * (sliderValue + 50 / 100)).toString() + "px";
+    document.getElementsByClassName("toolbarIcon").width = (50 * (sliderValue + 50 / 100)).toString() + "px";
 }
 
 canvas.addEventListener('mousedown', (e) => {
