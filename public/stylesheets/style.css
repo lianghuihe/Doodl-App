@@ -136,6 +136,7 @@ canvas{
 .settingsSlider {
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
+  top: 50%;
   width: 100%; /* Full-width */
   height: 10px; /* Specified height */
   background: #d3d3d3; /* Grey background */
