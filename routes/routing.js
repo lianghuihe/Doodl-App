@@ -28,7 +28,7 @@ router.get('/register', checkNotAuthenticated, function(req, res, next) {
 router.get('/doodlPage', checkAuthenticated, function(req, res, next) {
   var currentPrompt = global.currentPrompt;
   res.render('doodlPage.ejs', {currentPrompt : currentPrompt, name: req.user.name, email: req.user.email} );
-  res.locals.user = req.user;
+  res.locals.user = req.locals.user;
 });
 
 router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
@@ -38,22 +38,22 @@ router.get('/doodlPageGuest', checkNotAuthenticated, function(req, res, next) {
 
 router.get('/gallery', checkAuthenticated, function(req, res, next) {
   res.render('gallery.ejs');
-  res.locals.user = req.user;
+  res.locals.user = req.locals.user;
 });
 
 router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
   res.render('gdprPage.ejs');
-  res.locals.user = req.user;
+  res.locals.user = req.locals.user;
 });
 
 router.get('/report', checkAuthenticated, function(req, res, next) {
   res.render('report.ejs');
-  res.locals.user = req.user;
+  res.locals.user = req.locals.user;
 });
 
 router.get('/voting', checkAuthenticated, function(req, res, next) {
   res.render('voting.ejs');
-  res.locals.user = req.user;
+  res.locals.user = req.locals.user;
 });
 
 router.post("/register", checkNotAuthenticated, async (req, res) => {
@@ -89,14 +89,16 @@ router.post("/login", checkNotAuthenticated,
   passport.authenticate("local", {successRedirect: "/doodlPage", failureRedirect: "/login", failureFlash: true, }),
   function(req, res) {
     res.locals.user = passport.locals;
-    console.log(passport);
-  }
+    console.log(passport.locals);
+  },
+  console.log(passport.locals)
 );
 
 router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   try {
     var todayDate = new Date().toISOString().slice(0, 10);
 
+    console.log(req.body.hiddenCanvasValue);
     console.log("4");
     console.log(req.user);
     console.log("5");
