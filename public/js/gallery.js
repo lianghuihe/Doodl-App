@@ -28,8 +28,8 @@ window.onload=(function(){
 
         var td1 = document.createElement('td');
         var td2 = document.createElement('td');
-        td1.style.alignItems = "center";
-        td2.style.alignItems = "center";
+        td1.style.alignContent = "center";
+        td2.style.alignContent = "center";
 
         let url = tempArray[1];
         let doodlCanvas = document.createElement('canvas');
@@ -41,7 +41,7 @@ window.onload=(function(){
         let ctx = doodlCanvas.getContext('2d');
         let img = new Image;
         img.onload = function(){
-            ctx.drawImage(img, 0, 0, 300, 200);
+            ctx.drawImage(img, 0, 0, doodlCanvas.width, doodlCanvas.height);
         };
         img.src = url;
 
