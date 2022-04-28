@@ -8,47 +8,62 @@
         <title>Doodl</title>
     </head>
     <body>
-        <section class="container">
-            <div id="toolbar">
-                <img src = "/images/doodlLogo.png" alt="Doodl" style="width:70px;height:70px"></img>
-                <label for="stroke">Colour</label>
-                <input id="stroke" name='stroke' type="color"></input>
-                <label for="lineWidth">Line Width</label>
-                <input id="lineWidth" name='lineWidth' type="number" value="5" min="1" max="100"></input>
-                <button id="fill">Fill</button>
-                <button id="line">Line</button>
-                <button id="rectangle">Rectangle</button>
-                <button id="circle">Circle</button>
-                <button id="clear">Clear</button>
-                <button id="submit" >Submit</button> <!--onclick="document.location='gallery'"-->
-                <DevLabel id="RGBVal">RGBVal</DevLabel>
-            </div>
-            <div class="myDoodl">
-                <canvas id="myDoodlCanvas"></canvas>
-            </div>
-            <div id="dailyWord"> Today's topic: <%= currentPrompt %></div>
-            <button id="settingsButton" onclick="openSettings()">
-               <img src="/images/settings.png" height="50px" width="50px">
-            </button>
-            <div id="settingsBG">
-                <div id="settingsMain">
-                    <p id="settingsTitle">
-                        Settings
-                    </p>
-                    <div id="closeSettings" title="Close Settings" onclick="closeSettings()">
-                        <p>
-                            X
+        <form action="/doodlPage" method="POST">
+            <section class="container">
+                <div id="toolbar">
+                    <img src = "/images/doodlLogo.png" alt="Doodl" style="width:70px;height:70px"></img>
+                    <label for="stroke" class="toolbarText">Colour</label>
+                    <input id="stroke" name='stroke' type="color"></input>
+                    <label for="lineWidth" class="toolbarText">Line Width</label>
+                    <input id="lineWidth" name='lineWidth' type="number" value="5" min="1" max="100"></input>
+                    <button type="button" id="fill" class="toolbarIcon" style="background: #1565c0 url(/images/fill.png);background-size: cover;"></button>
+                    <button type="button" id="line" class="toolbarIcon" style="background: #1565c0 url(/images/line.png);background-size: cover;"></button>
+                    <button type="button" id="rectangle" class="toolbarIcon" style="background: #1565c0 url(/images/rectangle.png);background-size: cover;"></button>
+                    <button type="button" id="circle" class="toolbarIcon" style="background: #1565c0 url(/images/circle.png);background-size: cover;"></button>
+                    <button type="button" id="clear" class="toolbarIcon" style="background: #1565c0 url(/images/clear.png);background-size: cover;"></button>
+                    <button type="submit" id="submit" class="toolbarIcon"  style="background: #1565c0 url(/images/submit.png);background-size: cover;"></button>
+                    <input id="hiddenCanvasValue" name="hiddenCanvasValue" type="hidden" value=""></input>
+                    <DevLabel id="RGBVal" class="toolbarText">RGBVal</DevLabel>
+                </div>
+                <div class="myDoodl">
+                        <canvas type="input" id="myDoodlCanvas"></canvas>
+                </div>
+                <div id="dailyWord"> Today's topic: <%= currentPrompt %></div>
+            </form>
+            <div id="generalTools" style="margin-right: 0; margin-left: auto;">
+                <form>
+                    <button type="button" id="settingsButton" onclick="openSettings()">
+                        <img src="/images/settings.png" height="50px" width="50px">
+                    </button>
+                </form>
+                <form action="/gallery" method="get">
+                    <button type="submit" id="exitButton" >
+                        <img src="/images/gallery.png" height="50px" width="50px">
+                    </button>
+                </form>
+                <div id="settingsBG">
+                    <div id="settingsMain">
+                        <p id="settingsTitle">
+                            Settings
                         </p>
-                    </div>
-                    <div>
-                        <label class="switch">
-                            <input type="checkbox" id="checked" onclick="checked()">
-                            <span class="slider round"></span>
-                        </label>
+                        <div id="closeSettings" title="Close Settings" onclick="closeSettings()">
+                            <p>
+                                X
+                            </p>
+                        </div>
+                        <div>
+                            <label class="switch">
+                                <input type="checkbox" id="checked" onclick="checked()">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div id="settingsSliderContainer">
+                            <input type="range" min="1" max="100" value="50" class="settingsSlider" id="sizeSlider">
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </form>
         <script type="text/javascript">
             var settingsDiv = document.getElementById("settingsBG");
             function openSettings(){
@@ -61,6 +76,6 @@
                 settingsDiv.style.display = "none";
             }
         </script>
-        <script src="/js/main.js"></script>
+        <script src="/js/mainGuest.js"></script>
     </body>
 </html>
