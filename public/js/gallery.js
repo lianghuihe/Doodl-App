@@ -11,8 +11,8 @@ for (var i = 1; i < (doodlArray.length / 2); i++){
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
 
-    var text1 = doodlArray[(i * 2)];
-    var text2 = doodlArray[((i * 2) + 1)];
+    var text1 = document.createTextNode(doodlArray[(i * 2)]);
+    var text2 = document.createTextNode(doodlArray[((i * 2) + 1)]);
 
     td1.appendChild(text1);
     td2.appendChild(text2);
