@@ -4,6 +4,7 @@ var path = require('path');
 const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 const Doodl = require("../model/doodl");
+const Like = require("../model/like");
 const passport = require('passport');
 const router = express();
 const {
@@ -127,5 +128,43 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   }
   
 });
+
+router.post("/like", checkAuthenticated, async (req, res) => {
+  const likeFound = await User.findOne({ username: req.body.email, doodlID: req.body.hiddenDoodlID, type: req.body.hiddenLikeType});
+
+  if(likeFound){
+    req.flash("error", "You have already given your opinion on that doodl");
+  }else{
+    const differentLikeFound = await User.findOne({ username: req.body.email, doodlID: req.body.hiddenDoodlID});
+
+    if(differentLikeFound){
+      try {
+        var conditions = {username: req.body.email, doodlID: req.body.hiddenDoodlID};
+        var update = {type : 1};
+        await User.updateOne(conditions, update);
+        
+      } catch (error) {
+        req.flash("error", "Could not update your opinion on that doodl");
+        console.log(error);
+      }
+    }else{
+      try {
+        const like = new Like({
+          id: (await Like.find().count()) + 1,
+          username: req.user.name,
+          doodlID: req.body.hiddenDoodlID,
+          type: 1,
+        });
+
+        await doodl.save();
+        res.redirect("/gallery");
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+});
+
 
 module.exports = router;

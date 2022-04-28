@@ -49,13 +49,33 @@ window.onload=(function(){
     table.appendChild(border);
 
     for (var i = 1; i < doodlArray.length; i++){
+        var reportForm = document.createElement('form');
+        reportForm.action = '\report';
+        reportForm.method = 'get';
+
+        var likeForm = document.createElement('form');
+        likeForm.action = '\like';
+        likeForm.method = 'post';
+
+        var dislikeForm = document.createElement('form');
+        dislikeForm.action = '\dislike';
+        dislikeForm.method = 'post';
+        
         var report = document.createElement('button');
         var like = document.createElement('button');
         var dislike = document.createElement('button');
 
+        report.type = 'submit';
+        like.type = 'submit';
+        dislike.type = 'submit';
+
         report.innerHTML = '<img src="/images/report.png" height="50px" width="50px">';
         like.innerHTML = '<img src="/images/like.png" height="50px" width="50px">';
         dislike.innerHTML = '<img src="/images/dislike.png" height="50px" width="50px">';
+
+        reportForm.appendChild(report);
+        likeForm.appendChild(like);
+        dislikeForm.appendChile(dislike);
 
         var tr = document.createElement('tr');
         var tempArray = doodlArray[i].split('|', 2);
@@ -85,11 +105,11 @@ window.onload=(function(){
         };
         img.src = url;
 
-        var text1 = report;
+        var text1 = reportForm;
         var text2 = document.createTextNode(tempArray[0]);
         var text3 = doodlCanvas;
-        var text4 = like;
-        var text5 = dislike;
+        var text4 = likeForm;
+        var text5 = dislikeForm;
    
        
         td1.appendChild(text1);
