@@ -133,15 +133,19 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
 });
 
 router.post("/like", checkAuthenticated, async (req, res) => {
-  console.log(req.body);
+  console.log("1" + req.body);
   const likeFound = await User.findOne({ username: req.body.email, doodlID: req.body.likeDoodlID, type: req.body.likeType});
+  console.log("2" + likeFound);
 
   if(likeFound){
+    console.log("3");
     req.flash("error", "You have already given your opinion on that doodl");
   }else{
+    console.log("4");
     const differentLikeFound = await User.findOne({ username: req.body.email, doodlID: req.body.likeDoodlID});
-
+    console.log("5" + differentLikeFound);
     if(differentLikeFound){
+      console.log("6");
       try {
         var conditions = {username: req.body.email, doodlID: req.body.likeDoodlID};
         var update = {type : "Like"};
@@ -152,6 +156,7 @@ router.post("/like", checkAuthenticated, async (req, res) => {
         console.log(error);
       }
     }else{
+      console.log("7");
       try {
         const like = new Like({
           id: (await Like.find().count()) + 1,
@@ -159,6 +164,8 @@ router.post("/like", checkAuthenticated, async (req, res) => {
           doodlID: req.body.likeDoodlID,
           type: "Like",
         });
+
+        console.log("8" + like);
 
         await doodl.save();
         res.redirect("/gallery");

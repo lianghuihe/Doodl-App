@@ -74,7 +74,7 @@ window.onload=(function(){
         var dislikeType = document.createElement('input');
 
         var tr = document.createElement('tr');
-        var tempArray = doodlArray[i].split('|', 5); // wtf is going on
+        var tempArray = doodlArray[i].split('|', 5);
 
         likeType.id = 'likeType';
         dislikeType.id = 'dislikeType';
