@@ -98,8 +98,8 @@ window.onload=(function(){
         var tr = document.createElement('tr');
         var tempArray = doodlArray[i].split('|', 4);
 
-        likeCount.value = tempArray[2];
-        dislikeCount.value = tempArray[3];
+        likeCount.innerHTML = tempArray[2];
+        dislikeCount.innerHTML = tempArray[3];
 
         var td1 = document.createElement('td');
         var td2 = document.createElement('td');
