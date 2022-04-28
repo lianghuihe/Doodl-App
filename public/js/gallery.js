@@ -1,3 +1,7 @@
+var canvases = [];
+var contexts = [];
+var images = [];
+
 var doodlData;
 doodlData = document.getElementById('doodlData').value;
 
@@ -17,9 +21,10 @@ for (var i = 1; i < doodlArray.length; i++){
     let ctx = doodlCanvas.getContext('2d');
     let img = new Image;
     img.src = url;
-    doodlCanvas.onload = function(){
-        ctx.drawImage(img,0,0); 
-    };
+
+    canvases[i] = doodlCanvas;
+    contexts[i] = ctx;
+    images[i] = img
 
     var text1 = document.createTextNode(tempArray[0]);
     var text2 = doodlCanvas;
@@ -29,6 +34,14 @@ for (var i = 1; i < doodlArray.length; i++){
     tr.appendChild(td1);
     tr.appendChild(td2);
     table.appendChild(tr);
+}
+
+for (i = 1; i < doodlArray.length; i++){
+    var img = images[i];
+    var ctx = contexts[i];
+    var canvas = canvases[i];
+
+    ctx.drawImage(img,0,0); 
 }
 
 document.body.appendChild(table);
