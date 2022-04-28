@@ -75,7 +75,7 @@ window.onload=(function(){
 
         reportForm.appendChild(report);
         likeForm.appendChild(like);
-        dislikeForm.appendChile(dislike);
+        dislikeForm.appendChild(dislike);
 
         var tr = document.createElement('tr');
         var tempArray = doodlArray[i].split('|', 2);
