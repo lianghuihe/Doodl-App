@@ -33,8 +33,8 @@ let sliderValue = (sizeSlider.value / 100) + 1;
 var tools = document.getElementsByClassName("toolbarIcon");
 for (var i = 0; i < tools.length; i++)
 {
-    tools[i].style.width  = (50 * toolSizeMult) + "px";
-    tools[i].style.height = (50 * toolSizeMult) + "px";
+    tools[i].style.width  = (50 * (1 + (sliderValue / 100))) + "px";
+    tools[i].style.height = (50 * (1 + (sliderValue / 100))) + "px";
 }
 
 resetCanvas();
