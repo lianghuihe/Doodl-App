@@ -2,17 +2,18 @@ var doodlData;
 doodlData = document.getElementById('doodlData').value;
 
 var doodlArray = [];
-doodlArray = doodlData.split(',');
+doodlArray = doodlData.split('||');
 
 var table = document.createElement('table');
-for (var i = 0; i < (doodlArray.length / 2); i++){
-    var tr = document.createElement('tr');   
+for (var i = 0; i < doodlArray.length; i++){
+    var tr = document.createElement('tr');
+    var tempArray = doodlArray[i].split('|', 2);
 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
 
-    var text1 = document.createTextNode(doodlArray[(i * 2)]);
-    var text2 = document.createTextNode(doodlArray[((i * 2) + 1)]);
+    var text1 = document.createTextNode(tempArray[0]);
+    var text2 = document.createTextNode(tempArray[1]);
 
     td1.appendChild(text1);
     td2.appendChild(text2);
