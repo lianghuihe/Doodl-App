@@ -33,13 +33,13 @@ window.onload=(function(){
         let doodlCanvas = document.createElement('canvas');
         doodlCanvas.style.border = "5px solid #000000";
         doodlCanvas.style.position = "relative";
-        doodlCanvas.width = "300px";
-        doodlCanvas.height = "200px";
+        doodlCanvas.width = 300;
+        doodlCanvas.height = 200;
 
         let ctx = doodlCanvas.getContext('2d');
         let img = new Image;
         img.onload = function(){
-            ctx.drawImage(img, 0, 0);
+            ctx.drawImage(img, 0, 0, 300, 200);
         };
         img.src = url;
 
