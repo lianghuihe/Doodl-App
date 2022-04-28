@@ -4,7 +4,7 @@ var path = require('path');
 const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 const Doodl = require("../model/doodl");
-const Like = require("../model/like");
+const Like = require("../model/Like");
 const passport = require('passport');
 const router = express();
 const {
@@ -142,7 +142,7 @@ router.post("/like", checkAuthenticated, async (req, res) => {
         var conditions = {username: req.body.email, doodlID: req.body.hiddenDoodlID};
         var update = {type : 1};
         await User.updateOne(conditions, update);
-        
+
       } catch (error) {
         req.flash("error", "Could not update your opinion on that doodl");
         console.log(error);

@@ -22,5 +22,5 @@ const likeSchema = new mongoose.Schema({
   },
 });
 
-const Doodl = mongoose.model("like", likeSchema);
-module.exports = Doodl;
+const Like = mongoose.model("Like", likeSchema);
+module.exports = Like;
