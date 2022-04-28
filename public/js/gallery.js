@@ -6,6 +6,7 @@ doodlData = document.getElementById('doodlData').value;
 
 var doodlArray = [];
 doodlArray = doodlData.split('||');
+
 for (var i = 1; i < (doodlArray.length / 2); i++){
     var canvas = document.createElement("canvas");
     canvas.style.border = "5px solid #000000";
@@ -26,7 +27,7 @@ for (var i = 1; i < doodlArray.length; i++){
 
     var image = new Image;
     image.src = tempArray[1];
-    contexts[i].drawImage(img,0,0);
+    contexts[i].drawImage(image,0,0);
   
  
     td1.appendChild(document.createTextNode(tempArray[0]));
