@@ -20,6 +20,14 @@
             cursor: pointer;
             font-family: Trebuchet MS, sans-serif
         }
+        .canvas {
+            border: 5px solid #000000;
+            position:relative; 
+            top:100px; 
+            left:100px;
+            width: 1200px;
+            height: 800px;
+        }
         .header img{
             padding-top: 20px;
             width: 50%;
