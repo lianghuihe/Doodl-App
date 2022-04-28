@@ -6,6 +6,7 @@ window.onload=(function(){
     doodlArray = doodlData.split('||');
 
     var table = document.createElement('table');
+    table.style.width = "100%";
 
     for (var i = 1; i < doodlArray.length; i++){
         var tr = document.createElement('tr');
@@ -16,10 +17,10 @@ window.onload=(function(){
 
         let url = tempArray[1];
         let doodlCanvas = document.createElement('canvas');
-        canvas.style.border = "5px solid #000000";
-        canvas.style.position = "relative";
-        canvas.width = "300px";
-        canvas.height = "200px";
+        doodlCanvas.style.border = "5px solid #000000";
+        doodlCanvas.style.position = "relative";
+        doodlCanvas.width = "300px";
+        doodlCanvas.height = "200px";
 
         let ctx = doodlCanvas.getContext('2d');
         let img = new Image;
