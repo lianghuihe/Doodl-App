@@ -6,7 +6,8 @@ window.onload=(function(){
     doodlArray = doodlData.split('||');
 
     var table = document.createElement('table');
-    table.style.width = "100%";
+    table.style.width = "70%";
+    table.style.alignSelf = "center";
 
     var tableHeadingRow = document.createElement('tr');
     var tableHeadingName = document.createElement('th');
@@ -21,6 +22,15 @@ window.onload=(function(){
     tableHeadingRow.appendChild(tableHeadingName);
     tableHeadingRow.appendChild(tableHeadingDoodl);
     table.appendChild(tableHeadingRow);
+
+    var border = document.createElement('tr');
+    var bordercontents = document.createElement('td');
+
+    bordercontents.style.borderTop = "2px solid black";
+    bordercontents.colSpan = 2;
+
+    border.appendChild(bordercontents);
+    table.appendChild(border);
 
     for (var i = 1; i < doodlArray.length; i++){
         var tr = document.createElement('tr');
