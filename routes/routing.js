@@ -50,6 +50,19 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   res.render('gallery.ejs', {currentPrompt : currentPrompt, doodlData : doodlsData});
 });
 
+router.get('/account', checkAuthenticated, async function(req, res, next) {
+  var doodls = await Doodl.find({name : req.user.name})
+  var doodlsData;
+
+  for(var i = 0; i < doodls.length; i++){
+      doodlsData = doodlsData + "||" + doodls[i].prompt + "|" + doodls[i].doodl
+  };
+
+  console.log(doodlsData);
+
+  res.render('account.ejs', {name : req.user.name, doodlData : doodlsData});
+});
+
 router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
   res.render('gdprPage.ejs');
 });

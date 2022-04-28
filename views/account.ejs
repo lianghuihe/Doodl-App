@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/stylesheets/generic.css">
+    </head>
+    <body>
+        <div style="text-align: center">
+            <h1><%= name %>'s Drawings</h1>
+        </div>
+        <input type="hidden" id="doodlData" ></input>
+        <script type="text/javascript"> 
+            document.getElementById("doodlData").value = '<%- doodlData %>';
+        </script>  
+        <script src="/js/account.js"></script>
+    </body>
+    <body style="background-color: #f67570;"></body>
+</html>
