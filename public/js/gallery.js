@@ -5,7 +5,7 @@ var doodlArray = [];
 doodlArray = doodlData.split('||');
 
 var table = document.createElement('table');
-for (var i = 0; i < doodlArray.length - 1; i++){
+for (var i = 1; i < doodlArray.length; i++){
     var tr = document.createElement('tr');
     var tempArray = doodlArray[i].split('|', 2);
 
