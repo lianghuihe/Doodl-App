@@ -44,8 +44,6 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
       doodlsData = doodlsData + "||" + doodls[i].username + "|" + doodls[i].doodl
   };
 
-  console.log(doodlsData);
-
   var currentPrompt = global.currentPrompt;
   res.render('gallery.ejs', {currentPrompt : currentPrompt, doodlData : doodlsData});
 });
@@ -55,10 +53,8 @@ router.get('/account', checkAuthenticated, async function(req, res, next) {
   var doodlsData;
 
   for(var i = 0; i < doodls.length; i++){
-      doodlsData = doodlsData + "||" + doodls[i].prompt + "|" + doodls[i].doodl
+      doodlsData = doodlsData + "||" + doodls[i].date + "|" + doodls[i].prompt + "|" + doodls[i].doodl
   };
-
-  console.log(doodlsData);
 
   res.render('account.ejs', {name : req.user.name, doodlData : doodlsData});
 });
