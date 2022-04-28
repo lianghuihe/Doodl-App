@@ -16,10 +16,15 @@ window.onload=(function(){
 
         let url = tempArray[1];
         let doodlCanvas = document.createElement('canvas');
+        canvas.style.border = "5px solid #000000";
+        canvas.style.position = "relative";
+        canvas.width = "300px";
+        canvas.height = "200px";
+
         let ctx = doodlCanvas.getContext('2d');
         let img = new Image;
         img.onload = function(){
-            ctx.drawImage(img,0,0);
+            ctx.drawImage(img, 0, 0, doodlCanvas.width, doodlCanvas.height);
         };
         img.src = url;
 
