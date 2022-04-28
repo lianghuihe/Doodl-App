@@ -52,17 +52,14 @@ window.onload=(function(){
         var reportForm = document.createElement('form');
         reportForm.action = '/report';
         reportForm.method = 'get';
-        var reportFormData = new FormData(reportForm);
 
         var likeForm = document.createElement('form');
         likeForm.action = '/like';
         likeForm.method = 'post';
-        var likeFormData = new FormData(likeForm);
 
         var dislikeForm = document.createElement('form');
         dislikeForm.action = '/dislike';
         dislikeForm.method = 'post';
-        var dislikeFormData = new FormData(dislikeForm);
         
         var report = document.createElement('button');
         var like = document.createElement('button');
@@ -137,26 +134,26 @@ window.onload=(function(){
             ctx.drawImage(img, 0, 0, doodlCanvas.width, doodlCanvas.height);
         };
         img.src = url;
-   
-        reportFormData.append(report);
-        likeFormData.append(like);
-        dislikeFormData.append(dislike);
-
-        reportFormData.append(reportDoodlID);
-        likeFormData.append(likeDoodlID);
-        dislikeFormData.append(dislikeDoodlID);
-
-        likeFormData.append(likeCount);
-        dislikeFormData.append(dislikeCount);
-
-        likeFormData.append(likeType);
-        dislikeFormData.append(dislikeType);
 
         var text1 = reportForm;
         var text2 = document.createTextNode(tempArray[0]);
         var text3 = doodlCanvas;
         var text4 = likeForm;
         var text5 = dislikeForm;
+   
+        reportForm.appendChild(report);
+        likeForm.appendChild(like);
+        dislikeForm.appendChild(dislike);
+
+        reportForm.appendChild(reportDoodlID);
+        likeForm.appendChild(likeDoodlID);
+        dislikeForm.appendChild(dislikeDoodlID);
+
+        likeForm.appendChild(likeCount);
+        dislikeForm.appendChild(dislikeCount);
+
+        likeForm.appendChild(likeType);
+        dislikeForm.appendChild(dislikeType);
        
         td1.appendChild(text1);
         td2.appendChild(text2);
