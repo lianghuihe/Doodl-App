@@ -45,7 +45,7 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
       var likes = await Like.find({doodlID : doodls[i].id, type : 1}).count();
       var dislikes = await Like.find({doodlID : doodls[i].id, type : -1}).count();
       //var total = likes - dislikes;
-      doodlsData = doodlsData + "||" + doodls[i].username + "|" + doodls[i].doodl + "|" + likes + "|" + dislikes
+      doodlsData = doodlsData + "||" + doodls[i].username + "|" + doodls[i].doodl + "|" + likes + "|" + dislikes + "|" + doodls[i].id
   };
 
   var currentPrompt = global.currentPrompt;

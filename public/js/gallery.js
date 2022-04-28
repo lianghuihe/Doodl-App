@@ -151,6 +151,9 @@ window.onload=(function(){
 
         likeForm.appendChild(likeCount);
         dislikeForm.appendChild(dislikeCount);
+
+        likeForm.appendChild(likeType);
+        dislikeForm.appendChild(dislikeType);
        
         td1.appendChild(text1);
         td2.appendChild(text2);
