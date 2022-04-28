@@ -133,17 +133,18 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
 });
 
 router.post("/like", checkAuthenticated, async (req, res) => {
-  const likeFound = await User.findOne({ username: req.body.email, doodlID: req.body.hiddenDoodlID, type: req.body.hiddenLikeType});
+  console.log(req.body);
+  const likeFound = await User.findOne({ username: req.body.email, doodlID: req.body.likeDoodlID, type: req.body.likeType});
 
   if(likeFound){
     req.flash("error", "You have already given your opinion on that doodl");
   }else{
-    const differentLikeFound = await User.findOne({ username: req.body.email, doodlID: req.body.hiddenDoodlID});
+    const differentLikeFound = await User.findOne({ username: req.body.email, doodlID: req.body.likeDoodlID});
 
     if(differentLikeFound){
       try {
-        var conditions = {username: req.body.email, doodlID: req.body.hiddenDoodlID};
-        var update = {type : 1};
+        var conditions = {username: req.body.email, doodlID: req.body.likeDoodlID};
+        var update = {type : "Like"};
         await User.updateOne(conditions, update);
 
       } catch (error) {
@@ -155,8 +156,8 @@ router.post("/like", checkAuthenticated, async (req, res) => {
         const like = new Like({
           id: (await Like.find().count()) + 1,
           username: req.user.name,
-          doodlID: req.body.hiddenDoodlID,
-          type: 1,
+          doodlID: req.body.likeDoodlID,
+          type: "Like",
         });
 
         await doodl.save();

@@ -69,6 +69,15 @@ window.onload=(function(){
         var likeDoodlID = document.createElement('input');
         var dislikeDoodlID = document.createElement('input');
 
+        var likeType = document.createElement('input');
+        var dislikeType = document.createElement('input');
+
+        likeType.type = 'hidden';
+        dislikeType.type = 'hidden';
+
+        likeType.value = "Like";
+        dislikeType.value = "Dislike";
+
         var likeCount = document.createElement('text');
         var dislikeCount = document.createElement('text');
 
@@ -96,10 +105,14 @@ window.onload=(function(){
         dislikeForm.appendChild(dislikeCount);
 
         var tr = document.createElement('tr');
-        var tempArray = doodlArray[i].split('|', 4);
+        var tempArray = doodlArray[i].split('|', 5);
 
         likeCount.innerHTML = tempArray[2];
         dislikeCount.innerHTML = tempArray[3];
+
+        reportDoodlID.value = tempArray[4];
+        likeDoodlID.value = tempArray[4];
+        dislikeDoodlID.value = tempArray[4];
 
         var td1 = document.createElement('td');
         var td2 = document.createElement('td');
