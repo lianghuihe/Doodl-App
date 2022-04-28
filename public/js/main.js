@@ -291,7 +291,7 @@ settingsSlider.oninput = function()
 {
     sliderValue = this.value;
     let toolSizeMult = 1 + (sliderValue / 100);
-    console.log(toolSizeMult);
+    //console.log(toolSizeMult);
     //toolbar.style.width  = (100 * toolSizeMult) + "%";
     //toolbar.style.height = (100 * toolSizeMult) + "%";
     var tools = document.getElementsByClassName("toolbarIcon");
