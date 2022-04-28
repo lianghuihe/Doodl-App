@@ -27,8 +27,9 @@ for (var i = 1; i < doodlArray.length; i++){
 
     var image = new Image;
     image.src = tempArray[1];
-    contexts[i].drawImage(image,0,0);
-  
+    img.onload = function(){
+        contexts[i].drawImage(image,0,0);
+    };
  
     td1.appendChild(document.createTextNode(tempArray[0]));
     td2.appendChild(canvases[i]);
