@@ -99,9 +99,9 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
   }
 });
 
-router.delete("/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   req.logOut();
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 router.post("/login", checkNotAuthenticated,
