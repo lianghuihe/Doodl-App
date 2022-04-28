@@ -37,6 +37,12 @@ for (var i = 0; i < tools.length; i++)
     tools[i].style.height = (50 * (1 + (sliderValue / 100))) + "px";
 }
 
+var toolText = document.getElementsByClassName("toolbarText");
+for (var i = 0; i < toolText.length; i++)
+{
+    toolText[i].style.fontSize  = (12 * (1 + (sliderValue / 100))) + "px";
+}
+
 resetCanvas();
 //dailyWordSetup(randomWord);
 
