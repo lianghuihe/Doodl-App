@@ -72,8 +72,8 @@ window.onload=(function(){
         var likeType = document.createElement('input');
         var dislikeType = document.createElement('input');
 
-        likeType.type = 'hidden';
-        dislikeType.type = 'hidden';
+        likeType.type = 'text';
+        dislikeType.type = 'text';
 
         likeType.value = "Like";
         dislikeType.value = "Dislike";
@@ -81,9 +81,9 @@ window.onload=(function(){
         var likeCount = document.createElement('text');
         var dislikeCount = document.createElement('text');
 
-        reportDoodlID.type = 'hidden';
-        likeDoodlID.type = 'hidden';
-        dislikeDoodlID.type = 'hidden';
+        reportDoodlID.type = 'text';
+        likeDoodlID.type = 'text';
+        dislikeDoodlID.type = 'text';
 
         report.type = 'submit';
         like.type = 'submit';
