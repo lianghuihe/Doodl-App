@@ -290,7 +290,7 @@ function sendStringToVariable()
 settingsSlider.oninput = function()
 {
     sliderValue = this.value;
-    toolbar.stylewidth = (70 * (sliderValue + 50 / 100)) + "px";
+    toolbar.style.width = (70 * (sliderValue + 50 / 100)) + "px";
     document.getElementsByClassName("toolbarIcon").style.width = (50 * (sliderValue + 50 / 100)) + "px";
 }
 
