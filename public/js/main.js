@@ -311,7 +311,7 @@ settingsSlider.oninput = function()
     
     for (var i = 0; i < toolText.length; i++)
     {
-        toolText[i].style.fontSize  = (100 * toolSizeMult) + "%";
+        toolText[i].style.fontSize  = (12 * toolSizeMult) + "px";
     }
 }
 
