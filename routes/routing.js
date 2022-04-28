@@ -134,7 +134,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
 
 router.post("/like", checkAuthenticated, async (req, res) => {
   console.log("1" + req.body);
-  const likeFound = await User.findOne({ username: req.body.email, doodlID: req.body.likeDoodlID, type: req.body.likeType});
+  const likeFound = await Like.findOne({ username: req.body.email, doodlID: req.body.likeDoodlID, type: req.body.likeType});
   console.log("2" + likeFound);
 
   if(likeFound){
@@ -142,14 +142,14 @@ router.post("/like", checkAuthenticated, async (req, res) => {
     req.flash("error", "You have already given your opinion on that doodl");
   }else{
     console.log("4");
-    const differentLikeFound = await User.findOne({ username: req.body.email, doodlID: req.body.likeDoodlID});
+    const differentLikeFound = await Like.findOne({ username: req.body.email, doodlID: req.body.likeDoodlID});
     console.log("5" + differentLikeFound);
     if(differentLikeFound){
       console.log("6");
       try {
         var conditions = {username: req.body.email, doodlID: req.body.likeDoodlID};
         var update = {type : "Like"};
-        await User.updateOne(conditions, update);
+        await Like.updateOne(conditions, update);
 
       } catch (error) {
         req.flash("error", "Could not update your opinion on that doodl");
