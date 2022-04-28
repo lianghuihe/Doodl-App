@@ -12,9 +12,9 @@
             <section class="container">
                 <div id="toolbar">
                     <img src = "/images/doodlLogo.png" alt="Doodl" style="width:70px;height:70px"></img>
-                    <label for="stroke">Colour</label>
+                    <label for="stroke" class="toolbarText">Colour</label>
                     <input id="stroke" name='stroke' type="color"></input>
-                    <label for="lineWidth">Line Width</label>
+                    <label for="lineWidth" class="toolbarText">Line Width</label>
                     <input id="lineWidth" name='lineWidth' type="number" value="5" min="1" max="100"></input>
                     <button type="button" id="fill" class="toolbarIcon" style="background: #1565c0 url(/images/fill.png);background-size: cover;"></button>
                     <button type="button" id="line" class="toolbarIcon" style="background: #1565c0 url(/images/line.png);background-size: cover;"></button>
@@ -23,7 +23,7 @@
                     <button type="button" id="clear" class="toolbarIcon" style="background: #1565c0 url(/images/clear.png);background-size: cover;"></button>
                     <button type="submit" id="submit" class="toolbarIcon"  style="background: #1565c0 url(/images/submit.png);background-size: cover;"></button>
                     <input id="hiddenCanvasValue" name="hiddenCanvasValue" type="hidden" value=""></input>
-                    <DevLabel id="RGBVal">RGBVal</DevLabel>
+                    <DevLabel id="RGBVal" class="toolbarText">RGBVal</DevLabel>
                 </div>
                 <div class="myDoodl">
                         <canvas type="input" id="myDoodlCanvas"></canvas>

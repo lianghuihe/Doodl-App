@@ -303,13 +303,18 @@ settingsSlider.oninput = function()
     //toolbar.style.width  = (100 * toolSizeMult) + "%";
     //toolbar.style.height = (100 * toolSizeMult) + "%";
     var tools = document.getElementsByClassName("toolbarIcon");
-    
+    var toolText = document.getElementsByClassName("toolbarText");
+
     for (var i = 0; i < tools.length; i++)
     {
         tools[i].style.width  = (50 * toolSizeMult) + "px";
         tools[i].style.height = (50 * toolSizeMult) + "px";
     }
     
+    for (var i = 0; i < toolText.length; i++)
+    {
+        toolText[i].style.fontSize  = (100 * toolSizeMult) + "%";
+    }
 }
 
 canvas.addEventListener('mousedown', (e) => {
