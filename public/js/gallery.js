@@ -49,13 +49,27 @@ window.onload=(function(){
     table.appendChild(border);
 
     for (var i = 1; i < doodlArray.length; i++){
+        var report = document.createElement('button');
+        var like = document.createElement('button');
+        var dislike = document.createElement('button');
+
+        report.innerHTML = '<img src="/images/report.png" height="50px" width="50px">';
+        like.innerHTML = '<img src="/images/like.png" height="50px" width="50px">';
+        dislike.innerHTML = '<img src="/images/dislike.png" height="50px" width="50px">';
+
         var tr = document.createElement('tr');
         var tempArray = doodlArray[i].split('|', 2);
 
         var td1 = document.createElement('td');
         var td2 = document.createElement('td');
+        var td3 = document.createElement('td');
+        var td4 = document.createElement('td');
+        var td5 = document.createElement('td');
         td1.style.alignContent = "center";
         td2.style.alignContent = "center";
+        td3.style.alignContent = "center";
+        td4.style.alignContent = "center";
+        td5.style.alignContent = "center";
 
         let url = tempArray[1];
         let doodlCanvas = document.createElement('canvas');
@@ -71,13 +85,25 @@ window.onload=(function(){
         };
         img.src = url;
 
-        var text1 = document.createTextNode(tempArray[0]);
-        var text2 = doodlCanvas;
-
+        var text1 = report;
+        var text2 = document.createTextNode(tempArray[0]);
+        var text3 = doodlCanvas;
+        var text4 = like;
+        var text5 = dislike;
+   
+       
         td1.appendChild(text1);
         td2.appendChild(text2);
+        td3.appendChild(text3);
+        td4.appendChild(text4);
+        td5.appendChild(text5);
+
         tr.appendChild(td1);
         tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+
         table.appendChild(tr);
     }
 
