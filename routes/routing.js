@@ -51,7 +51,7 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
 });
 
 router.get('/account', checkAuthenticated, async function(req, res, next) {
-  var doodls = await Doodl.find({name : req.user.name})
+  var doodls = await Doodl.find({username : req.user.name})
   var doodlsData;
 
   for(var i = 0; i < doodls.length; i++){

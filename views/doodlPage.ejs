@@ -31,13 +31,15 @@
                 <div id="dailyWord"> Today's topic: <%= currentPrompt %></div>
             </form>
             <div id="generalTools" style="margin-right: 0; margin-left: auto;">
-                <button type="button" id="settingsButton" onclick="openSettings()">
-                <img src="/images/settings.png" height="50px" width="50px">
-                </button>
+                <form>
+                    <button type="button" id="settingsButton" onclick="openSettings()">
+                        <img src="/images/settings.png" height="50px" width="50px">
+                    </button>
+                </form>
                 <form action="/gallery" method="get">
-                <button type="submit" id="exitButton" >
-                    <img src="/images/exit.png" height="50px" width="50px">
-                </button>
+                    <button type="submit" id="exitButton" >
+                        <img src="/images/exit.png" height="50px" width="50px">
+                    </button>
                 </form>
                 <form action="/account" method="get">
                     <button type="submit" id="accountButton" >
