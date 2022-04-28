@@ -8,6 +8,9 @@ var doodlArray = [];
 doodlArray = doodlData.split('||');
 for (var i = 1; i < (doodlArray.length / 2); i++){
     var canvas = document.createElement("canvas");
+    canvas.style.border = "5px solid #000000";
+    canvas.style.position = "relative"; 
+
     var context = canvas.getContext("2d");
 
     canvases[i] = canvas;
