@@ -290,8 +290,14 @@ function sendStringToVariable()
 settingsSlider.oninput = function()
 {
     sliderValue = this.value;
-    toolbar.style.width = (70 * (sliderValue + 50 / 100)) + "px";
-    document.getElementsByClassName("toolbarIcon").style.width = (50 * (sliderValue + 50 / 100)) + "px";
+    let toolSizeMult = ((sliderValue + 50) / 100);
+    toolbar.style.width = (70 * toolSizeMult) + "px";
+    var tools = document.getElementsByClassName("toolbarIcon");
+    for (var i = 0; i < tools.length; i++)
+    {
+        tools[i].style.width  = (50 * toolSizeMult) + "px";
+        tools[i].style.height = (50 * toolSizeMult) + "px";
+    }
 }
 
 canvas.addEventListener('mousedown', (e) => {
