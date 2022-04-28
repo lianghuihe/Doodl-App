@@ -144,8 +144,6 @@ window.onload=(function(){
         };
         img.src = url;
 
-        //likeForm.innerHTML = "<button type=\"submit\"><img src=\"/images/like.png\" height=\"50px\" width=\"50px\"></button><input id=\"likeDoodlID\" type=\"hidden\" value=\"" + tempArray[4] + "\"><text>" + tempArray[2] + "</text><input type=\"hidden\" id=\"likeType\" value=\"Like\">";
-   
         reportForm.appendChild(report);
         likeForm.appendChild(like);
         dislikeForm.appendChild(dislike);
