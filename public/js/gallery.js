@@ -49,8 +49,6 @@ window.onload=(function(){
     table.appendChild(border);
 
     for (var i = 1; i < doodlArray.length; i++){
-        var tr = document.createElement('tr');
-        var tempArray = doodlArray[i].split('|', 5);
 
         var reportForm = document.createElement('form');
         reportForm.action = '/report';
@@ -74,6 +72,9 @@ window.onload=(function(){
 
         var likeType = document.createElement('input');
         var dislikeType = document.createElement('input');
+
+        var tr = document.createElement('tr');
+        var tempArray = doodlArray[i].split('|', 5); // wtf is going on
 
         likeType.id = 'likeType';
         dislikeType.id = 'dislikeType';
