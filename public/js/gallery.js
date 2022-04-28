@@ -72,8 +72,11 @@ window.onload=(function(){
         var likeType = document.createElement('input');
         var dislikeType = document.createElement('input');
 
-        likeType.type = 'text';
-        dislikeType.type = 'text';
+        likeType.type = 'hidden';
+        dislikeType.type = 'hidden';
+
+        likeType.id = 'likeType';
+        dislikeType.id = 'dislikeType';
 
         likeType.value = "Like";
         dislikeType.value = "Dislike";
@@ -81,9 +84,13 @@ window.onload=(function(){
         var likeCount = document.createElement('text');
         var dislikeCount = document.createElement('text');
 
-        reportDoodlID.type = 'text';
-        likeDoodlID.type = 'text';
-        dislikeDoodlID.type = 'text';
+        reportDoodlID.id = 'reportDoodlID';
+        likeDoodlID.id = 'likeDoodlID';
+        dislikeDoodlID.id = 'dislikeDoodlID';
+
+        reportDoodlID.type = 'hidden';
+        likeDoodlID.type = 'hidden';
+        dislikeDoodlID.type = 'hidden';
 
         report.type = 'submit';
         like.type = 'submit';
@@ -92,17 +99,6 @@ window.onload=(function(){
         report.innerHTML = '<img src="/images/report.png" height="50px" width="50px">';
         like.innerHTML = '<img src="/images/like.png" height="50px" width="50px">';
         dislike.innerHTML = '<img src="/images/dislike.png" height="50px" width="50px">';
-
-        reportForm.appendChild(report);
-        likeForm.appendChild(like);
-        dislikeForm.appendChild(dislike);
-
-        reportForm.appendChild(reportDoodlID);
-        likeForm.appendChild(likeDoodlID);
-        dislikeForm.appendChild(dislikeDoodlID);
-
-        likeForm.appendChild(likeCount);
-        dislikeForm.appendChild(dislikeCount);
 
         var tr = document.createElement('tr');
         var tempArray = doodlArray[i].split('|', 5);
@@ -145,6 +141,16 @@ window.onload=(function(){
         var text4 = likeForm;
         var text5 = dislikeForm;
    
+        reportForm.appendChild(report);
+        likeForm.appendChild(like);
+        dislikeForm.appendChild(dislike);
+
+        reportForm.appendChild(reportDoodlID);
+        likeForm.appendChild(likeDoodlID);
+        dislikeForm.appendChild(dislikeDoodlID);
+
+        likeForm.appendChild(likeCount);
+        dislikeForm.appendChild(dislikeCount);
        
         td1.appendChild(text1);
         td2.appendChild(text2);
