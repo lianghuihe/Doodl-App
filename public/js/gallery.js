@@ -28,7 +28,9 @@ window.onload=(function(){
 
         var td1 = document.createElement('td');
         var td2 = document.createElement('td');
-
+        td1.style.alignItems = "center";
+        td2.style.alignItems = "center";
+        
         let url = tempArray[1];
         let doodlCanvas = document.createElement('canvas');
         doodlCanvas.style.border = "5px solid #000000";
