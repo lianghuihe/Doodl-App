@@ -167,7 +167,7 @@ router.post("/like", checkAuthenticated, async (req, res) => {
 
         console.log("8" + like);
 
-        await doodl.save();
+        await like.save();
         res.redirect("/gallery");
 
       } catch (error) {
