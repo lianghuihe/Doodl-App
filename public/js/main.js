@@ -7,6 +7,7 @@ const canvasOffsetX = canvas.offsetLeft;
 const canvasOffsetY = canvas.offsetTop;
 
 const settingsSlider = document.getElementById("sizeSlider");
+const tools = document.getElementsByClassName("toolbarIcon");
 
 //import { v4 as uuidv4 } from 'uuid';
 
@@ -26,8 +27,15 @@ let snapshot;
 var timeout_id;
 let dailyWord;
 var rect = canvas.getBoundingClientRect();
-let sliderValue = 50;
+let sliderValue = (sizeSlider.value / 100) + 1;
 //let randomWord = ["race car","pirate ship","palm trees","tulips","pine cone","space ship","box of candy","sunflowers in a vase","koala bear","angry dog","candy corn","cupcake","sleepy tiger","pizza","disco ninja","girl with really long hair","cookies","sad lady","snake charmer","hula girl","ice cream cone","bottle of poison","flamingo","football","fried egg","red haired man","zombie","mummy","popcorn","vampire","man with a scar","a sword fighter","duck","easter eggs","flaming skull","dolphin","sunflowers in a vase","panda","cobra","happy pig","oreos and milk","monkey in a hat","bunny","gnome","fairy","evil queen","diamond ring","birthday present","hot air balloon","cake with candles","Godzilla","guy with long nails","rooster","dragon","shamrocks","castle","log cabin","igloo","octopus","bodybuilder","carousel horse","shooting star","toucan","flute","saxophone","violin","bird house","seal","Dachshund","football helmet","hockey stick","planets","Happy Clown","Scary Clown","train","dog in pants","mermaid","waffles","lady in an apron","bacon","cup of coffee","baseball player","ballerina","worm in an apple","kleenex","hamburger","girl with a cast","crying baby","angel","mean Santa","paintbrushes","police officer","red wagon","garbage can","dwarf","Zebra in colors","Gumball machine","Bush Baby","fowl","kangaroo","alligator","badger","stork","elephant","albatross","goose","drongo","boa","swan","opossum","wagtail","bear","wagtail","lion","phascogale","blackbuck","caribou","zebra","stilt","chickadee","caribou","caribou","boa","blesbok","fowl","butterfly","lizard","albatross","argalis","heron","chickadee","stilt","tapir","wagtail","spider","blackbuck","bettong","bettong","blackbuck","buffalo","swan","tapir","lion","boar","dolphin","pig","parrot","blesbok","antelope","buffalo","lynx","phascogale","caribou","otter","raven","porcupine","vulture","donkey","dog","starling","barbet","racer","swan","badger","elephant","cordon","bettong","opossum","shark","donkey","crocodile","guinea","eagle","raven","vulture","buffalo","bat","oryx","lizard","bettong","otter","oyster","cordon","deer","stork","crocodile","elephant","crake","cordon","albatross","porcupine","badger","skink","ant","otter","chickadee","kangaroo","dolphin" ];
+
+    
+for (var i = 0; i < tools.length; i++)
+{
+    tools[i].style.width  = (50 * toolSizeMult) + "px";
+    tools[i].style.height = (50 * toolSizeMult) + "px";
+}
 
 resetCanvas();
 //dailyWordSetup(randomWord);
@@ -294,7 +302,7 @@ settingsSlider.oninput = function()
     //console.log(toolSizeMult);
     //toolbar.style.width  = (100 * toolSizeMult) + "%";
     //toolbar.style.height = (100 * toolSizeMult) + "%";
-    var tools = document.getElementsByClassName("toolbarIcon");
+    //var tools = document.getElementsByClassName("toolbarIcon");
     
     for (var i = 0; i < tools.length; i++)
     {
