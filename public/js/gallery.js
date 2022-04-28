@@ -12,13 +12,14 @@ for (var i = 1; i < doodlArray.length; i++){
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
 
-    var doodlCanvas = document.createElement('canvas');
-    var ctx = doodlCanvas.getContext('2d');
-    var img = new Image;
+    let url = tempArray[1];
+    let doodlCanvas = document.createElement('canvas');
+    let ctx = doodlCanvas.getContext('2d');
+    let img = new Image;
+    await new Promise(r => img.onload=r, img.src=url);
     img.onload = function(){
         ctx.drawImage(img,0,0); // Or at whatever offset you like
     };
-    img.src = tempArray[1]
 
     var text1 = document.createTextNode(tempArray[0]);
     var text2 = doodlCanvas;
