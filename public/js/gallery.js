@@ -62,52 +62,52 @@ window.onload=(function(){
         dislikeForm.method = 'post';
         
         var report = document.createElement('button');
-        //var like = document.createElement('button');
+        var like = document.createElement('button');
         var dislike = document.createElement('button');
 
         var reportDoodlID = document.createElement('input');
-        //var likeDoodlID = document.createElement('input');
+        var likeDoodlID = document.createElement('input');
         var dislikeDoodlID = document.createElement('input');
 
-        //var likeType = document.createElement('input');
+        var likeType = document.createElement('input');
         var dislikeType = document.createElement('input');
 
-        //likeType.type = 'hidden';
-        dislikeType.type = 'hidden';
+        likeType.type = 'text';
+        dislikeType.type = 'text';
 
-        //likeType.id = 'likeType';
+        likeType.id = 'likeType';
         dislikeType.id = 'dislikeType';
 
-        //likeType.value = "Like";
+        likeType.value = "Like";
         dislikeType.value = "Dislike";
 
-        //var likeCount = document.createElement('text');
+        var likeCount = document.createElement('text');
         var dislikeCount = document.createElement('text');
 
         reportDoodlID.id = 'reportDoodlID';
-        //likeDoodlID.id = 'likeDoodlID';
+        likeDoodlID.id = 'likeDoodlID';
         dislikeDoodlID.id = 'dislikeDoodlID';
 
-        reportDoodlID.type = 'hidden';
-        //likeDoodlID.type = 'hidden';
-        dislikeDoodlID.type = 'hidden';
+        reportDoodlID.type = 'text';
+        likeDoodlID.type = 'text';
+        dislikeDoodlID.type = 'text';
 
         report.type = 'submit';
-        //like.type = 'submit';
+        like.type = 'submit';
         dislike.type = 'submit';
 
         report.innerHTML = '<img src="/images/report.png" height="50px" width="50px">';
-        //like.innerHTML = '<img src="/images/like.png" height="50px" width="50px">';
+        like.innerHTML = '<img src="/images/like.png" height="50px" width="50px">';
         dislike.innerHTML = '<img src="/images/dislike.png" height="50px" width="50px">';
 
         var tr = document.createElement('tr');
         var tempArray = doodlArray[i].split('|', 5);
 
-        //likeCount.innerHTML = tempArray[2];
+        likeCount.innerHTML = tempArray[2];
         dislikeCount.innerHTML = tempArray[3];
 
         reportDoodlID.value = tempArray[4];
-        //likeDoodlID.value = tempArray[4];
+        likeDoodlID.value = tempArray[4];
         dislikeDoodlID.value = tempArray[4];
 
         var td1 = document.createElement('td');
@@ -135,27 +135,27 @@ window.onload=(function(){
         };
         img.src = url;
 
-        likeForm.innerHTML = "<button type=\"submit\"><img src=\"/images/like.png\" height=\"50px\" width=\"50px\"></button><input id=\"likeDoodlID\" type=\"hidden\" value=\"" + tempArray[4] + "\"><text>" + tempArray[2] + "</text><input type=\"hidden\" id=\"likeType\" value=\"Like\">";
+        //likeForm.innerHTML = "<button type=\"submit\"><img src=\"/images/like.png\" height=\"50px\" width=\"50px\"></button><input id=\"likeDoodlID\" type=\"hidden\" value=\"" + tempArray[4] + "\"><text>" + tempArray[2] + "</text><input type=\"hidden\" id=\"likeType\" value=\"Like\">";
+   
+        reportForm.appendChild(report);
+        likeForm.appendChild(like);
+        dislikeForm.appendChild(dislike);
+
+        reportForm.appendChild(reportDoodlID);
+        likeForm.appendChild(likeDoodlID);
+        dislikeForm.appendChild(dislikeDoodlID);
+
+        likeForm.appendChild(likeCount);
+        dislikeForm.appendChild(dislikeCount);
+
+        likeForm.appendChild(likeType);
+        dislikeForm.appendChild(dislikeType);
 
         var text1 = reportForm;
         var text2 = document.createTextNode(tempArray[0]);
         var text3 = doodlCanvas;
         var text4 = likeForm;
         var text5 = dislikeForm;
-   
-        reportForm.appendChild(report);
-        //likeForm.appendChild(like);
-        dislikeForm.appendChild(dislike);
-
-        reportForm.appendChild(reportDoodlID);
-        //likeForm.appendChild(likeDoodlID);
-        dislikeForm.appendChild(dislikeDoodlID);
-
-        //likeForm.appendChild(likeCount);
-        dislikeForm.appendChild(dislikeCount);
-
-        //likeForm.appendChild(likeType);
-        dislikeForm.appendChild(dislikeType);
        
         td1.appendChild(text1);
         td2.appendChild(text2);
