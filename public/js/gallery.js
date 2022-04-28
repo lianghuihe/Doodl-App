@@ -49,6 +49,9 @@ window.onload=(function(){
     table.appendChild(border);
 
     for (var i = 1; i < doodlArray.length; i++){
+        var tr = document.createElement('tr');
+        var tempArray = doodlArray[i].split('|', 5);
+
         var reportForm = document.createElement('form');
         reportForm.action = '/report';
         reportForm.method = 'get';
@@ -110,9 +113,6 @@ window.onload=(function(){
         report.innerHTML = '<img src="/images/report.png" height="50px" width="50px">';
         like.innerHTML = '<img src="/images/like.png" height="50px" width="50px">';
         dislike.innerHTML = '<img src="/images/dislike.png" height="50px" width="50px">';
-
-        var tr = document.createElement('tr');
-        var tempArray = doodlArray[i].split('|', 5);
 
         likeCount.innerHTML = tempArray[2];
         dislikeCount.innerHTML = tempArray[3];
