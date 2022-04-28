@@ -293,13 +293,15 @@ settingsSlider.oninput = function()
     let toolSizeMult = 1 + (sliderValue / 100);
     console.log(toolSizeMult);
     toolbar.style.width  = (100 * toolSizeMult) + "%";
-    toolbar.style.height = (200 * toolSizeMult) + "%";
+    toolbar.style.height = (100 * toolSizeMult) + "%";
     var tools = document.getElementsByClassName("toolbarIcon");
+    /*
     for (var i = 0; i < tools.length; i++)
     {
         tools[i].style.width  = (50 * toolSizeMult) + "px";
         tools[i].style.height = (50 * toolSizeMult) + "px";
     }
+    */
 }
 
 canvas.addEventListener('mousedown', (e) => {
