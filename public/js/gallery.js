@@ -16,7 +16,8 @@ for (var i = 1; i < doodlArray.length; i++){
     let doodlCanvas = document.createElement('canvas');
     let ctx = doodlCanvas.getContext('2d');
     let img = new Image;
-    img.onload = function(){
+    img.src = url;
+    doodlCanvas.onload = function(){
         ctx.drawImage(img,0,0); 
     };
 
