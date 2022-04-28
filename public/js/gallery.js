@@ -27,7 +27,7 @@ for (var i = 1; i < doodlArray.length; i++){
 
     var image = new Image;
     image.src = tempArray[1];
-    img.onload = function(){
+    image.onload = function(){
         contexts[i].drawImage(image,0,0);
     };
  
