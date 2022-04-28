@@ -50,7 +50,7 @@ window.onload=(function(){
 
     for (var i = 1; i < doodlArray.length; i++){
         var tr = document.createElement('tr');
-        var tempArray = doodlArray[i].split('|', 5);
+       
 
         var reportForm = document.createElement('form');
         reportForm.action = '/report';
