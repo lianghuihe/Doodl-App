@@ -21,7 +21,7 @@ for (var i = 0; i < doodlArray.length; i++){
     img.src = tempArray[1]
 
     var text1 = document.createTextNode(tempArray[0]);
-    var text2 = image;
+    var text2 = doodlCanvas;
 
     td1.appendChild(text1);
     td2.appendChild(text2);
