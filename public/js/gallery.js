@@ -6,28 +6,44 @@ window.onload=(function(){
     doodlArray = doodlData.split('||');
 
     var table = document.createElement('table');
-    table.style.width = "70%";
+    table.style.width = "80%";
     table.style.alignSelf = "center";
 
     var tableHeadingRow = document.createElement('tr');
     var tableHeadingName = document.createElement('th');
     var tableHeadingDoodl = document.createElement('th');
+    var tableHeadingReport = document.createElement('th');
+    var tableHeadingLike = document.createElement('th');
+    var tableHeadingDislike = document.createElement('th');
     tableHeadingName.style.width = "20%";
+    tableHeadingReport.style.width = "10%";
+    tableHeadingLike.style.width = "10%";
+    tableHeadingDislike.style.width = "10%";
 
     var heading1 = document.createTextNode("Artist");
     var heading2 = document.createTextNode("Doodl");
+    var heading3 = document.createTextNode("Report");
+    var heading4 = document.createTextNode("Like");
+    var heading5 = document.createTextNode("Dislike");
 
     tableHeadingName.appendChild(heading1);
     tableHeadingDoodl.appendChild(heading2);
+    tableHeadingReport.appendChild(heading3);
+    tableHeadingLike.appendChild(heading4);
+    tableHeadingDislike.appendChild(heading5);
+
+    tableHeadingRow.appendChild(tableHeadingReport);
     tableHeadingRow.appendChild(tableHeadingName);
     tableHeadingRow.appendChild(tableHeadingDoodl);
+    tableHeadingRow.appendChild(tableHeadingLike);
+    tableHeadingRow.appendChild(tableHeadingDislike);
     table.appendChild(tableHeadingRow);
 
     var border = document.createElement('tr');
     var bordercontents = document.createElement('td');
 
     bordercontents.style.borderTop = "2px solid black";
-    bordercontents.colSpan = 2;
+    bordercontents.colSpan = 5;
 
     border.appendChild(bordercontents);
     table.appendChild(border);
