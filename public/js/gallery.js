@@ -50,15 +50,15 @@ window.onload=(function(){
 
     for (var i = 1; i < doodlArray.length; i++){
         var reportForm = document.createElement('form');
-        reportForm.action = '\report';
+        reportForm.action = '/report';
         reportForm.method = 'get';
 
         var likeForm = document.createElement('form');
-        likeForm.action = '\like';
+        likeForm.action = '/like';
         likeForm.method = 'post';
 
         var dislikeForm = document.createElement('form');
-        dislikeForm.action = '\dislike';
+        dislikeForm.action = '/dislike';
         dislikeForm.method = 'post';
         
         var report = document.createElement('button');
