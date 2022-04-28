@@ -42,7 +42,10 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   var doodlsData;
 
   for(var i = 0; i < doodls.length; i++){
-      doodlsData = doodlsData + "||" + doodls[i].username + "|" + doodls[i].doodl
+      var likes = await Like.find({doodlID : doodls[i].id, type : 1}).count();
+      var dislikes = await Like.find({doodlID : doodls[i].id, type : -1}).count();
+      //var total = likes - dislikes;
+      doodlsData = doodlsData + "||" + doodls[i].username + "|" + doodls[i].doodl + "|" + likes + "|" + dislikes
   };
 
   var currentPrompt = global.currentPrompt;

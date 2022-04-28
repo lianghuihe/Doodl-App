@@ -65,6 +65,17 @@ window.onload=(function(){
         var like = document.createElement('button');
         var dislike = document.createElement('button');
 
+        var reportDoodlID = document.createElement('input');
+        var likeDoodlID = document.createElement('input');
+        var dislikeDoodlID = document.createElement('input');
+
+        var likeCount = document.createElement('text');
+        var dislikeCount = document.createElement('text');
+
+        reportDoodlID.type = 'hidden';
+        likeDoodlID.type = 'hidden';
+        dislikeDoodlID.type = 'hidden';
+
         report.type = 'submit';
         like.type = 'submit';
         dislike.type = 'submit';
@@ -76,10 +87,19 @@ window.onload=(function(){
         reportForm.appendChild(report);
         likeForm.appendChild(like);
         dislikeForm.appendChild(dislike);
-        
+
+        reportForm.appendChild(reportDoodlID);
+        likeForm.appendChild(likeDoodlID);
+        dislikeForm.appendChild(dislikeDoodlID);
+
+        likeForm.appendChild(likeCount);
+        dislikeForm.appendChild(dislikeCount);
 
         var tr = document.createElement('tr');
-        var tempArray = doodlArray[i].split('|', 2);
+        var tempArray = doodlArray[i].split('|', 4);
+
+        likeCount.value = tempArray[2];
+        dislikeCount.value = tempArray[3];
 
         var td1 = document.createElement('td');
         var td2 = document.createElement('td');
