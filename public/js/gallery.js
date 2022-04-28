@@ -31,10 +31,10 @@ window.onload=(function(){
 
         let url = tempArray[1];
         let doodlCanvas = document.createElement('canvas');
-        //doodlCanvas.style.border = "5px solid #000000";
-        //doodlCanvas.style.position = "relative";
-        //doodlCanvas.width = "300px";
-        //doodlCanvas.height = "200px";
+        doodlCanvas.style.border = "5px solid #000000";
+        doodlCanvas.style.position = "relative";
+        doodlCanvas.width = "300px";
+        doodlCanvas.height = "200px";
 
         let ctx = doodlCanvas.getContext('2d');
         let img = new Image;
