@@ -133,7 +133,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
 });
 
 router.post("/like", checkAuthenticated, async (req, res) => {
-  console.log(req.body);
+  console.log(req);
   const likeFound = await User.findOne({ username: req.body.email, doodlID: req.body.likeDoodlID, type: req.body.likeType});
 
   if(likeFound){
