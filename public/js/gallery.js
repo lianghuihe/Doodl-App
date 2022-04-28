@@ -30,13 +30,13 @@ window.onload=(function(){
         var td2 = document.createElement('td');
         td1.style.alignItems = "center";
         td2.style.alignItems = "center";
-        
+
         let url = tempArray[1];
         let doodlCanvas = document.createElement('canvas');
         doodlCanvas.style.border = "5px solid #000000";
         doodlCanvas.style.position = "relative";
-        doodlCanvas.width = 300;
-        doodlCanvas.height = 200;
+        doodlCanvas.width = 450;
+        doodlCanvas.height = 300;
 
         let ctx = doodlCanvas.getContext('2d');
         let img = new Image;
