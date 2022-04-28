@@ -12,12 +12,13 @@ for (var i = 0; i < doodlArray.length; i++){
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
 
-    var image = document.createElement('canvas');
+    var doodlCanvas = document.createElement('canvas');
+    var ctx = doodlCanvas.getContext('2d');
     var img = new Image;
-    img.src = tempArray[1]
     img.onload = function(){
-        image.drawImage(img, 0, 0);
-    }
+        ctx.drawImage(img,0,0); // Or at whatever offset you like
+    };
+    img.src = tempArray[1]
 
     var text1 = document.createTextNode(tempArray[0]);
     var text2 = image;
