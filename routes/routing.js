@@ -136,6 +136,7 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
   const likeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.doodlID, type: req.body.likeType});
   if(likeFound){ 
     req.flash("error", "You have already given your opinion on that doodl");
+    res.redirect("/gallery");
   }else{  
     const differentLikeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.doodlID});  
     if(differentLikeFound){
@@ -143,9 +144,11 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
         var conditions = {username: req.user.name, doodlID: req.body.doodlID};
         var update = {type : req.body.likeType};
         await Like.updateOne(conditions, update);
+        res.redirect("/gallery");
       } catch (error) {
         console.log(error)
         req.flash("error", "Sorry, we can't update your opinion on that doodl right now");
+        res.redirect("/gallery");
       }
     }else{  
       try {
@@ -156,8 +159,10 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
           type: req.body.likeType,
         });
         await like.save();
+        res.redirect("/gallery");
       } catch (error) {
         console.log(error);
+        res.redirect("/gallery");
       }
     }
   }
