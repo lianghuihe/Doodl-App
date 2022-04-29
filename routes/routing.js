@@ -69,6 +69,7 @@ router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
 });
 
 router.get('/report', checkAuthenticated, function(req, res, next) {
+  console.log("Main alert!!! " + req.body)
   res.render('report.ejs', {doodlID: req.body.reportDoodlID});
 });
 
@@ -134,23 +135,18 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
 });
 
 router.post("/gallery", checkAuthenticated, async (req, res) => {
-  console.log("1");
   const likeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.doodlID, type: req.body.likeType});
   if(likeFound){ 
     try {
-      console.log("2");
       var conditions = {username: req.user.name, doodlID: req.body.doodlID, type: req.body.likeType};
       await Like.deleteOne(conditions);
-      console.log("3");
       res.redirect("/gallery");
     } catch (error) {
-      console.log("4");
       console.log(error)
       req.flash("error", "Sorry, we can't update your opinion on that doodl right now");
       res.redirect("/gallery");
     }
   }else{  
-    console.log("5");
     const differentLikeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.doodlID});  
     if(differentLikeFound){
       try {
@@ -182,29 +178,24 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
 });
 
 router.post("/report", checkAuthenticated, async (req, res) => {
-  console.log("1");
   console.log(req.body);
   const likeFound = await Report.findOne({ username: req.user.name, doodlID: req.body.doodlID});
 
   if(likeFound){ 
-    console.log("2");
     req.flash("error", "You have already reported that doodl");
     res.redirect("/gallery");
   }else{  
     try {
-      console.log("3");
       const report = new Report({
         id: (await Report.find().count()) + 1,
         username: req.user.name,
         doodlID: req.body.doodlID,
-        desc: req.body.reportDesc,
+        desc: req.body.report,
       });
 
-      console.log("4");
       await report.save();
       req.flash("successMessage", "Your report has been registered");
       res.redirect("/gallery");
-      console.log("5");
 
     } catch (error) {
       console.log(error);
