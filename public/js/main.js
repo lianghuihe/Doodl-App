@@ -324,30 +324,36 @@ settingsSlider.oninput = function()
 function selectBackground()
 {
     let settingsSelect = document.getElementById('selecterBackground');
-    let bkgCol = "f67570";
+    let bkgCol = "#f67570";
+    let btnCol = "#1565c0";
     switch(settingsSelect.selectedIndex)
     {
         case 0:
             bkgCol = "#f67570";
+            btnCol = "#1565c0";
             break;
         case 1:
             bkgCol = "#292323";
+            btnCol = "#ededed";
             break;
         case 2:
             bkgCol = "#ededed";
+            btnCol = "#292323";
             break;
         case 3:
             bkgCol = "#1565c0";
+            btnCol = "#f67570";
             break;
     }
     document.body.style.backgroundColor = bkgCol;
     document.getElementById('generalTools').style.backgroundColor = bkgCol;
     toolbar.style.backgroundColor = bkgCol;
-    tools = document.getElementsByClassName("toolbarIcon");
+    //tools = document.getElementsByClassName("toolbarIcon");
     for (var i = 0; i < tools.length; i++)
     {
         tools[i].style.backgroundColor = bkgCol;
     }
+
 }
 
 canvas.addEventListener('mousedown', (e) => {
