@@ -323,7 +323,7 @@ settingsSlider.oninput = function()
 
 function selectBackground()
 {
-    let settingsSelect = document.getElementById('selectBackground');
+    let settingsSelect = document.getElementById('selecterBackground');
     let bkgCol = "f67570";
     switch(settingsSelect.selectedIndex)
     {
