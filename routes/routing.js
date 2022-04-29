@@ -125,11 +125,11 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   try {
     var todayDate = new Date().toISOString().slice(0, 10);
     var randNum =  Math.floor(Math.random() * 99999999) + 1;
-    var found = await Doodl.find({id: randNum});
+    var found = await Doodl.findOne({id: randNum});
 
-    while(found !== undefined){
+    while(found){
       randNum =  Math.floor(Math.random() * 99999999) + 1;
-      found = await Doodl.find({id: randNum});
+      found = await Doodl.findOne({id: randNum});
     }
     const doodl = new Doodl({
       id: randNum,
@@ -176,11 +176,11 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
     }else{  
       try {
         var randNum =  Math.floor(Math.random() * 99999999) + 1;
-        var found = await Like.find({id: randNum});
+        var found = await Like.findOne({id: randNum});
 
-        while(found !== undefined){
+        while(found){
           randNum =  Math.floor(Math.random() * 99999999) + 1;
-          found = await Like.find({id: randNum});
+          found = await Like.findOne({id: randNum});
         }
         const like = new Like({
           id: randNum,
@@ -209,11 +209,11 @@ router.post("/submitReport", checkAuthenticated, async (req, res) => {
     try {
       console.log("1")
       var randNum =  Math.floor(Math.random() * 99999999) + 1;
-      var found = await Report.find({id: randNum});
+      var found = await Report.findOne({id: randNum});
       console.log("2" + randNum + found);
-      while(found !== undefined){
+      while(found){
         randNum =  Math.floor(Math.random() * 99999999) + 1;
-        found = await Report.find({id: randNum});
+        found = await Report.findOne({id: randNum});
       }
       console.log("3");
       const report = new Report({
