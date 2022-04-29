@@ -136,6 +136,7 @@ router.post("/like", checkAuthenticated, async (req, res) => {
   const likeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.likeDoodlID, type: req.body.likeType});
   if(likeFound){ 
     res.flash("error", "You have already given your opinion on that doodl");
+    res.redirect("/gallery");
   }else{  
     const differentLikeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.likeDoodlID});  
     if(differentLikeFound){
@@ -146,6 +147,7 @@ router.post("/like", checkAuthenticated, async (req, res) => {
       } catch (error) {
         console.log(error)
         res.flash("error", "Sorry, we can't update your opinion on that doodl right now");
+        res.redirect("/gallery");
       }
     }else{  
       try {
