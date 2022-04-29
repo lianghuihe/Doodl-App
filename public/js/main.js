@@ -351,7 +351,7 @@ function selectBackground()
     //tools = document.getElementsByClassName("toolbarIcon");
     for (var i = 0; i < tools.length; i++)
     {
-        tools[i].style.backgroundColor = bkgCol;
+        tools[i].style.backgroundColor = btnCol;
     }
 
 }
