@@ -359,6 +359,10 @@ function selectBackground()
         tools[i].style.backgroundColor = btnCol;
     }
 
+    for (var i = 0; i < toolText.length; i++)
+    {
+        toolText[i].style.color  = txtCol;
+    }
 }
 
 canvas.addEventListener('mousedown', (e) => {
