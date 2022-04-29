@@ -199,30 +199,24 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
 });
 
 router.post("/submitReport", checkAuthenticated, async (req, res) => {
-  console.log(req.body);
   const likeFound = await Report.findOne({ username: req.user.name, doodlID: req.body.doodlID});
-
   if(likeFound){ 
     req.flash("error", "You have already reported that doodl");
     res.redirect("/gallery");
   }else{  
     try {
-      console.log("1")
       var randNum =  Math.floor(Math.random() * 99999999) + 1;
       var found = await Report.findOne({id: randNum});
-      console.log("2" + randNum + found);
       while(found){
         randNum =  Math.floor(Math.random() * 99999999) + 1;
         found = await Report.findOne({id: randNum});
       }
-      console.log("3");
       const report = new Report({
         id: randNum,
         username: req.user.name,
         doodlID: req.body.doodlID,
         desc: req.body.report,
       });
-
       await report.save();
       req.flash("successMessage", "Your report has been registered");
       res.redirect("/gallery");
