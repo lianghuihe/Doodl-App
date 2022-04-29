@@ -52,7 +52,7 @@ window.onload=(function(){
 
         var reportForm = document.createElement('form');
         reportForm.action = '/report';
-        reportForm.method = 'get';
+        reportForm.method = 'post';
 
         var likeForm = document.createElement('form');
         likeForm.action = '/gallery';

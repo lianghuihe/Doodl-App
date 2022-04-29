@@ -73,6 +73,11 @@ router.get('/report', checkAuthenticated, function(req, res, next) {
   res.render('report.ejs', {doodlID: req.body.reportDoodlID});
 });
 
+router.post('/report', checkAuthenticated, function(req, res, next) {
+  console.log("Main alert!!! " + req.body)
+  res.render('report.ejs', {doodlID: req.body.reportDoodlID});
+});
+
 router.get('/voting', checkAuthenticated, function(req, res, next) {
   res.render('voting.ejs');
 });
@@ -177,7 +182,7 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
   }
 });
 
-router.post("/report", checkAuthenticated, async (req, res) => {
+router.post("/submitReport", checkAuthenticated, async (req, res) => {
   console.log(req.body);
   const likeFound = await Report.findOne({ username: req.user.name, doodlID: req.body.doodlID});
 
