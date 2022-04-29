@@ -13,11 +13,20 @@
         </div>
         <div class="buttonPos" id="userInput" style="display: grid;">
             <h3>Reason for report:</h3>
-            <form>
-                <textarea id="report" name="report" rows="10" cols="50">
-                </textarea>
+            <form action="/report" method="post">
+                <input id="doodlID" name="doodlID" type="hidden" value=""></input>
+                <input id="reportDesc" name="reportDesc" type="hidden" value=""></input>
+                <textarea id="report" name="report" rows="10" cols="50" placeholder="Please describe the issue..."></textarea>
+                <button id="submit" type="submit" onclick="moveText()">Submit Report</button>
+                <script type="text/javascript">  
+                    document.getElementById("doodlID").value = '<%- doodlID %>'
+                    function moveText(){
+                        var reportDescInput = document.getElementById("reportDesc");
+                        var reportDesc = document.getElementById("report");
+                        reportDescInput.value = reportDesc.value;
+                    }
+                </script>
             </form>
-            <button id="submit" class="button" >Submit Report</button>
         </div>
     </body>
     <body style="background-color: #f67570;"></body>

@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 const Doodl = require("../model/doodl");
 const Like = require("../model/Like");
+const Report = require("../model/Report");
 const passport = require('passport');
 const router = express();
 const {
@@ -68,7 +69,7 @@ router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
 });
 
 router.get('/report', checkAuthenticated, function(req, res, next) {
-  res.render('report.ejs');
+  res.render('report.ejs', {doodlID: req.body.reportDoodlID});
 });
 
 router.get('/voting', checkAuthenticated, function(req, res, next) {
@@ -166,6 +167,33 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
       }
     }
   }
+});
+
+router.post("/report", checkAuthenticated, async (req, res) => {
+  const likeFound = await Report.findOne({ username: req.user.name, doodlID: req.body.doodlID});
+
+  if(likeFound){ 
+    req.flash("error", "You have already reported that doodl");
+    res.redirect("/gallery");
+  }else{  
+    try {
+      const report = new Report({
+        id: (await Report.find().count()) + 1,
+        username: req.user.name,
+        doodlID: req.body.doodlID,
+        desc: req.body.reportDesc,
+      });
+
+      await report.save();
+      req.flash("successMessage", "Your report has been registered");
+      res.redirect("/gallery");
+
+    } catch (error) {
+      console.log(error);
+      req.flash("error", "Sorry we have encountered an issue");
+      res.redirect("/gallery");
+    }
+  } 
 });
 
 module.exports = router;
