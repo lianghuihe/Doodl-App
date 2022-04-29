@@ -132,71 +132,30 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   
 });
 
-router.post("/like", checkAuthenticated, async (req, res) => {
-  const likeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.likeDoodlID, type: req.body.likeType});
+router.post("/gallery", checkAuthenticated, async (req, res) => {
+  const likeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.doodlID, type: req.body.likeType});
   if(likeFound){ 
     req.flash("error", "You have already given your opinion on that doodl");
-    res.redirect("/gallery");
   }else{  
-    const differentLikeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.likeDoodlID});  
+    const differentLikeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.doodlID});  
     if(differentLikeFound){
       try {
-        var conditions = {username: req.user.name, doodlID: req.body.likeDoodlID};
-        var update = {type : "Like"};
+        var conditions = {username: req.user.name, doodlID: req.body.doodlID};
+        var update = {type : req.body.likeType};
         await Like.updateOne(conditions, update);
-        res.redirect("/gallery");
-
       } catch (error) {
         console.log(error)
         req.flash("error", "Sorry, we can't update your opinion on that doodl right now");
-        res.redirect("/gallery");
       }
     }else{  
       try {
         const like = new Like({
           id: (await Like.find().count()) + 1,
           username: req.user.name,
-          doodlID: req.body.likeDoodlID,
-          type: "Like",
+          doodlID: req.body.doodlID,
+          type: req.body.likeType,
         });
         await like.save();
-        res.redirect("/gallery");
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
-});
-
-router.post("/dislike", checkAuthenticated, async (req, res) => {
-  const likeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.dislikeDoodlID, type: req.body.dislikeType});
-  if(likeFound){ 
-    req.flash("error", "You have already given your opinion on that doodl");
-    res.redirect("/gallery");
-  }else{  
-    const differentLikeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.dislikeDoodlID});  
-    if(differentLikeFound){
-      try {
-        var conditions = {username: req.user.name, doodlID: req.body.dislikeDoodlID};
-        var update = {type : "Dislike"};
-        await Like.updateOne(conditions, update);
-        res.redirect("/gallery");
-
-      } catch (error) {
-        console.log(error)
-        req.flash("error", "Sorry, we can't update your opinion on that doodl right now");
-        res.redirect("/gallery");
-      }
-    }else{  
-      try {
-        const like = new Like({
-          id: (await Like.find().count()) + 1,
-          username: req.user.name,
-          doodlID: req.body.dislikeDoodlID,
-          type: "Dislike",
-        });
-        await like.save();
-        res.redirect("/gallery");
       } catch (error) {
         console.log(error);
       }

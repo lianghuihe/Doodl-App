@@ -55,11 +55,11 @@ window.onload=(function(){
         reportForm.method = 'get';
 
         var likeForm = document.createElement('form');
-        likeForm.action = '/like';
+        likeForm.action = '/gallery';
         likeForm.method = 'post';
 
         var dislikeForm = document.createElement('form');
-        dislikeForm.action = '/dislike';
+        dislikeForm.action = '/gallery';
         dislikeForm.method = 'post';
         
         var report = document.createElement('button');
@@ -80,7 +80,7 @@ window.onload=(function(){
         dislikeType.id = 'dislikeType';
 
         likeType.name = 'likeType';
-        dislikeType.name = 'dislikeType';
+        dislikeType.name = 'likeType';
 
         likeType.type = 'hidden';
         dislikeType.type = 'hidden';
@@ -96,8 +96,8 @@ window.onload=(function(){
         dislikeDoodlID.id = 'dislikeDoodlID';
 
         reportDoodlID.name = 'reportDoodlID';
-        likeDoodlID.name = 'likeDoodlID';
-        dislikeDoodlID.name = 'dislikeDoodlID';
+        likeDoodlID.name = 'doodlID';
+        dislikeDoodlID.name = 'doodlID';
 
         reportDoodlID.type = 'hidden';
         likeDoodlID.type = 'hidden';
