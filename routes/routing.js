@@ -136,8 +136,15 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
 router.post("/gallery", checkAuthenticated, async (req, res) => {
   const likeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.doodlID, type: req.body.likeType});
   if(likeFound){ 
-    req.flash("error", "You have already given your opinion on that doodl");
-    res.redirect("/gallery");
+    try {
+      var conditions = {username: req.user.name, doodlID: req.body.doodlID, type: req.body.likeType};
+      await Like.deleteOne(conditions);
+      res.redirect("/gallery");
+    } catch (error) {
+      console.log(error)
+      req.flash("error", "Sorry, we can't update your opinion on that doodl right now");
+      res.redirect("/gallery");
+    }
   }else{  
     const differentLikeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.doodlID});  
     if(differentLikeFound){
