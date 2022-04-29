@@ -144,6 +144,8 @@ router.post("/like", checkAuthenticated, async (req, res) => {
         var conditions = {username: req.user.name, doodlID: req.body.likeDoodlID};
         var update = {type : "Like"};
         await Like.updateOne(conditions, update);
+        res.redirect("/gallery");
+
       } catch (error) {
         console.log(error)
         req.flash("error", "Sorry, we can't update your opinion on that doodl right now");
@@ -167,33 +169,26 @@ router.post("/like", checkAuthenticated, async (req, res) => {
 });
 
 router.post("/dislike", checkAuthenticated, async (req, res) => {
-  console.log(req.body);
-  console.log("1");
   const likeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.dislikeDoodlID, type: req.body.dislikeType});
   if(likeFound){ 
-    console.log("2");
     req.flash("error", "You have already given your opinion on that doodl");
     res.redirect("/gallery");
   }else{  
-    console.log("3");
     const differentLikeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.dislikeDoodlID});  
-    console.log("4");
     if(differentLikeFound){
-      console.log("5");
       try {
-        console.log("6");
         var conditions = {username: req.user.name, doodlID: req.body.dislikeDoodlID};
         var update = {type : "Dislike"};
         await Like.updateOne(conditions, update);
+        res.redirect("/gallery");
+
       } catch (error) {
-        console.log("7");
         console.log(error)
         req.flash("error", "Sorry, we can't update your opinion on that doodl right now");
         res.redirect("/gallery");
       }
     }else{  
       try {
-        console.log("8");
         const like = new Like({
           id: (await Like.find().count()) + 1,
           username: req.user.name,
@@ -203,7 +198,6 @@ router.post("/dislike", checkAuthenticated, async (req, res) => {
         await like.save();
         res.redirect("/gallery");
       } catch (error) {
-        console.log("9");
         console.log(error);
       }
     }
