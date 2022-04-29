@@ -326,23 +326,28 @@ function selectBackground()
     let settingsSelect = document.getElementById('selecterBackground');
     let bkgCol = "#f67570";
     let btnCol = "#1565c0";
+    let txtCol = "#ededed";
     switch(settingsSelect.selectedIndex)
     {
         case 0:
             bkgCol = "#f67570";
             btnCol = "#1565c0";
+            txtCol = "#ededed";
             break;
         case 1:
             bkgCol = "#292323";
             btnCol = "#ededed";
+            txtCol = "#ededed";
             break;
         case 2:
             bkgCol = "#ededed";
             btnCol = "#292323";
+            txtCol = "#292323";
             break;
         case 3:
             bkgCol = "#1565c0";
             btnCol = "#f67570";
+            txtCol = "#ededed";
             break;
     }
     document.body.style.backgroundColor = bkgCol;
