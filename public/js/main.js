@@ -335,14 +335,14 @@ function selectBackground()
             txtCol = "#ededed";
             break;
         case 1:
-            bkgCol = "#292323";
+            bkgCol = "#171717";
             btnCol = "#ededed";
             txtCol = "#ededed";
             break;
         case 2:
             bkgCol = "#ededed";
-            btnCol = "#292323";
-            txtCol = "#292323";
+            btnCol = "#171717";
+            txtCol = "#171717";
             break;
         case 3:
             bkgCol = "#1565c0";
