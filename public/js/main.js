@@ -341,6 +341,13 @@ function selectBackground()
             break;
     }
     document.body.style.backgroundColor = bkgCol;
+    document.getElementById('generalTools').style.backgroundColor = bkgCol;
+    toolbar.style.backgroundColor = bkgCol;
+    tools = document.getElementsByClassName("toolbarIcon");
+    for (var i = 0; i < tools.length; i++)
+    {
+        tools[i].style.backgroundColor = bkgCol;
+    }
 }
 
 canvas.addEventListener('mousedown', (e) => {
