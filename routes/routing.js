@@ -43,10 +43,13 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
   var doodlsData;
 
   for(var i = 0; i < doodls.length; i++){
+      var reports = await Report.find({doodlID : doodls[i].id}).count();
       var likes = await Like.find({doodlID : doodls[i].id, type : "Like"}).count();
       var dislikes = await Like.find({doodlID : doodls[i].id, type : "Dislike"}).count();
       //var total = likes - dislikes;
-      doodlsData = doodlsData + "||" + doodls[i].username + "|" + doodls[i].doodl + "|" + likes + "|" + dislikes + "|" + doodls[i].id
+      if(reports < 1) {
+        doodlsData = doodlsData + "||" + doodls[i].username + "|" + doodls[i].doodl + "|" + likes + "|" + dislikes + "|" + doodls[i].id;
+      };
   };
 
   var currentPrompt = global.currentPrompt;
