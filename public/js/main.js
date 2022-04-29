@@ -321,6 +321,28 @@ settingsSlider.oninput = function()
     }
 }
 
+function selectBackground()
+{
+    let settingsSelect = document.getElementById('selectBackground');
+    let bkgCol = "f67570";
+    switch(settingsSelect.selectedIndex)
+    {
+        case 0:
+            bkgCol = "#f67570";
+            break;
+        case 1:
+            bkgCol = "#292323";
+            break;
+        case 2:
+            bkgCol = "#ededed";
+            break;
+        case 3:
+            bkgCol = "#1565c0";
+            break;
+    }
+    document.body.style.backgroundColor = bkgCol;
+}
+
 canvas.addEventListener('mousedown', (e) => {
     if (!blocked()) {
         isPainting = true;
