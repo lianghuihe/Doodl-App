@@ -127,7 +127,7 @@ router.post("/doodlPage", checkAuthenticated, async (req, res) => {
     var randNum =  Math.floor(Math.random() * 99999999999999) + 1;
     var found = await Doodl.find({id: randNum});
 
-    while(found != undefined){
+    while(found !== undefined){
       randNum =  Math.floor(Math.random() * 99999999999999) + 1;
       found = await Doodl.find({id: randNum});
     }
@@ -178,7 +178,7 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
         var randNum =  Math.floor(Math.random() * 99999999999999) + 1;
         var found = await Like.find({id: randNum});
 
-        while(found != undefined){
+        while(found !== undefined){
           randNum =  Math.floor(Math.random() * 99999999999999) + 1;
           found = await Like.find({id: randNum});
         }
@@ -210,7 +210,7 @@ router.post("/submitReport", checkAuthenticated, async (req, res) => {
       var randNum =  Math.floor(Math.random() * 99999999999999) + 1;
       var found = await Report.find({id: randNum});
 
-      while(found != undefined){
+      while(found !== undefined){
         randNum =  Math.floor(Math.random() * 99999999999999) + 1;
         found = await Report.find({id: randNum});
       }
