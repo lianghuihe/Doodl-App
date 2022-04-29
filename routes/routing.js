@@ -166,5 +166,39 @@ router.post("/like", checkAuthenticated, async (req, res) => {
   }
 });
 
+router.post("/dislike", checkAuthenticated, async (req, res) => {
+  const likeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.likeDoodlID, type: req.body.likeType});
+  if(likeFound){ 
+    req.flash("error", "You have already given your opinion on that doodl");
+    res.redirect("/gallery");
+  }else{  
+    const differentLikeFound = await Like.findOne({ username: req.user.name, doodlID: req.body.likeDoodlID});  
+    if(differentLikeFound){
+      try {
+        var conditions = {username: req.user.name, doodlID: req.body.likeDoodlID};
+        var update = {type : "Dislike"};
+        await Like.updateOne(conditions, update);
+      } catch (error) {
+        console.log(error)
+        req.flash("error", "Sorry, we can't update your opinion on that doodl right now");
+        res.redirect("/gallery");
+      }
+    }else{  
+      try {
+        const like = new Like({
+          id: (await Like.find().count()) + 1,
+          username: req.user.name,
+          doodlID: req.body.likeDoodlID,
+          type: "Dislike",
+        });
+        await like.save();
+        res.redirect("/gallery");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+});
+
 
 module.exports = router;
