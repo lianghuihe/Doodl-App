@@ -124,9 +124,15 @@ router.post("/login", checkNotAuthenticated,
 router.post("/doodlPage", checkAuthenticated, async (req, res) => {
   try {
     var todayDate = new Date().toISOString().slice(0, 10);
+    var randNum =  Math.floor(Math.random() * 99999999999999) + 1;
+    var found = await Doodl.find({id: randNum});
 
+    while(found){
+      randNum =  Math.floor(Math.random() * 99999999999999) + 1;
+      found = await Doodl.find({id: randNum});
+    }
     const doodl = new Doodl({
-      id: (await Doodl.find().count()) + 1,
+      id: randNum,
       username: req.user.name,
       doodl: req.body.hiddenCanvasValue,
       prompt: global.currentPrompt,
@@ -169,8 +175,15 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
       }
     }else{  
       try {
+        var randNum =  Math.floor(Math.random() * 99999999999999) + 1;
+        var found = await Like.find({id: randNum});
+
+        while(found){
+          randNum =  Math.floor(Math.random() * 99999999999999) + 1;
+          found = await Like.find({id: randNum});
+        }
         const like = new Like({
-          id: (await Like.find().count()) + 1,
+          id: randNum,
           username: req.user.name,
           doodlID: req.body.doodlID,
           type: req.body.likeType,
@@ -194,8 +207,15 @@ router.post("/submitReport", checkAuthenticated, async (req, res) => {
     res.redirect("/gallery");
   }else{  
     try {
+      var randNum =  Math.floor(Math.random() * 99999999999999) + 1;
+      var found = await Report.find({id: randNum});
+
+      while(found){
+        randNum =  Math.floor(Math.random() * 99999999999999) + 1;
+        found = await Report.find({id: randNum});
+      }
       const report = new Report({
-        id: (await Report.find().count()) + 1,
+        id: randNum,
         username: req.user.name,
         doodlID: req.body.doodlID,
         desc: req.body.report,
