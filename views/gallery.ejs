@@ -16,6 +16,18 @@
             document.getElementById("doodlData").value = '<%- doodlData %>';
         </script>  
         <script src="/js/gallery.js"></script>
+        <div id="generalTools" style="margin-right: 0; margin-left: auto;">
+            <form action="/logout" method="get">
+                <button type="submit" id="logoutButton" title="Logout" >
+                    <img src="/images/logout.png" height="50px" width="50px">
+                </button>
+            </form>
+            <form action="/account" method="get">
+                <button type="submit" id="accountButton" title="Account" >
+                    <img src="/images/account.png" height="50px" width="50px">
+                </button>
+            </form>
+        </div>
     </body>
     <body style="background-color: #f67570;"></body>
 </html>
