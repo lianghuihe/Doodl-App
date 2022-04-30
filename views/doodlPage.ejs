@@ -32,22 +32,22 @@
             </form>
             <div id="generalTools" style="margin-right: 0; margin-left: auto;">
                 <form action="/logout" method="get">
-                    <button type="submit" id="logoutButton" >
+                    <button type="submit" id="logoutButton" title="Logout" >
                         <img src="/images/logout.png" height="50px" width="50px">
                     </button>
                 </form>
                 <form action="/account" method="get">
-                    <button type="submit" id="accountButton" >
+                    <button type="submit" id="accountButton" title="Account" >
                         <img src="/images/account.png" height="50px" width="50px">
                     </button>
                 </form>
                 <form>
-                    <button type="button" id="settingsButton" onclick="openSettings()">
+                    <button type="button" id="settingsButton" onclick="openSettings()" title="Settings">
                         <img src="/images/settings.png" height="50px" width="50px">
                     </button>
                 </form>
                 <form action="/gallery" method="get">
-                    <button type="submit" id="exitButton" >
+                    <button type="submit" id="exitButton" title="Gallery" >
                         <img src="/images/gallery.png" height="50px" width="50px">
                     </button>
                 </form>
@@ -61,12 +61,14 @@
                                 X
                             </p>
                         </div>
+                        <!--
                         <div>
                             <label class="switch">
                                 <input type="checkbox" id="checked" onclick="checked()">
                                 <span class="slider round"></span>
                             </label>
                         </div>
+                        -->
                         <div id="settingsSliderContainer">
                             <input type="range" min="1" max="100" value="50" class="settingsSlider" id="sizeSlider">
                         </div>
