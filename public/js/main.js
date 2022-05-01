@@ -7,7 +7,7 @@ const canvasOffsetX = canvas.offsetLeft;
 const canvasOffsetY = canvas.offsetTop;
 
 const settingsSlider = document.getElementById("sizeSlider");
-
+const lineSlider = document.getElementById("lineSlider");
 
 //import { v4 as uuidv4 } from 'uuid';
 
@@ -137,6 +137,7 @@ toolbar.addEventListener('change', e => {
 
     if(e.target.id === 'lineWidth') {
         lineWidth = e.target.value;
+        lineSlider.value = lineWidth;
     }
     
 });
@@ -321,6 +322,12 @@ settingsSlider.oninput = function()
     }
 }
 
+lineSlider.oninput = function()
+{
+    lineWidth = lineSlider.value;
+    document.getElementById('lineWidth').value = lineWidth;
+}
+
 function selectBackground()
 {
     let settingsSelect = document.getElementById('selecterBackground');
@@ -362,6 +369,7 @@ function selectBackground()
     for (var i = 0; i < toolText.length; i++)
     {
         toolText[i].style.color  = txtCol;
+        toolText[i].style.backgroundColor = bkgCol;
     }
 }
 
