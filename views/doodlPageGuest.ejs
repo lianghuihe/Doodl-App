@@ -32,11 +32,11 @@
             </form>
             <div id="generalTools" style="margin-right: 0; margin-left: auto;">
                 <form>
-                    <button type="button" id="settingsButton" onclick="openSettings()" title="Settings" >
+                    <button type="button" id="settingsButton" onclick="openSettings()" title="Settings">
                         <img src="/images/settings.png" height="50px" width="50px">
                     </button>
                 </form>
-                <form action="/gallery" method="get">
+                <form action="/galleryGuest" method="get">
                     <button type="submit" id="exitButton" title="Gallery" >
                         <img src="/images/gallery.png" height="50px" width="50px">
                     </button>
@@ -51,33 +51,31 @@
                                 X
                             </p>
                         </div>
-                        <!--
-                        <div>
-                            <label class="switch">
-                                <input type="checkbox" id="checked" onclick="checked()">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        -->
                         <div id="settingsSliderContainer">
                             <input type="range" min="1" max="100" value="50" class="settingsSlider" id="sizeSlider">
                         </div>
+                        <select onchange="selectBackground()" id="selecterBackground">
+                            <option value="orange">Orange</option>
+                            <option value="black">Black</option>
+                            <option value="white">White</option>
+                            <option value="misc">Misc</option>
+                        </select>
                     </div>
                 </div>
+                <script type="text/javascript">
+                    var settingsDiv = document.getElementById("settingsBG");
+                    function openSettings(){
+                        settingsDiv.style.display = "block";
+                    }
+                    function closeSettings(){
+                        settingsDiv.style.display = "none";
+                    }
+                    function checked(){
+                        settingsDiv.style.display = "none";
+                    }
+                </script>
             </div>
         </form>
-        <script type="text/javascript">
-            var settingsDiv = document.getElementById("settingsBG");
-            function openSettings(){
-                settingsDiv.style.display = "block";
-            }
-            function closeSettings(){
-                settingsDiv.style.display = "none";
-            }
-            function checked(){
-                settingsDiv.style.display = "none";
-            }
-        </script>
         <script src="/js/mainGuest.js"></script>
     </body>
 </html>
