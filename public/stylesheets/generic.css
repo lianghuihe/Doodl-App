@@ -86,3 +86,174 @@
             text-align: center;
             vertical-align: top;
         }
+
+        #toolbar {
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            width: 70px;
+            background-color: #f67570;
+          }
+          
+          #toolbar * {
+            margin-bottom: 6px;
+          }
+          
+          #toolbar label {
+            font-size: 12px;
+          }
+          
+          #toolbar DevLabel {
+            font-size: 10px;
+            background-color: #f67570;
+            color:white;
+          }
+          
+          #toolbar input {
+            width: 100%;
+          }
+          
+          #toolbar button {
+            background-color: #1565c0;
+            border: none;
+            border-radius: 4px;
+            color:white;
+            padding: 2px;
+          }
+          
+          #settingsBG{
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background-color: rgba(0,0,0,0.7);
+            width: 100%;
+            height: 100%;
+            display: none;
+          }
+          
+          #settingsMain{
+            position: fixed;
+            padding: 5px;
+            width: 600px;
+            height: 360px;
+            border: 2px solid black;
+            border-radius: 5px;
+            background-color: white;
+            left: calc(100%/3);
+            top: calc(100%/3);
+          }
+          
+          #closeSettings{
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 25px;
+            border: 2px solid black;
+            text-align: center;
+            right: 5px;
+            top: 5px;
+            cursor: pointer;
+          }
+          
+          #closeSettings p{
+            margin-top: 5px;
+            font-family: sans-serif;
+            font-weight: bold;
+          }
+          
+          #settingsTitle{
+            text-align: center;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 30px;
+            background-color: lightsteelblue;
+            padding-top: 10px;
+            padding-top: 10px;
+            margin-top: 0px;
+            border-bottom: 2px solid black;
+          }
+          
+          #settingsButton{
+            background-color: #f67570;
+            border: 0px;
+            cursor: pointer;
+          }
+          
+          #exitButton{
+            background-color: #f67570;
+            border: 0px;
+            cursor: pointer;
+          }
+          
+          #accountButton{
+            background-color: #f67570;
+            border: 0px;
+            cursor: pointer;
+          }
+          
+          #logoutButton{
+            background-color: #f67570;
+            border: 0px;
+            cursor: pointer;
+          }
+          .settingsSliderContainer {
+            width: 50%;
+          }
+          
+          .settingsSlider {
+            -webkit-appearance: none;  /* Override default CSS styles */
+            appearance: none;
+            top: 200px;
+            width: 50%; /* Full-width */
+            height: 10px; /* Specified height */
+            background: #d3d3d3; /* Grey background */
+            outline: none; /* Remove outline */
+            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+          }
+          
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+          }
+          
+          .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+          }
+          
+          input:checked + .slider {
+            background-color: blue;
+          }
+          
+          input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+          }
+          
+          input:checked + .slider:before {
+            transform: translateX(26px);
+          }
+          
+          /* Rounded sliders */
+          .slider.round {
+            border-radius: 34px;
+          }
+          
+          .slider.round:before {
+            border-radius: 50%;
+          }

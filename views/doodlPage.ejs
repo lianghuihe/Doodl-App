@@ -80,20 +80,20 @@
                         </select>
                     </div>
                 </div>
+                <script type="text/javascript">
+                    var settingsDiv = document.getElementById("settingsBG");
+                    function openSettings(){
+                        settingsDiv.style.display = "block";
+                    }
+                    function closeSettings(){
+                        settingsDiv.style.display = "none";
+                    }
+                    function checked(){
+                        settingsDiv.style.display = "none";
+                    }
+                </script>
             </div>
         </form>
-        <script type="text/javascript">
-            var settingsDiv = document.getElementById("settingsBG");
-            function openSettings(){
-                settingsDiv.style.display = "block";
-            }
-            function closeSettings(){
-                settingsDiv.style.display = "none";
-            }
-            function checked(){
-                settingsDiv.style.display = "none";
-            }
-        </script>
         <script src="/js/main.js"></script>
     </body>
 </html>
