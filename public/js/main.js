@@ -334,7 +334,7 @@ function selectBackground()
 {
     let settingsSelect = document.getElementById('selecterBackground');
     bkgCol = "#f67570";
-    let btnCol = "#1565c0";
+    btnCol = "#1565c0";
     let txtCol = "#ededed";
     switch(settingsSelect.selectedIndex)
     {
