@@ -359,7 +359,7 @@ function selectBackground()
     }
     document.body.style.backgroundColor = bkgCol;
     document.getElementById('generalTools').style.backgroundColor = bkgCol;
-    let genTools = document.getElementById('generalTools').children;
+    let genTools = document.getElementsByClassName("generalIcons");
     toolbar.style.backgroundColor = bkgCol;
     //tools = document.getElementsByClassName("toolbarIcon");
     for (var i = 0; i < tools.length; i++)
