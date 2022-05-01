@@ -111,6 +111,30 @@ canvas{
   cursor: pointer;
 }
 
+#settingsToolText{
+  text-align: left;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: lightsteelblue;
+  padding-top: 10px;
+  padding-top: 10px;
+  margin-top: 0px;
+  border-bottom: 2px solid black;
+}
+
+#settingsBkgText{
+  text-align: left;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: lightsteelblue;
+  padding-top: 10px;
+  padding-top: 10px;
+  margin-top: 0px;
+  border-bottom: 2px solid black;
+}
+
 #exitButton{
   background-color: #f67570;
   border: 0px;
