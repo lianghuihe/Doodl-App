@@ -215,6 +215,8 @@ function selectBackground()
             break;
     }
     document.body.style.backgroundColor = bkgCol;
+    document.body.style.color = txtCol;
+    /*
     document.getElementById('generalTools').style.backgroundColor = bkgCol;
     let genTools = document.getElementsByClassName("generalIcons");
     toolbar.style.backgroundColor = bkgCol;
@@ -234,4 +236,5 @@ function selectBackground()
     {
         genTools[i].style.backgroundColor = bkgCol;
     }
+    */
 }
