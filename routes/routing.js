@@ -46,7 +46,24 @@ router.get('/gallery', checkAuthenticated, async function(req, res, next) {
       var reports = await Report.find({doodlID : doodls[i].id}).count();
       var likes = await Like.find({doodlID : doodls[i].id, type : "Like"}).count();
       var dislikes = await Like.find({doodlID : doodls[i].id, type : "Dislike"}).count();
-      //var total = likes - dislikes;
+      if(reports < 1) {
+        doodlsData = doodlsData + "||" + doodls[i].username + "|" + doodls[i].doodl + "|" + likes + "|" + dislikes + "|" + doodls[i].id;
+      };
+  };
+
+  var currentPrompt = global.currentPrompt;
+  res.render('gallery.ejs', {currentPrompt : currentPrompt, doodlData : doodlsData});
+});
+
+router.get('/galleryGuest', checkNotAuthenticated, async function(req, res, next) {
+  const todaysDate = new Date().toISOString().slice(0, 10)
+  var doodls = await Doodl.find({date : todaysDate})
+  var doodlsData;
+
+  for(var i = 0; i < doodls.length; i++){
+      var reports = await Report.find({doodlID : doodls[i].id}).count();
+      var likes = await Like.find({doodlID : doodls[i].id, type : "Like"}).count();
+      var dislikes = await Like.find({doodlID : doodls[i].id, type : "Dislike"}).count();
       if(reports < 1) {
         doodlsData = doodlsData + "||" + doodls[i].username + "|" + doodls[i].doodl + "|" + likes + "|" + dislikes + "|" + doodls[i].id;
       };
