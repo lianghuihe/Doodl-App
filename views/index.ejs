@@ -89,12 +89,13 @@
                     }
                     document.body.style.backgroundColor = bkgCol;
                     document.body.style.color = txtCol;
+                    
                     let indexButtons = document.getElementsByClassName('button');
 
                     for(var i = 0; i < indexButtons.length; i++)
                     {
-                        indexButtons[i].backgroundColor = btnCol;
-                        indexButtons[i].color = txtCol;
+                        indexButtons[i].style.backgroundColor = btnCol;
+                        indexButtons[i].style.color = txtCol;
                     }
                 }
             </script>
