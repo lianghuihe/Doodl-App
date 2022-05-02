@@ -8,6 +8,8 @@ userInput.addEventListener('click', e => {
             let confirmPasswd = (document.getElementById('ConfirmPassword')).value;
             if (passwd === confirmPasswd){
                 registerUser();
+            }else{
+                alert("Passowrds must match!");
             }
         }else{
             alert("Please accept the privacy policy before creating an account!");
