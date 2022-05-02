@@ -8,6 +8,7 @@ window.onload=(function(){
     var table = document.createElement('table');
     table.style.width = "70%";
     table.style.alignSelf = "center";
+    table.setAttribute('id', 'accountTable');
 
     var tableHeadingRow = document.createElement('tr');
     var tableHeadingDate = document.createElement('th');
@@ -90,7 +91,7 @@ function selectBackground()
         case 0:
             bkgCol = "#f67570";
             btnCol = "#1565c0";
-            txtCol = "#ededed";
+            txtCol = "#171717";
             break;
         case 1:
             bkgCol = "#171717";
@@ -118,8 +119,8 @@ function selectBackground()
     }
 
     //setting colour of all table elements:
-    let t = document.getElementsByTagName('table');
-    let rows = t[0].rows;
+    let t = document.getElementById('accountTable');
+    let rows = t.rows;
     for(var i = 0; i < rows.length; i++)
     {
         let cells  = rows[i].cells;
