@@ -78,3 +78,48 @@ window.onload=(function(){
 
     document.body.appendChild(table);
 });
+
+function selectBackground()
+{
+    let settingsSelect = document.getElementById('selecterBackground');
+    bkgCol = "#f67570";
+    btnCol = "#1565c0";
+    let txtCol = "#ededed";
+    switch(settingsSelect.selectedIndex)
+    {
+        case 0:
+            bkgCol = "#f67570";
+            btnCol = "#1565c0";
+            txtCol = "#ededed";
+            break;
+        case 1:
+            bkgCol = "#171717";
+            btnCol = "#ededed";
+            txtCol = "#ededed";
+            break;
+        case 2:
+            bkgCol = "#ededed";
+            btnCol = "#171717";
+            txtCol = "#171717";
+            break;
+        case 3:
+            bkgCol = "#1565c0";
+            btnCol = "#f67570";
+            txtCol = "#ededed";
+            break;
+    }
+    document.body.style.backgroundColor = bkgCol;
+
+    //setting colour of all table elements:
+    let t = document.getElementsByTagName('table');
+    let rows = t.rows;
+    for(var i = 0; i < rows.length; i++)
+    {
+        let cells  = rows[i].cells;
+        for(var l = 0; l < cells.length; l++)
+        {
+            cells[i].style.backgroundColor = bkgCol;
+            cells[i].style.color = txtCol;
+        }
+    }
+}
