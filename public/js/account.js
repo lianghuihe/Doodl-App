@@ -118,8 +118,8 @@ function selectBackground()
         let cells  = rows[i].cells;
         for(var l = 0; l < cells.length; l++)
         {
-            cells[i].style.backgroundColor = bkgCol;
-            cells[i].style.color = txtCol;
+            cells[l].style.backgroundColor = bkgCol;
+            cells[l].style.color = txtCol;
         }
     }
 }
