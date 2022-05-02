@@ -89,17 +89,11 @@ router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
 });
 
 router.get('/report', checkAuthenticated, function(req, res, next) {
-  console.log("Main alert!!! " + req.body)
   res.render('report.ejs', {doodlID: req.body.reportDoodlID});
 });
 
 router.post('/report', checkAuthenticated, function(req, res, next) {
-  console.log("Main alert!!! " + req.body)
   res.render('report.ejs', {doodlID: req.body.reportDoodlID});
-});
-
-router.get('/voting', checkAuthenticated, function(req, res, next) {
-  res.render('voting.ejs');
 });
 
 router.post("/register", checkNotAuthenticated, async (req, res) => {
@@ -216,8 +210,8 @@ router.post("/gallery", checkAuthenticated, async (req, res) => {
 });
 
 router.post("/submitReport", checkAuthenticated, async (req, res) => {
-  const likeFound = await Report.findOne({ username: req.user.name, doodlID: req.body.doodlID});
-  if(likeFound){ 
+  const reportFound = await Report.findOne({ username: req.user.name, doodlID: req.body.doodlID});
+  if(reportFound){ 
     req.flash("error", "You have already reported that doodl");
     res.redirect("/gallery");
   }else{  
