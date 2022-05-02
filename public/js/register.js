@@ -5,7 +5,7 @@ userInput.addEventListener('click', e => {
     if (e.target.id === 'register') {
         if ((document.getElementById('privacy')).checked == true) {
             let passwd = (document.getElementById('password')).value;
-            let confirmPasswd = (document.getElementById('ConfirmPassword')).value;
+            let confirmPasswd = (document.getElementById('confirmPassword')).value;
             if (passwd === confirmPasswd){
                 registerUser();
             }else{
