@@ -22,12 +22,17 @@
             <input type="name" id="name" name="name" placeholder="Username" size="25" /><br><br>
             <input type="email" id="email" name="email" placeholder="johndoe@gmail.com" size="25" /><br><br>
             <input type="password" id="password" name="password" placeholder="password" size="25" pattern=".{3,}" title="Password must be at least 3 or more characters"/><br><br>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="password" size="25" pattern=".{3,}" title="Password must be at least 3 or more characters"/><br><br>
+            <div>
+                <label for="privacy">By pressing register you confirm you agree with our  </label>
+                <a target="_blank" href = "/gdprPage" >Privacy Policy</a>
+            </div>
+            <!--
             <div>
                 <input type="checkbox" id="privacy" name="privacy">
                 <label for="privacy">I have read and accept the </label>
                 <a target="_blank" href = "/gdprPage" >Privacy policy</a>
             </div> 
+            -->
             <button id="register" class="button">Register</button>
             <script src="/js/register.js"></script>
         </form>
