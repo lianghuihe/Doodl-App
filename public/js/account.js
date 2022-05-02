@@ -110,9 +110,16 @@ function selectBackground()
     }
     document.body.style.backgroundColor = bkgCol;
 
+    document.getElementById('generalTools').style.backgroundColor = bkgCol;
+    let genTools = document.getElementsByClassName("generalIcons");
+    for(var i = 0; i < genTools.length; i++)
+    {
+        genTools[i].style.backgroundColor = bkgCol;
+    }
+
     //setting colour of all table elements:
     let t = document.getElementsByTagName('table');
-    let rows = t.rows;
+    let rows = t[0].rows;
     for(var i = 0; i < rows.length; i++)
     {
         let cells  = rows[i].cells;
