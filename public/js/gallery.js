@@ -48,6 +48,9 @@ window.onload=(function(){
     border.appendChild(bordercontents);
     table.appendChild(border);
 
+    var bkgCol = "#f67570";
+    var btnCol = "#1565c0";
+
     for (var i = 1; i < doodlArray.length; i++){
 
         var reportForm = document.createElement('form');
@@ -181,3 +184,54 @@ window.onload=(function(){
 
     document.body.appendChild(table);
 });
+
+function selectBackground()
+{
+    let settingsSelect = document.getElementById('selecterBackground');
+    bkgCol = "#f67570";
+    btnCol = "#1565c0";
+    let txtCol = "#ededed";
+    switch(settingsSelect.selectedIndex)
+    {
+        case 0:
+            bkgCol = "#f67570";
+            btnCol = "#1565c0";
+            txtCol = "#ededed";
+            break;
+        case 1:
+            bkgCol = "#171717";
+            btnCol = "#ededed";
+            txtCol = "#ededed";
+            break;
+        case 2:
+            bkgCol = "#ededed";
+            btnCol = "#171717";
+            txtCol = "#171717";
+            break;
+        case 3:
+            bkgCol = "#1565c0";
+            btnCol = "#f67570";
+            txtCol = "#ededed";
+            break;
+    }
+    document.body.style.backgroundColor = bkgCol;
+    document.getElementById('generalTools').style.backgroundColor = bkgCol;
+    let genTools = document.getElementsByClassName("generalIcons");
+    toolbar.style.backgroundColor = bkgCol;
+    //tools = document.getElementsByClassName("toolbarIcon");
+    for (var i = 0; i < tools.length; i++)
+    {
+        tools[i].style.backgroundColor = btnCol;
+    }
+
+    for (var i = 0; i < toolText.length; i++)
+    {
+        toolText[i].style.color  = txtCol;
+        toolText[i].style.backgroundColor = bkgCol;
+    }
+
+    for(var i = 0; i < genTools.length; i++)
+    {
+        genTools[i].style.backgroundColor = bkgCol;
+    }
+}
