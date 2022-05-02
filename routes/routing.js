@@ -84,7 +84,7 @@ router.get('/account', checkAuthenticated, async function(req, res, next) {
   res.render('account.ejs', {name : req.user.name, doodlData : doodlsData});
 });
 
-router.get('/gdprPage', checkAuthenticated, function(req, res, next) {
+router.get('/gdprPage', function(req, res, next) {
   res.render('gdprPage.ejs');
 });
 
