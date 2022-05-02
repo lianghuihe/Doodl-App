@@ -57,6 +57,47 @@
                     settingsDiv.style.display = "none";
                 }
             </script>
+            <script type="text/javascript">
+                function selectBackground()
+                {
+                    let settingsSelect = document.getElementById('selecterBackground');
+                    var bkgCol = "#f67570";
+                    var btnCol = "#1565c0";
+                    let txtCol = "#ededed";
+                    switch(settingsSelect.selectedIndex)
+                    {
+                        case 0:
+                            bkgCol = "#f67570";
+                            btnCol = "#1565c0";
+                            txtCol = "#ededed";
+                            break;
+                        case 1:
+                            bkgCol = "#171717";
+                            btnCol = "#ededed";
+                            txtCol = "#ededed";
+                            break;
+                        case 2:
+                            bkgCol = "#ededed";
+                            btnCol = "#171717";
+                            txtCol = "#171717";
+                            break;
+                        case 3:
+                            bkgCol = "#1565c0";
+                            btnCol = "#f67570";
+                            txtCol = "#ededed";
+                            break;
+                    }
+                    document.body.style.backgroundColor = bkgCol;
+                    document.body.style.color = txtCol;
+                    let indexButtons = document.getElementsByClassName('indexButtons');
+
+                    for(var i = 0; i < indexButtons.length; i++)
+                    {
+                        indexButtons[i].backgroundColor = btnCol;
+                        indexButtons[i].color = txtCol;
+                    }
+                }
+            </script>
         </div>
     </body>
     <body style="background-color: #f67570;"></body>
