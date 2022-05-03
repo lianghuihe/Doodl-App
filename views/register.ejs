@@ -23,7 +23,7 @@
             <input type="email" id="email" name="email" placeholder="johndoe@gmail.com" size="25" /><br><br>
             <input type="password" id="password" name="password" placeholder="password" size="25" pattern=".{3,}" title="Password must be at least 3 or more characters"/><br><br>
             <div>
-                <label for="privacy">By pressing register you confirm you agree with our  </label>
+                <label id="privacyLabel" for="privacy">By pressing register you confirm you agree with our  </label>
                 <a target="_blank" href = "/gdprPage" >Privacy Policy</a>
             </div>
             <!--
@@ -91,6 +91,8 @@
                     {
                         genTools[i].style.backgroundColor = bkgCol;
                     }
+
+                    document.getElementById('privacyLabel').style.color = txtCol;
                 }
             </script>
         </form>
