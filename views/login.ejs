@@ -29,6 +29,70 @@
             
         </div>
         <script src="/js/login.js"></script>
+        <script type="text/javascript">
+            try {
+                let bkgTemp = sessionStorage.getItem('backColorOption');
+                //console.log(bkgTemp);
+                document.getElementById('selecterBackground').selectedIndex = parseInt(bkgTemp);
+                selectBackground();
+            } catch (error) {
+                console.log(error);
+                //console.log("no bkgCol stored.");
+            }
+
+            function selectBackground()
+            {
+                let settingsSelect = document.getElementById('selecterBackground');
+                var bkgCol = "#f67570";
+                var btnCol = "#1565c0";
+                let txtCol = "#ededed";
+                switch(settingsSelect.selectedIndex)
+                {
+                    case 0:
+                        bkgCol = "#f67570";
+                        btnCol = "#1565c0";
+                        txtCol = "#ededed";
+                        break;
+                    case 1:
+                        bkgCol = "#171717";
+                        btnCol = "#ededed";
+                        txtCol = "#171717";
+                        break;
+                    case 2:
+                        bkgCol = "#ededed";
+                        btnCol = "#171717";
+                        txtCol = "#ededed";
+                        break;
+                    case 3:
+                        bkgCol = "#1565c0";
+                        btnCol = "#f67570";
+                        txtCol = "#ededed";
+                        break;
+                }
+                document.body.style.backgroundColor = bkgCol;
+                //document.body.style.color = txtCol;
+                
+                let indexButtons = document.getElementsByClassName('button');
+
+                for(var i = 0; i < indexButtons.length; i++)
+                {
+                    indexButtons[i].style.backgroundColor = btnCol;
+                    indexButtons[i].style.color = txtCol;
+                }
+
+                document.getElementById('generalTools').style.backgroundColor = bkgCol;
+                let genTools = document.getElementsByClassName("generalIcons");
+                for(var i = 0; i < genTools.length; i++)
+                {
+                    genTools[i].style.backgroundColor = bkgCol;
+                }
+
+                sessionStorage.setItem('backColorOption', settingsSelect.selectedIndex.toString());
+            }
+        </script>
     </body>
     <body style="background-color: #f67570;"></body>
+    <script type="text/javascript">
+        selectBackground();
+    </script>
 </html>
