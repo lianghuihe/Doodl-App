@@ -398,7 +398,7 @@ function selectBackground()
         genTools[i].style.backgroundColor = bkgCol;
     }
 
-    dailyWord.style.color = mainTxtCol;
+    document.getElementById('dailyWord').style.color = mainTxtCol;
 
     sessionStorage.setItem('backColorOption', settingsSelect.selectedIndex.toString());
 }
