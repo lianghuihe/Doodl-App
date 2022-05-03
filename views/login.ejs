@@ -33,7 +33,6 @@
             try {
                 let bkgTemp = sessionStorage.getItem('backColorOption');
                 //console.log(bkgTemp);
-                document.getElementById('selecterBackground').selectedIndex = parseInt(bkgTemp);
                 selectBackground();
             } catch (error) {
                 console.log(error);
@@ -42,11 +41,11 @@
 
             function selectBackground()
             {
-                let settingsSelect = document.getElementById('selecterBackground');
+                let settingsSelect = parseInt(sessionStorage.getItem('backColorOption'));
                 var bkgCol = "#f67570";
                 var btnCol = "#1565c0";
                 let txtCol = "#ededed";
-                switch(settingsSelect.selectedIndex)
+                switch(settingsSelect)
                 {
                     case 0:
                         bkgCol = "#f67570";
@@ -86,8 +85,6 @@
                 {
                     genTools[i].style.backgroundColor = bkgCol;
                 }
-
-                sessionStorage.setItem('backColorOption', settingsSelect.selectedIndex.toString());
             }
         </script>
     </body>
