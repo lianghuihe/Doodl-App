@@ -1,7 +1,7 @@
 require('dotenv').config({path: 'env/.env'});
 const csv = require('csv-parser')
 const fs = require('fs')
-var createError = require('http-errors');
+const createError = require('http-errors');
 const express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -82,7 +82,7 @@ app.use(function(err, req, res, next) {
 // catch 404 and forward to error handler
 
 app.use(function(req, res, next) {
-  next(createError(404));
+  next(createError("404"));
 });
 
 
