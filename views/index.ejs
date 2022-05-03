@@ -56,6 +56,16 @@
                 }
             </script>
             <script type="text/javascript">
+                try {
+                    let bkgTemp = sessionStorage.getItem('backColorOption');
+                    //console.log(bkgTemp);
+                    document.getElementById('selecterBackground').selectedIndex = parseInt(bkgTemp);
+                    selectBackground();
+                } catch (error) {
+                    console.log(error);
+                    //console.log("no bkgCol stored.");
+                }
+
                 function selectBackground()
                 {
                     let settingsSelect = document.getElementById('selecterBackground');
@@ -102,6 +112,8 @@
                     {
                         genTools[i].style.backgroundColor = bkgCol;
                     }
+
+                    sessionStorage.setItem('backColorOption', settingsSelect.selectedIndex.toString());
                 }
             </script>
         </div>

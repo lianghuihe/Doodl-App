@@ -47,12 +47,12 @@ for (var i = 0; i < toolText.length; i++)
 
 try {
     let bkgTemp = sessionStorage.getItem('backColorOption');
-    console.log(bkgTemp);
+    //console.log(bkgTemp);
     document.getElementById('selecterBackground').selectedIndex = parseInt(bkgTemp);
     selectBackground();
 } catch (error) {
     console.log(error);
-    console.log("no bkgCol stored.");
+    //console.log("no bkgCol stored.");
 }
 
 resetCanvas();

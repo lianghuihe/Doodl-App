@@ -186,6 +186,16 @@ window.onload=(function(){
     document.body.appendChild(table);
 });
 
+try {
+    let bkgTemp = sessionStorage.getItem('backColorOption');
+    //console.log(bkgTemp);
+    document.getElementById('selecterBackground').selectedIndex = parseInt(bkgTemp);
+    selectBackground();
+} catch (error) {
+    console.log(error);
+    //console.log("no bkgCol stored.");
+}
+
 function selectBackground()
 {
     let settingsSelect = document.getElementById('selecterBackground');
@@ -236,4 +246,6 @@ function selectBackground()
             cells[l].style.color = txtCol;
         }
     }
+
+    sessionStorage.setItem('backColorOption', settingsSelect.selectedIndex.toString());
 }
