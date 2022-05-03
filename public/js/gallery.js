@@ -186,7 +186,11 @@ window.onload=(function(){
     document.body.appendChild(table);
 });
 
-document.getElementById('selecterBackground').selectedIndex = 0;
+if(document.getElementById('selecterBackground').selectedIndex == null)
+{
+    console.log("selectedIndex was null... attempting to set.")
+    document.getElementById('selecterBackground').selectedIndex = 0;
+}
 try {
     let bkgTemp = sessionStorage.getItem('backColorOption');
     //console.log(bkgTemp);

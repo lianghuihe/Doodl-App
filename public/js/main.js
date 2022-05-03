@@ -46,6 +46,11 @@ for (var i = 0; i < toolText.length; i++)
 }
 
 //document.getElementById('selecterBackground').selectedIndex = 0;
+if(document.getElementById('selecterBackground').selectedIndex == null)
+{
+    document.getElementById('selecterBackground').selectedIndex = 0;
+}
+
 try {
     let bkgTemp = sessionStorage.getItem('backColorOption');
     //console.log(bkgTemp);
