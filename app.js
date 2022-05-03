@@ -81,11 +81,6 @@ app.use(function(err, req, res, next) {
 
 // catch 404 and forward to error handler
 
-app.use(function(req, res, next) {
-  next(createError("404"));
-});
-
-
 mongoose.Promise = global.Promise;
 mongoose.connect(uri, {
     useUnifiedTopology: true,
@@ -99,4 +94,8 @@ db.once("open", function(){
 });
 
 app.use('/', indexRouter);
+app.use(function(err, req, res, next) {
+  res.status(404);
+  next(createError("404"));
+});
 module.exports = app;
