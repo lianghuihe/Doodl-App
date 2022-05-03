@@ -8,6 +8,7 @@ window.onload=(function(){
     var table = document.createElement('table');
     table.style.width = "80%";
     table.style.alignSelf = "center";
+    table.setAttribute('id','galleryTable')
 
     var tableHeadingRow = document.createElement('tr');
     var tableHeadingName = document.createElement('th');
@@ -196,7 +197,7 @@ function selectBackground()
         case 0:
             bkgCol = "#f67570";
             btnCol = "#1565c0";
-            txtCol = "#ededed";
+            txtCol = "#171717";
             break;
         case 1:
             bkgCol = "#171717";
@@ -215,26 +216,24 @@ function selectBackground()
             break;
     }
     document.body.style.backgroundColor = bkgCol;
-    document.body.style.color = txtCol;
-    /*
+
     document.getElementById('generalTools').style.backgroundColor = bkgCol;
     let genTools = document.getElementsByClassName("generalIcons");
-    toolbar.style.backgroundColor = bkgCol;
-    //tools = document.getElementsByClassName("toolbarIcon");
-    for (var i = 0; i < tools.length; i++)
-    {
-        tools[i].style.backgroundColor = btnCol;
-    }
-
-    for (var i = 0; i < toolText.length; i++)
-    {
-        toolText[i].style.color  = txtCol;
-        toolText[i].style.backgroundColor = bkgCol;
-    }
-
     for(var i = 0; i < genTools.length; i++)
     {
         genTools[i].style.backgroundColor = bkgCol;
     }
-    */
+
+    //setting colour of all table elements:
+    let t = document.getElementById('galleryTable');
+    let rows = t.rows;
+    for(var i = 0; i < rows.length; i++)
+    {
+        let cells  = rows[i].cells;
+        for(var l = 0; l < cells.length; l++)
+        {
+            cells[l].style.backgroundColor = bkgCol;
+            cells[l].style.color = txtCol;
+        }
+    }
 }
