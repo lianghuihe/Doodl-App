@@ -94,8 +94,9 @@ db.once("open", function(){
 });
 
 app.use('/', indexRouter);
-app.use(function(err, req, res, next) {
-  res.status(404);
+
+app.use(function(req, res, next) {
+  //res.status(404);
   next(createError("404"));
 });
 module.exports = app;
