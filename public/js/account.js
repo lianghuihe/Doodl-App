@@ -81,7 +81,7 @@ window.onload=(function(){
 });
 
 let settingsSelect = document.getElementById('selecterBackground');
-if(settingsSelect)
+if(!settingsSelect)
 {
     console.log("settingsSelect was null...")
     //settingsSelect.selectedIndex = 0;
