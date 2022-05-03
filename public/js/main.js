@@ -35,7 +35,7 @@ var btnCol = "#1565c0";
 try {
     let bkgTemp = sessionStorage.getItem('backColorOption');
     console.log(bkgTemp);
-    document.getElementById('selecterBackground').value = parseInt(bkgTemp);
+    document.getElementById('selecterBackground').selectedIndex = parseInt(bkgTemp);
     selectBackground();
 } catch (error) {
     console.log(error);
