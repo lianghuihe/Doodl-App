@@ -16,6 +16,7 @@
                     <input id="stroke" name='stroke' type="color"></input>
                     <label for="lineWidth" class="toolbarText">Line Width</label>
                     <input id="lineWidth" name='lineWidth' type="number" value="5" min="1" max="100"></input>
+                    <input type="range" min="1" max="100" value="5" class="toolSlider" id="lineSlider">
                     <button type="button" id="fill" class="toolbarIcon" style="background: #1565c0 url(/images/fill.png);background-size: cover;" title="Fill"></button>
                     <button type="button" id="line" class="toolbarIcon" style="background: #1565c0 url(/images/line.png);background-size: cover;" title="Line"></button>
                     <button type="button" id="rectangle" class="toolbarIcon" style="background: #1565c0 url(/images/rectangle.png);background-size: cover;" title="Rectangle"></button>
@@ -32,12 +33,12 @@
             </form>
             <div id="generalTools" style="margin-right: 0; margin-left: auto;">
                 <form>
-                    <button type="button" id="settingsButton" onclick="openSettings()" title="Settings">
+                    <button type="button" id="settingsButton" onclick="openSettings()" class="generalIcons" title="Settings">
                         <img src="/images/settings.png" height="50px" width="50px">
                     </button>
                 </form>
                 <form action="/galleryGuest" method="get">
-                    <button type="submit" id="exitButton" title="Gallery" >
+                    <button type="submit" id="exitButton" class="generalIcons" title="Gallery" >
                         <img src="/images/gallery.png" height="50px" width="50px">
                     </button>
                 </form>

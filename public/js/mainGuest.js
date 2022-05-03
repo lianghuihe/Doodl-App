@@ -7,7 +7,7 @@ const canvasOffsetX = canvas.offsetLeft;
 const canvasOffsetY = canvas.offsetTop;
 
 const settingsSlider = document.getElementById("sizeSlider");
-
+const lineSlider = document.getElementById("lineSlider");
 
 //import { v4 as uuidv4 } from 'uuid';
 
@@ -28,6 +28,8 @@ var timeout_id;
 let dailyWord;
 var rect = canvas.getBoundingClientRect();
 let sliderValue = (sizeSlider.value);
+var bkgCol = "#f67570";
+var btnCol = "#1565c0";
 //let randomWord = ["race car","pirate ship","palm trees","tulips","pine cone","space ship","box of candy","sunflowers in a vase","koala bear","angry dog","candy corn","cupcake","sleepy tiger","pizza","disco ninja","girl with really long hair","cookies","sad lady","snake charmer","hula girl","ice cream cone","bottle of poison","flamingo","football","fried egg","red haired man","zombie","mummy","popcorn","vampire","man with a scar","a sword fighter","duck","easter eggs","flaming skull","dolphin","sunflowers in a vase","panda","cobra","happy pig","oreos and milk","monkey in a hat","bunny","gnome","fairy","evil queen","diamond ring","birthday present","hot air balloon","cake with candles","Godzilla","guy with long nails","rooster","dragon","shamrocks","castle","log cabin","igloo","octopus","bodybuilder","carousel horse","shooting star","toucan","flute","saxophone","violin","bird house","seal","Dachshund","football helmet","hockey stick","planets","Happy Clown","Scary Clown","train","dog in pants","mermaid","waffles","lady in an apron","bacon","cup of coffee","baseball player","ballerina","worm in an apple","kleenex","hamburger","girl with a cast","crying baby","angel","mean Santa","paintbrushes","police officer","red wagon","garbage can","dwarf","Zebra in colors","Gumball machine","Bush Baby","fowl","kangaroo","alligator","badger","stork","elephant","albatross","goose","drongo","boa","swan","opossum","wagtail","bear","wagtail","lion","phascogale","blackbuck","caribou","zebra","stilt","chickadee","caribou","caribou","boa","blesbok","fowl","butterfly","lizard","albatross","argalis","heron","chickadee","stilt","tapir","wagtail","spider","blackbuck","bettong","bettong","blackbuck","buffalo","swan","tapir","lion","boar","dolphin","pig","parrot","blesbok","antelope","buffalo","lynx","phascogale","caribou","otter","raven","porcupine","vulture","donkey","dog","starling","barbet","racer","swan","badger","elephant","cordon","bettong","opossum","shark","donkey","crocodile","guinea","eagle","raven","vulture","buffalo","bat","oryx","lizard","bettong","otter","oyster","cordon","deer","stork","crocodile","elephant","crake","cordon","albatross","porcupine","badger","skink","ant","otter","chickadee","kangaroo","dolphin" ];
 
 var tools = document.getElementsByClassName("toolbarIcon");
@@ -41,6 +43,22 @@ var toolText = document.getElementsByClassName("toolbarText");
 for (var i = 0; i < toolText.length; i++)
 {
     toolText[i].style.fontSize  = (12 * (1 + (sliderValue / 100))) + "px";
+}
+
+//document.getElementById('selecterBackground').selectedIndex = 0;
+if(document.getElementById('selecterBackground').selectedIndex == null)
+{
+    document.getElementById('selecterBackground').selectedIndex = 0;
+}
+
+try {
+    let bkgTemp = sessionStorage.getItem('backColorOption');
+    //console.log(bkgTemp);
+    document.getElementById('selecterBackground').selectedIndex = parseInt(bkgTemp);
+    selectBackground();
+} catch (error) {
+    console.log(error);
+    //console.log("no bkgCol stored.");
 }
 
 resetCanvas();
@@ -134,6 +152,7 @@ toolbar.addEventListener('change', e => {
 
     if(e.target.id === 'lineWidth') {
         lineWidth = e.target.value;
+        lineSlider.value = lineWidth;
     }
     
 });
@@ -316,6 +335,69 @@ settingsSlider.oninput = function()
     {
         toolText[i].style.fontSize  = (12 * toolSizeMult) + "px";
     }
+}
+
+lineSlider.oninput = function()
+{
+    lineWidth = lineSlider.value;
+    document.getElementById('lineWidth').value = lineWidth;
+}
+
+function selectBackground()
+{
+    let settingsSelect = document.getElementById('selecterBackground');
+    bkgCol = "#f67570";
+    btnCol = "#1565c0";
+    let txtCol = "#ededed";
+    let mainTxtCol = "#171717";
+    switch(settingsSelect.selectedIndex)
+    {
+        case 0:
+            bkgCol = "#f67570";
+            btnCol = "#1565c0";
+            txtCol = "#ededed";
+            break;
+        case 1:
+            bkgCol = "#171717";
+            btnCol = "#ededed";
+            txtCol = "#ededed";
+            mainTxtCol = "#ededed";
+            break;
+        case 2:
+            bkgCol = "#ededed";
+            btnCol = "#171717";
+            txtCol = "#171717";
+            break;
+        case 3:
+            bkgCol = "#1565c0";
+            btnCol = "#f67570";
+            txtCol = "#ededed";
+            break;
+    }
+    document.body.style.backgroundColor = bkgCol;
+    document.getElementById('generalTools').style.backgroundColor = bkgCol;
+    let genTools = document.getElementsByClassName("generalIcons");
+    toolbar.style.backgroundColor = bkgCol;
+    //tools = document.getElementsByClassName("toolbarIcon");
+    for (var i = 0; i < tools.length; i++)
+    {
+        tools[i].style.backgroundColor = btnCol;
+    }
+
+    for (var i = 0; i < toolText.length; i++)
+    {
+        toolText[i].style.color  = txtCol;
+        toolText[i].style.backgroundColor = bkgCol;
+    }
+
+    for(var i = 0; i < genTools.length; i++)
+    {
+        genTools[i].style.backgroundColor = bkgCol;
+    }
+
+    dailyWord.style.color = mainTxtCol;
+
+    sessionStorage.setItem('backColorOption', settingsSelect.selectedIndex.toString());
 }
 
 canvas.addEventListener('mousedown', (e) => {
