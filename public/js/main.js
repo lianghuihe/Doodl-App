@@ -390,7 +390,7 @@ function selectBackground()
         genTools[i].style.backgroundColor = bkgCol;
     }
 
-    sessionStorage.setItem('backColorOption', settingsSelect.value.toString());
+    sessionStorage.setItem('backColorOption', settingsSelect.selectedIndex.toString());
 }
 
 canvas.addEventListener('mousedown', (e) => {
