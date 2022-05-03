@@ -147,5 +147,7 @@ function selectBackground()
         }
     }
 
+    document.getElementById('accountHeader').style.color = txtCol;
+
     sessionStorage.setItem('backColorOption', settingsSelect.selectedIndex.toString());
 }

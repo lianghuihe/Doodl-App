@@ -253,5 +253,8 @@ function selectBackground()
         }
     }
 
+    document.getElementById('galleryHeader').style.color = txtCol;
+    document.getElementById('dailyWord').style.color = txtCol;
+
     sessionStorage.setItem('backColorOption', settingsSelect.selectedIndex.toString());
 }

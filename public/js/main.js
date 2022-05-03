@@ -352,6 +352,7 @@ function selectBackground()
     bkgCol = "#f67570";
     btnCol = "#1565c0";
     let txtCol = "#ededed";
+    let mainTxtCol = "#171717";
     switch(settingsSelect.selectedIndex)
     {
         case 0:
@@ -363,6 +364,7 @@ function selectBackground()
             bkgCol = "#171717";
             btnCol = "#ededed";
             txtCol = "#ededed";
+            mainTxtCol = "#ededed";
             break;
         case 2:
             bkgCol = "#ededed";
@@ -395,6 +397,8 @@ function selectBackground()
     {
         genTools[i].style.backgroundColor = bkgCol;
     }
+
+    dailyWord.style.color = mainTxtCol;
 
     sessionStorage.setItem('backColorOption', settingsSelect.selectedIndex.toString());
 }
