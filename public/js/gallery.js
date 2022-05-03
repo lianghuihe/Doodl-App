@@ -184,22 +184,23 @@ window.onload=(function(){
     }
 
     document.body.appendChild(table);
-});
 
-if(document.getElementById('selecterBackground').selectedIndex == null)
-{
-    console.log("selectedIndex was null... attempting to set.")
-    document.getElementById('selecterBackground').selectedIndex = 0;
-}
-try {
-    let bkgTemp = sessionStorage.getItem('backColorOption');
-    //console.log(bkgTemp);
-    document.getElementById('selecterBackground').selectedIndex = parseInt(bkgTemp);
-    selectBackground();
-} catch (error) {
-    console.log(error);
-    //console.log("no bkgCol stored.");
-}
+    let settingsSelect = document.getElementById('selecterBackground');
+    if(!settingsSelect)
+    {
+        console.log("settingsSelect was null...")
+        //settingsSelect.selectedIndex = 0;
+    }
+    try {
+        let bkgTemp = sessionStorage.getItem('backColorOption');
+        //console.log(bkgTemp);
+        settingsSelect.selectedIndex = parseInt(bkgTemp);
+        selectBackground();
+    } catch (error) {
+        console.log(error);
+        //console.log("no bkgCol stored.");
+    }
+});
 
 function selectBackground()
 {
