@@ -81,10 +81,10 @@ window.onload=(function(){
 });
 
 let settingsSelect = document.getElementById('selecterBackground');
-if(settingsSelect.selectedIndex == null)
+if(settingsSelect)
 {
-    console.log("selectedIndex was null... attempting to set.")
-    settingsSelect.selectedIndex = 0;
+    console.log("settingsSelect was null...")
+    //settingsSelect.selectedIndex = 0;
 }
 try {
     let bkgTemp = sessionStorage.getItem('backColorOption');
