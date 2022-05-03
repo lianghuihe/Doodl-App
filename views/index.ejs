@@ -20,7 +20,7 @@
         </div>
         <div id="generalTools" style="margin-right: 0; margin-left: auto;">
             <form>
-                <button type="button" id="settingsButton" onclick="openSettings()" title="Settings">
+                <button type="button" id="settingsButton" class="generalIcons" onclick="openSettings()" title="Settings">
                     <img src="/images/settings.png" height="50px" width="50px">
                 </button>
             </form>
@@ -94,6 +94,13 @@
                     {
                         indexButtons[i].style.backgroundColor = btnCol;
                         indexButtons[i].style.color = txtCol;
+                    }
+
+                    document.getElementById('generalTools').style.backgroundColor = bkgCol;
+                    let genTools = document.getElementsByClassName("generalIcons");
+                    for(var i = 0; i < genTools.length; i++)
+                    {
+                        genTools[i].style.backgroundColor = bkgCol;
                     }
                 }
             </script>
