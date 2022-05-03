@@ -51,27 +51,32 @@
                     var bkgCol = "#f67570";
                     var btnCol = "#1565c0";
                     let txtCol = "#ededed";
+                    let maintxtCol = "#171717"
                     switch(settingsSelect)
                     {
                         case 0:
                             bkgCol = "#f67570";
                             btnCol = "#1565c0";
                             txtCol = "#ededed";
+                            maintxtCol = "#171717"
                             break;
                         case 1:
                             bkgCol = "#171717";
                             btnCol = "#ededed";
                             txtCol = "#171717";
+                            maintxtCol = "#ededed"
                             break;
                         case 2:
                             bkgCol = "#ededed";
                             btnCol = "#171717";
                             txtCol = "#ededed";
+                            maintxtCol = "#171717"
                             break;
                         case 3:
                             bkgCol = "#1565c0";
                             btnCol = "#f67570";
                             txtCol = "#ededed";
+                            maintxtCol = "#171717"
                             break;
                     }
                     document.body.style.backgroundColor = bkgCol;
@@ -85,7 +90,7 @@
                         indexButtons[i].style.color = txtCol;
                     }
 
-                    document.getElementById('privacyLabel').style.color = txtCol;
+                    document.getElementById('privacyLabel').style.color = maintxtCol;
                 }
             </script>
         </form>
