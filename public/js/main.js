@@ -45,6 +45,7 @@ for (var i = 0; i < toolText.length; i++)
     toolText[i].style.fontSize  = (12 * (1 + (sliderValue / 100))) + "px";
 }
 
+//document.getElementById('selecterBackground').selectedIndex = 0;
 try {
     let bkgTemp = sessionStorage.getItem('backColorOption');
     //console.log(bkgTemp);
