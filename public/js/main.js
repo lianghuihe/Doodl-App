@@ -38,8 +38,8 @@ try {
     document.getElementById('selecterBackground').value = parseInt(bkgTemp);
     selectBackground();
 } catch (error) {
-    console.log("no bkgCol stored, storing.");
-    sessionStorage.setItem('backColorOption', '0');
+    console.log(error);
+    console.log("no bkgCol stored.");
 }
 
 var tools = document.getElementsByClassName("toolbarIcon");
