@@ -11,7 +11,11 @@
         <form action="/doodlPage" method="POST">
             <section class="container">
                 <div id="toolbar">
-                    <img src = "/images/doodlLogo.png" alt="Doodl" style="width:70px;height:70px"></img>
+                    <form action="/index" method="get">
+                        <button type="submit" id="doodlButton" class="generalIcons" title="Main Page" >
+                            <img src = "/images/doodlLogo.png" alt="Doodl" style="width:70px;height:70px">
+                        </button>
+                    </form>
                     <label for="stroke" class="toolbarText">Colour</label>
                     <input id="stroke" name='stroke' type="color"></input>
                     <label for="lineWidth" class="toolbarText">Line Width</label>
