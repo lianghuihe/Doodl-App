@@ -142,6 +142,16 @@
             left: calc(100%/3);
             top: calc(100%/3);
           }
+
+          #settingsBkgText{
+            text-align: left;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            color: black;
+            margin-top: 0px;
+            margin-bottom: 0px;
+          }
           
           #closeSettings{
             position: absolute;
