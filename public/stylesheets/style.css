@@ -143,6 +143,12 @@ canvas{
   cursor: pointer;
 }
 
+#doodlButton{
+  background-color: #f67570;
+  border: 0px;
+  cursor: pointer;
+}
+
 #logoutButton{
   background-color: #f67570;
   border: 0px;
